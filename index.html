@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Albert Grabar - Portfolio</title>
+    <!-- Подключаем favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico?v=2" type="image/x-icon">
+    
+    <!-- Подключаем шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Подключаем скомпилированный CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <!-- Переключатель темы -->
+    <div id="theme-toggle" class="theme-toggle hide-on-load"><b>Black/White</b></div>
+
+    <!-- Приветственный экран -->
+    <div id="intro-screen" class="intro-screen">
+        <h1 class="intro-title">Albert Grabar</h1>
+        <p class="intro-subtitle">Portfolio</p>
+    </div>
+
+    <!-- Основное содержимое -->
+    <div id="main-content" class="main-content hidden">
+        <header class="header-left">
+            <h1>Albert Grabar</h1>
+            <p class="subtitle">Designer & Developer</p>
+            <nav>
+                <ul>
+                    <li><a href="#home" id="home-link"><span class="label">Home</span><span class="circle"></span></a></li>
+                    <li><a href="#projects" id="projects-link"><span class="label">Projects</span><span class="circle"></span></a></li>
+                    <li><a href="#skills" id="skills-link"><span class="label">Skills</span><span class="circle"></span></a></li>
+                    <li><a href="#contact" id="contact-link"><span class="label">Contact</span><span class="circle"></span></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="bio-right">
+            <p>Born 1990<br>in Siberia.<br>For me<br> web design<br>is an artistic creation,<br>comparable<br>to painting <br>a picture,<br>where<br>my hands<br>are the brushes.</p>
+        </section>
+    </div>
+
+    <!-- Контейнер для эффекта ряби -->
+    <canvas id="ripple-canvas" class="hide-on-load"></canvas>
+
+    <!-- Подключаем скрипты -->
+    <script src="scripts.js"></script>
+</body>
+</html>
