@@ -287,7 +287,7 @@ body.light-theme .theme-toggle:hover {
   }
 }
 .bio-right {
-  max-width: 90%;
+  max-width: 100%;
   word-wrap: break-word;
   font-size: 1em;
 }
