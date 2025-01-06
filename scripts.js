@@ -145,21 +145,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 skillsList.classList.add('skills-list');
   
                 const skills = [
-                    'HTML5 / CSS3',
-                    'JavaScript ES6+',
-                    'Responsive Design',
-                    'PHP 7+',
-                    'SQL (MySQL, PostgreSQL)',
-                    'Frameworks (Symfony, Laravel)',
-                    'JavaScript Frameworks (React.js, Angular)',
-                    'APIs and Web Services',
-                    'Mobile Web Development',
-                    'Version Control (Git)',
-                    'Agile Methodologies',
-                    'Project Management',
-                    'UX/UI Design Principles',
-                    'Testing and Debugging',
-                    'Deployment and Hosting'
+                    // 'HTML5 / CSS3',
+                    // 'JavaScript ES6+',
+                    // 'Responsive Design',
+                    // 'PHP 7+',
+                    // 'SQL (MySQL, PostgreSQL)',
+                    // 'Frameworks (Symfony, Laravel)',
+                    // 'JavaScript Frameworks (React.js, Angular)',
+                    // 'APIs and Web Services',
+                    // 'Mobile Web Development',
+                    // 'Version Control (Git)',
+                    // 'Agile Methodologies',
+                    // 'Project Management',
+                    // 'UX/UI Design Principles',
+                    // 'Testing and Debugging',
+                    // 'Deployment and Hosting'
                 ];
   
                 skills.forEach(skill => {
