@@ -330,70 +330,50 @@ body {
 
 // Адаптивность
 @media (max-width: 768px) {
+  body {
+    overflow-y: auto;
+  }
+
   .intro-screen .intro-title {
-    font-size: 4em;
+    font-size: 3.5em;
   }
 
-  .header-left h1 {
-    font-size: 2.5em;
-  }
-
-  .header-left p.subtitle {
-    font-size: 1em;
-  }
-
-  .header-left p {
+  .intro-screen .intro-subtitle {
     font-size: 1.2em;
   }
 
+  .header-left {
+    padding: 10px;
+
+    h1 {
+      font-size: 2em;
+    }
+
+    p.subtitle {
+      font-size: 1.2em;
+    }
+  }
+
+  nav ul li a {
+    font-size: 1.1em;
+    padding: 10px;
+  }
+
   .bio-right {
     font-size: 1em;
-  }
-
-  .cyberpunk-text {
-    font-size: 2em;
-  }
-
-  .skills-list {
-    font-size: 1em;
-  }
-
-  .contact-info {
-    font-size: 1em;
-    bottom: 10px;
-    right: 10px;
-  }
-
-  .header-left nav ul li a {
-    font-size: 1em;
-  }
-
-  .header-left nav ul li a .circle {
-    width: 10px;
-    height: 10px;
-  }
-}
-
-.bio-right {
-  max-width: 100%; // Убедимся, что текст занимает максимум 90% ширины экрана
-  word-wrap: break-word; // Разрешаем перенос строк
-  font-size: 1em; // Подстройка размера текста для мобильных
-}
-
-@media (max-width: 768px) {
-  .bio-right {
-    max-width: 100%; // Используем всю ширину экрана
-    padding: 10px; // Убираем жесткие отступы
+    line-height: 1.6;
+    padding: 10px;
   }
 
   .cyberpunk-text,
   .skills-list,
   .contact-info {
-      animation: none;
-      text-shadow: none;
+    font-size: 1.2em;
   }
 
-  .section {
-      padding: 20px;
+  #ripple-canvas {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
   }
 }
