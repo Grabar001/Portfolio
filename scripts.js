@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
         // Перезапускаем анимацию на элементах
         restartAnimation('.cyberpunk-text');
-        // restartAnimation('.skills-list');
+        restartAnimation('.skills-list');
         restartAnimation('.contact-info');
     });
   
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Находим ссылки и элементы
     const navLinks = document.querySelectorAll('nav ul li a');
     const bioRight = document.querySelector('.bio-right');
-    const skillsSection = document.getElementById("skills-section");
+    const headerLeft = document.querySelector('.header-left');
   
     // Обработчик клика по навигационным ссылкам
     navLinks.forEach(link => {
@@ -119,21 +119,13 @@ document.addEventListener("DOMContentLoaded", function () {
             bioRight.classList.add('hidden');
   
             // Удаляем предыдущий контент, если есть
-            const existingContent = document.querySelector('.cyberpunk-text, .contact-info');
+            const existingContent = document.querySelector('.cyberpunk-text, .skills-list, .contact-info');
             if (existingContent) {
                 existingContent.remove();
             }
   
             // Определяем, какой раздел был выбран
             const section = this.getAttribute('href');
-
-            if (section === '#skills') {
-                // Показать секцию с навыками
-                skillsSection.classList.add('visible');
-            } else {
-                // Скрыть секцию с навыками, если выбрана другая ссылка
-                skillsSection.classList.remove('visible');
-            }
   
             if (section === '#projects') {
                 // Создаем элемент для надписи "Coming Soon"
@@ -152,31 +144,31 @@ document.addEventListener("DOMContentLoaded", function () {
                 const skillsList = document.createElement('ul');
                 skillsList.classList.add('skills-list');
   
-                // const skills = [
-                //     'HTML5 / CSS3',
-                //     'JavaScript ES6+',
-                //     'Responsive Design',
-                //     'PHP 7+',
-                //     'SQL (MySQL, PostgreSQL)',
-                //     'Frameworks (Symfony, Laravel)',
-                //     'JavaScript Frameworks (React.js, Angular)',
-                //     'APIs and Web Services',
-                //     'Mobile Web Development',
-                //     'Version Control (Git)',
-                //     'Agile Methodologies',
-                //     'Project Management',
-                //     'UX/UI Design Principles',
-                //     'Testing and Debugging',
-                //     'Deployment and Hosting'
-                // ];
+                const skills = [
+                    'HTML5 / CSS3',
+                    'JavaScript ES6+',
+                    'Responsive Design',
+                    'PHP 7+',
+                    'SQL (MySQL, PostgreSQL)',
+                    'Frameworks (Symfony, Laravel)',
+                    'JavaScript Frameworks (React.js, Angular)',
+                    'APIs and Web Services',
+                    'Mobile Web Development',
+                    'Version Control (Git)',
+                    'Agile Methodologies',
+                    'Project Management',
+                    'UX/UI Design Principles',
+                    'Testing and Debugging',
+                    'Deployment and Hosting'
+                ];
   
-                // skills.forEach(skill => {
-                //     const li = document.createElement('li');
-                //     li.textContent = skill;
-                //     skillsList.appendChild(li);
-                // });
+                skills.forEach(skill => {
+                    const li = document.createElement('li');
+                    li.textContent = skill;
+                    skillsList.appendChild(li);
+                });
   
-                // document.body.appendChild(skillsList);
+                document.body.appendChild(skillsList);
   
                 // Заставляем браузер применить стили перед изменением opacity
                 getComputedStyle(skillsList).opacity;
