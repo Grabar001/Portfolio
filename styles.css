@@ -268,6 +268,7 @@ body.light-theme .theme-toggle:hover {
     padding: 10px;
     max-width: 90%;
     margin: 0 auto;
+    top: 40%;
   }
   .skills-list li {
     margin: 0.3em 0;
