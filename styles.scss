@@ -385,4 +385,15 @@ body {
     max-width: 100%; // Используем всю ширину экрана
     padding: 10px; // Убираем жесткие отступы
   }
+
+  .cyberpunk-text,
+  .skills-list,
+  .contact-info {
+      animation: none;
+      text-shadow: none;
+  }
+
+  .section {
+      padding: 20px;
+  }
 }

@@ -297,6 +297,15 @@ body.light-theme .theme-toggle:hover {
     max-width: 100%;
     padding: 10px;
   }
+  .cyberpunk-text,
+  .skills-list,
+  .contact-info {
+    animation: none;
+    text-shadow: none;
+  }
+  .section {
+    padding: 20px;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
