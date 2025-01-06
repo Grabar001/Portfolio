@@ -169,16 +169,6 @@ body.light-theme .theme-toggle:hover {
     text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 40px currentColor, 0 0 80px currentColor, 0 0 160px currentColor;
   }
 }
-@keyframes gold-glow {
-  from {
-    text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700, 0 0 20px #FFD700;
-    color: #FFD700;
-  }
-  to {
-    text-shadow: 0 0 10px #FFEA00, 0 0 20px #FFEA00, 0 0 30px #FFEA00, 0 0 40px #FFEA00;
-    color: #FFEA00;
-  }
-}
 .cyberpunk-text {
   position: absolute;
   top: 50%;
@@ -270,10 +260,10 @@ body.light-theme .theme-toggle:hover {
     font-size: 1em;
   }
   .cyberpunk-text {
-    font-size: 2em;
+    font-size: 1em;
   }
   .skills-list {
-    font-size: 1em;
+    font-size: 0, 5em;
   }
   .contact-info {
     font-size: 1em;
