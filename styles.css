@@ -192,7 +192,7 @@ body.light-theme .theme-toggle:hover {
   animation: neon-blink 1.5s infinite;
 }
 
-.skills-list {
+.skills-section {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -203,14 +203,16 @@ body.light-theme .theme-toggle:hover {
   text-align: center;
   line-height: 1.6;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0s linear 0.5s;
   z-index: 10;
   animation: neon-blink 1.5s infinite;
 }
 
-.skills-list li {
-  list-style: none;
-  margin: 0.5em 0;
+.skills-section.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease, visibility 0s linear 0s;
 }
 
 .contact-info {

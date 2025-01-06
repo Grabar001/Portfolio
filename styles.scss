@@ -265,8 +265,29 @@ body {
   animation: neon-blink 1.5s infinite;
 }
 
-// Стиль для списка навыков
-.skills-list {
+// // Стиль для списка навыков
+// .skills-list {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   font-family: 'Press Start 2P', cursive;
+//   font-size: 1.5em;
+//   color: var(--cyberpunk-color);
+//   text-align: center;
+//   line-height: 1.6;
+//   opacity: 0;
+//   transition: opacity 0.5s ease;
+//   z-index: 10;
+//   animation: neon-blink 1.5s infinite;
+// }
+
+// .skills-list li {
+//   list-style: none;
+//   margin: 0.5em 0;
+// }
+
+.skills-section {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -277,14 +298,16 @@ body {
   text-align: center;
   line-height: 1.6;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0s linear 0.5s;
   z-index: 10;
   animation: neon-blink 1.5s infinite;
 }
 
-.skills-list li {
-  list-style: none;
-  margin: 0.5em 0;
+.skills-section.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease, visibility 0s linear 0s;
 }
 
 // Стиль для контактной информации
