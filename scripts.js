@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Элемент канваса для ряби
     const canvas = document.getElementById('ripple-canvas');
     const ctx = canvas.getContext('2d');
+
+    const isMobile = window.innerWidth <= 768;
   
     // Показываем основное содержимое после загрузки
     setTimeout(() => {
