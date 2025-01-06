@@ -263,7 +263,14 @@ body.light-theme .theme-toggle:hover {
     font-size: 1em;
   }
   .skills-list {
-    font-size: 0, 5em;
+    font-size: 0.8em;
+    line-height: 1.2;
+    padding: 10px;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .skills-list li {
+    margin: 0.3em 0;
   }
   .contact-info {
     font-size: 1em;
