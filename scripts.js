@@ -191,10 +191,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 const linkedin = document.createElement('p');
                 linkedin.innerHTML = 'LinkedIn: <a href="https://www.linkedin.com/in/albert-grabar" target="_blank">www.linkedin.com/in/albert-grabar</a>';
   
+                const github = document.createElement('p');
+                github.innerHTML = 'GitHub: <a href="https://github.com/Grabar001" target="_blank">github.com/Grabar001</a>';
                 // Добавляем параграфы в контейнер
                 contactInfo.appendChild(tel);
                 contactInfo.appendChild(email);
                 contactInfo.appendChild(linkedin);
+                contactInfo.appendChild(github);
   
                 document.body.appendChild(contactInfo);
   
