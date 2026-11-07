@@ -163,8 +163,7 @@ button:focus-visible {
     font-size: 2em;
     font-weight: 300;
     margin: 0.2em 0;
-    color: #FFD700; // Золотистый цвет
-    animation: gold-glow 2s infinite alternate;
+    color: inherit; // Чёрный на светлом фоне, белый на тёмном — как и весь текст
   }
 
   nav ul {
@@ -409,26 +408,6 @@ button:focus-visible {
   50% {
     opacity: 1;
     text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
-  }
-}
-
-// Анимация свечения для золотистого текста
-@keyframes gold-glow {
-  from {
-    text-shadow:
-      0 0 5px #FFD700,
-      0 0 10px #FFD700,
-      0 0 15px #FFD700,
-      0 0 20px #FFD700;
-    color: #FFD700;
-  }
-  to {
-    text-shadow:
-      0 0 10px #FFEA00,
-      0 0 20px #FFEA00,
-      0 0 30px #FFEA00,
-      0 0 40px #FFEA00;
-    color: #FFEA00;
   }
 }
 
