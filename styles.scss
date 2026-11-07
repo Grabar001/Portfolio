@@ -497,28 +497,47 @@ button:focus-visible {
   }
 }
 
-// Список навыков
-.skills-list {
-  @include neon-pixel;
-  margin: 0;
-  padding: 0;
-  font-size: clamp(0.85em, 1.5vw, 1.5em);
-  text-align: center;
-  line-height: 1.6;
+// Навыки, сгруппированные по темам:
+// заголовки групп — неоновым пиксельным шрифтом, пункты — обычным, чтобы легко читалось
+.skills-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px 48px;
+  width: 100%;
+  max-width: 920px;
 
-  li {
-    list-style: none;
-    margin: 0.5em 0;
+  @media (max-width: 1150px) and (min-width: $bp-mobile + 1) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   @include mobile {
-    width: 100%;
-    font-size: 0.8em;
-    text-align: left;
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
 
-    li {
-      margin: 0.9em 0;
-    }
+.skill-group {
+  h3 {
+    @include neon-pixel;
+    font-size: clamp(0.85em, 1.2vw, 1.1em);
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid currentColor;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    font-size: 1.05em;
+    font-weight: 300;
+    line-height: 1.4;
+    margin: 0 0 10px;
   }
 }
 
