@@ -3,168 +3,162 @@ document.addEventListener("DOMContentLoaded", function () {
     const mainContent = document.getElementById("main-content");
     const themeToggle = document.getElementById("theme-toggle");
     const body = document.body;
-
-    // Элемент для ряби
     const canvas = document.getElementById("ripple-canvas");
     const ctx = canvas.getContext("2d");
-    let ripples = [];
 
-    // Инициализация: темная тема для заставки
-    body.classList.add("dark-theme");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const INTRO_DURATION = 3000;
 
-    // Показать основное содержимое после заставки
-    setTimeout(() => {
-        introScreen.style.display = "none"; // Скрыть заставку
-        mainContent.classList.add("visible"); // Показать основное содержимое
-        body.classList.replace("dark-theme", "light-theme"); // Переключить на светлую тему
-        themeToggle.classList.remove("hide-on-load"); // Показать кнопку переключения темы
-        canvas.classList.remove("hide-on-load"); // Показать canvas
-    }, 3000);
+    // localStorage/sessionStorage могут быть недоступны (приватный режим) — не ломаемся
+    const storage = {
+        get(store, key) {
+            try { return window[store].getItem(key); } catch (e) { return null; }
+        },
+        set(store, key, value) {
+            try { window[store].setItem(key, value); } catch (e) { /* игнорируем */ }
+        },
+    };
 
-    // Переключение темы
+    // ---------- Тема ----------
+    function preferredTheme() {
+        const saved = storage.get("localStorage", "theme");
+        if (saved === "dark" || saved === "light") return saved;
+        // Сайт задуман светлым после заставки; тёмный — если так настроена система
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+
+    function applyTheme(theme) {
+        body.classList.remove("dark-theme", "light-theme");
+        body.classList.add(theme + "-theme");
+        themeToggle.setAttribute("aria-pressed", String(theme === "dark"));
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", theme === "dark" ? "#000000" : "#ffffff");
+    }
+
     themeToggle.addEventListener("click", () => {
-        if (body.classList.contains("dark-theme")) {
-            body.classList.replace("dark-theme", "light-theme");
-        } else {
-            body.classList.replace("light-theme", "dark-theme");
-        }
+        const next = body.classList.contains("dark-theme") ? "light" : "dark";
+        applyTheme(next);
+        storage.set("localStorage", "theme", next);
     });
 
-    // Настройка размеров canvas
+    // ---------- Заставка ----------
+    // Заставка тёмная; после неё — выбранная тема
+    applyTheme("dark");
+    let introDone = false;
+    let introTimer = null;
+
+    function finishIntro() {
+        if (introDone) return;
+        introDone = true;
+        clearTimeout(introTimer);
+        introScreen.style.display = "none";
+        mainContent.classList.add("visible");
+        applyTheme(preferredTheme());
+        themeToggle.classList.remove("hide-on-load");
+        canvas.classList.remove("hide-on-load");
+        storage.set("sessionStorage", "introSeen", "1");
+        document.removeEventListener("keydown", finishIntro);
+    }
+
+    // Повторный заход в той же вкладке или «уменьшение движения» — без заставки
+    if (storage.get("sessionStorage", "introSeen") || reduceMotion) {
+        finishIntro();
+    } else {
+        introTimer = setTimeout(finishIntro, INTRO_DURATION);
+        introScreen.addEventListener("click", finishIntro);
+        document.addEventListener("keydown", finishIntro);
+    }
+
+    // ---------- Рябь ----------
+    let ripples = [];
+    let animating = false;
+    let dpr = 1;
+
     function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        dpr = window.devicePixelRatio || 1;
+        canvas.width = Math.round(window.innerWidth * dpr);
+        canvas.height = Math.round(window.innerHeight * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0); // рисуем в CSS-пикселях, но чётко на Retina
     }
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
 
-    // Создание ряби
     function createRipple(x, y) {
         ripples.push({ x, y, radius: 0, alpha: 1 });
+        // Анимация запускается только когда есть что рисовать — не грузим процессор впустую
+        if (!animating) {
+            animating = true;
+            requestAnimationFrame(animateRipples);
+        }
     }
 
-    // Анимация ряби
     function animateRipples() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        ripples = ripples.filter((ripple) => ripple.alpha > 0);
 
-    // Фильтруем массив, оставляя только видимые круги
-    ripples = ripples.filter(ripple => ripple.alpha > 0);
-
-    ripples.forEach((ripple) => {
-        ripple.radius += 2;
-        ripple.alpha -= 0.02;
-
-        ctx.beginPath();
-        ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(${body.classList.contains("dark-theme") ? "255, 255, 255" : "0, 0, 0"}, ${ripple.alpha})`;
+        const rgb = body.classList.contains("dark-theme") ? "255, 255, 255" : "0, 0, 0";
         ctx.lineWidth = 2;
-        ctx.stroke();
-    });
+        ripples.forEach((ripple) => {
+            ripple.radius += 2;
+            ripple.alpha -= 0.02;
+            ctx.beginPath();
+            ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(${rgb}, ${Math.max(ripple.alpha, 0)})`;
+            ctx.stroke();
+        });
 
-    requestAnimationFrame(animateRipples);
-}
-
-    animateRipples();
-
-    // Добавление ряби при движении мыши
-    document.addEventListener("mousemove", (e) => {
-        if (!canvas.classList.contains("hide-on-load")) {
-            createRipple(e.clientX, e.clientY);
+        if (ripples.length) {
+            requestAnimationFrame(animateRipples);
+        } else {
+            animating = false;
         }
-    });
+    }
 
-    // Управление навигацией
-    const navLinks = document.querySelectorAll("nav ul li a");
-    const bioRight = document.querySelector(".bio-right");
+    if (!reduceMotion) {
+        // pointer-события работают и для мыши, и для пальца
+        document.addEventListener("pointermove", (e) => {
+            if (introDone) createRipple(e.clientX, e.clientY);
+        }, { passive: true });
+        document.addEventListener("pointerdown", (e) => {
+            if (introDone) createRipple(e.clientX, e.clientY);
+        }, { passive: true });
+    }
+
+    // ---------- Навигация ----------
+    // Разделы привязаны к адресу (#skills и т.п.): работает «Назад», можно делиться ссылкой
+    const navLinks = document.querySelectorAll("nav a[data-section]");
+    const panels = document.querySelectorAll(".panel");
+    const sections = Array.from(navLinks, (link) => link.dataset.section);
+
+    function showSection(name) {
+        // Без адреса (первый заход) показываем Home, но все пункты меню остаются словами, как и раньше
+        const explicit = sections.includes(name);
+        if (!explicit) name = "home";
+
+        navLinks.forEach((link) => {
+            const active = link.dataset.section === name;
+            link.classList.toggle("selected", active && explicit);
+            if (active) link.setAttribute("aria-current", "page");
+            else link.removeAttribute("aria-current");
+        });
+
+        panels.forEach((panel) => {
+            panel.hidden = panel.id !== "section-" + name;
+        });
+    }
 
     navLinks.forEach((link) => {
         link.addEventListener("click", (e) => {
-            e.preventDefault(); // Отключить переход по ссылке
-
-            // Удалить класс "selected" со всех ссылок
-            navLinks.forEach((l) => l.classList.remove("selected"));
-
-            // Добавить класс "selected" к текущей ссылке
-            link.classList.add("selected");
-
-            // Скрыть правый текстовый блок
-            bioRight.classList.add("hidden");
-
-            // Удалить предыдущий динамический контент
-            document.querySelectorAll(".dynamic-content").forEach((el) => el.remove());
-
-            const section = link.getAttribute("href");
-
-            if (section === "#projects") {
-                createComingSoon();
-            } else if (section === "#skills") {
-                createSkillsList();
-            } else if (section === "#contact") {
-                createContactInfo();
-            } else if (section === "#home") {
-                bioRight.classList.remove("hidden");
+            e.preventDefault();
+            const name = link.dataset.section;
+            if (location.hash.slice(1) !== name) {
+                history.pushState(null, "", "#" + name);
             }
+            showSection(name);
+            if (!introDone) finishIntro();
         });
     });
 
-    // Создание "Coming Soon"
-    function createComingSoon() {
-        const comingSoon = document.createElement("div");
-        comingSoon.classList.add("dynamic-content", "cyberpunk-text");
-        comingSoon.textContent = "Coming Soon";
-        document.body.appendChild(comingSoon);
-    }
-
-    // Создание списка навыков
-    function createSkillsList() {
-        const skillsList = document.createElement("ul");
-        skillsList.classList.add("dynamic-content", "skills-list");
-
-        const skills = [
-            "HTML5 / CSS3",
-            "JavaScript ES6+",
-            "Responsive Design",
-            "PHP 7+",
-            "SQL (MySQL, PostgreSQL)",
-            "Frameworks (Symfony, Laravel)",
-            "JavaScript Frameworks (React.js, Angular)",
-            "APIs and Web Services",
-            "Mobile Web Development",
-            "Version Control (Git)",
-            "Agile Methodologies",
-            "Project Management",
-            "UX/UI Design Principles",
-            "Testing and Debugging",
-            "Deployment and Hosting",
-        ];
-
-        skills.forEach((skill) => {
-            const li = document.createElement("li");
-            li.textContent = skill;
-            skillsList.appendChild(li);
-        });
-
-        document.body.appendChild(skillsList);
-    }
-
-    // Создание контактной информации
-    function createContactInfo() {
-        const contactInfo = document.createElement("div");
-        contactInfo.classList.add("dynamic-content", "contact-info");
-
-        const tel = document.createElement("p");
-        tel.innerHTML = 'Tel: <a href="tel:+33779730742">+33 7 79 73 07 42</a>';
-
-        const email = document.createElement("p");
-        email.innerHTML = 'Email: <a href="mailto:grabarfamyli@gmail.com">grabarfamyli@gmail.com</a>';
-
-        const linkedin = document.createElement("p");
-        linkedin.innerHTML = 'LinkedIn: <a href="https://www.linkedin.com/in/albert-grabar" target="_blank">www.linkedin.com/in/albert-grabar</a>';
-
-        contactInfo.appendChild(tel);
-        contactInfo.appendChild(email);
-        contactInfo.appendChild(linkedin);
-
-        document.body.appendChild(contactInfo);
-    }
+    window.addEventListener("popstate", () => showSection(location.hash.slice(1)));
+    showSection(location.hash.slice(1));
 });
