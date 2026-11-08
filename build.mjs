@@ -28,6 +28,10 @@ const T = Object.fromEntries(LANGS.map((lang) => [lang, readJson(`src/i18n/${lan
 const PAGES = {
   home: { fr: "index.html", en: "index.html" },
   services: { fr: "services.html", en: "services.html" },
+  svcAudit: { fr: "audit-application-ia.html", en: "ai-app-audit.html" },
+  svcLaunch: { fr: "lancement-application.html", en: "app-launch.html" },
+  svcSite: { fr: "site-vitrine.html", en: "website.html" },
+  svcFixes: { fr: "corrections-maintenance.html", en: "fixes-maintenance.html" },
   work: { fr: "realisations.html", en: "work.html" },
   about: { fr: "a-propos.html", en: "about.html" },
   contact: { fr: "contact.html", en: "contact.html" },
@@ -38,6 +42,7 @@ const PAGES = {
   notfound: { fr: "404.html", en: null }, // one 404 page, at the root
 };
 const NAV = ["services", "work", "about", "contact"];
+const SERVICE_PAGES = ["svcAudit", "svcLaunch", "svcSite", "svcFixes"];
 const NOINDEX = new Set(["thanks", "notfound"]);
 const FONTS = [
   ["playfair-display", "playfair-display-latin-700-normal.woff2"],
@@ -73,6 +78,15 @@ function txt(lang, text, html = {}) {
   });
 }
 
+// Wraps every word of an already-escaped heading in spans for the "rise" animation.
+// Words are split on normal spaces only, so French no-break spaces stay inside a word.
+function splitWords(html) {
+  return html
+    .split(" ")
+    .map((word, i) => `<span class="w" style="--i:${i}"><span>${word}</span></span>`)
+    .join(" ");
+}
+
 // ---------- Links ----------
 const dirOf = (lang) => (lang === "fr" ? "" : `${lang}/`);
 const fileOf = (id, lang) => PAGES[id][lang] ?? PAGES[id].fr;
@@ -102,7 +116,8 @@ function makeContext(lang, id) {
 function header(ctx) {
   const { t, lang } = ctx;
   const nav = NAV.map((target) => {
-    const current = target === ctx.id ? ' aria-current="page"' : "";
+    const section = target === "services" && SERVICE_PAGES.includes(ctx.id);
+    const current = target === ctx.id ? ' aria-current="page"' : section ? ' aria-current="true"' : "";
     return `<li><a href="${ctx.link(target)}"${current}><span class="dot" aria-hidden="true"></span><span class="label">${esc(t.nav[target])}</span></a></li>`;
   }).join("");
   const langs = LANGS.map((l) => {
@@ -125,15 +140,23 @@ function footer(ctx) {
   const { t } = ctx;
   const f = t.footer;
   const ext = ' target="_blank" rel="noopener"';
+  const services = t.services.offers
+    .map((o) => `<li><a href="${ctx.link(o.page)}">${ctx.txt(o.name)}</a></li>`)
+    .join("");
   return `<footer class="site-footer">
   <div class="container">
     <div>
       <p class="f-brand">Albert Grabar</p>
       <p>${ctx.txt(f.identity)}</p>
       <p>${ctx.txt(f.vat)}</p>
-      <p class="muted">${ctx.txt(f.b2b)}</p>
+      <p class="muted">${ctx.txt(f.audience)}</p>
     </div>
     <div>
+      <p class="f-title">${esc(t.nav.services)}</p>
+      <ul>${services}</ul>
+    </div>
+    <div>
+      <p class="f-title">${esc(t.nav.site)}</p>
       <ul>${NAV.map((target) => `<li><a href="${ctx.link(target)}">${esc(t.nav[target])}</a></li>`).join("")}</ul>
     </div>
     <div>
@@ -184,6 +207,7 @@ ${jsonld ? `<script type="application/ld+json">${JSON.stringify(jsonld)}</script
 </head>
 <body class="page-${id}">
 <a class="skip-link" href="#main">${esc(t.ui.skip)}</a>
+<div class="scroll-progress" aria-hidden="true"><span></span></div>
 ${header(ctx)}
 <main id="main">
 ${body}
@@ -196,21 +220,37 @@ ${footer(ctx)}
 }
 
 // ---------- Shared blocks ----------
-function pageHead(ctx, h1, lead = "", leadHtml = {}) {
+function pageHead(ctx, h1, lead = "", leadHtml = {}, before = "") {
   return `<section class="page-head"><div class="container">
-  <h1>${ctx.txt(h1)}</h1>
-  ${lead ? `<p class="lead">${ctx.txt(lead, leadHtml)}</p>` : ""}
+  ${before}
+  <h1 class="words">${splitWords(ctx.txt(h1))}</h1>
+  ${lead ? `<p class="lead rise">${ctx.txt(lead, leadHtml)}</p>` : ""}
 </div></section>`;
 }
 
 function ctaBand(ctx) {
   const h = ctx.t.home;
-  return `<section class="cta-band"><div class="container">
+  return `<section class="cta-band"><div class="container" data-reveal>
   <h2>${ctx.txt(h.ctaTitle)}</h2>
   <p>${ctx.txt(h.ctaText)}</p>
   <a class="btn" href="${ctx.link("contact", "form")}">${ctx.txt(h.ctaButton)}</a>
-  <p class="b2b">${ctx.txt(ctx.t.footer.b2b)}</p>
+  <p class="audience">${ctx.txt(ctx.t.footer.audience)}</p>
 </div></section>`;
+}
+
+function faqBlock(ctx, items) {
+  return `<div class="faq" data-stagger>${items
+    .map((f) => `<details><summary>${ctx.txt(f.q)}</summary><p>${ctx.txt(f.a)}</p></details>`)
+    .join("")}</div>`;
+}
+
+function consumerNote(ctx) {
+  const s = ctx.t.services;
+  const link = `<a href="${ctx.link("terms")}">${esc(s.termsLinkText)}</a>`;
+  return `<div class="notice consumer-note" data-reveal>
+  <h2>${ctx.txt(s.consumerTitle)}</h2>
+  <p>${ctx.txt(s.consumerNote, { termsLink: link })}</p>
+</div>`;
 }
 
 const hasImage = (name) => fs.existsSync(path.join(SRC, "static/assets/img", name));
@@ -255,22 +295,31 @@ function workCards(ctx, level) {
 const render = {
   home(ctx) {
     const h = ctx.t.home;
+    const ui = ctx.t.ui;
+    const marqueeList = `<ul>${h.marquee.map((m) => `<li>${ctx.txt(m)}</li>`).join("")}</ul>`;
+    const badgeText = esc(typo(ctx.lang, ui.badge).toUpperCase());
     const body = `
 <section class="hero"><div class="container">
-  <p class="kicker">${ctx.txt(h.kicker)}</p>
-  <h1>${ctx.txt(h.h1)}</h1>
-  <p class="lead">${ctx.txt(h.lead)}</p>
-  <div class="actions">
+  <a class="hero-badge" href="${ctx.link("contact", "form")}" aria-label="${esc(typo(ctx.lang, ui.badgeLabel))}">
+    <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><path id="badge-circle" d="M60,60 m-47,0 a47,47 0 1,1 94,0 a47,47 0 1,1 -94,0"/></defs><text><textPath href="#badge-circle" textLength="292" lengthAdjust="spacing">${badgeText}</textPath></text></svg>
+    <span class="hero-badge-dot"></span>
+  </a>
+  <p class="kicker rise">${ctx.txt(h.kicker)}</p>
+  <h1 class="words">${splitWords(ctx.txt(h.h1))}</h1>
+  <p class="lead rise">${ctx.txt(h.lead)}</p>
+  <div class="actions rise">
     <a class="btn" href="${ctx.link("contact")}?need=audit#form">${ctx.txt(h.ctaPrimary)}</a>
     <a class="btn btn-ghost" href="${ctx.link("services")}">${ctx.txt(h.ctaSecondary)}</a>
   </div>
 </div></section>
-<div class="container"><ul class="promises">${h.promises.map((p) => `<li>${ctx.txt(p)}</li>`).join("")}</ul></div>
+<div class="container"><ul class="promises" data-stagger>${h.promises.map((p) => `<li>${ctx.txt(p)}</li>`).join("")}</ul></div>
 
-<section class="section"><div class="container grid grid-2">
+<div class="marquee" aria-hidden="true"><div class="marquee-track">${marqueeList}${marqueeList}</div></div>
+
+<section class="section"><div class="container grid grid-3 doors" data-stagger>
 ${h.doors
   .map(
-    (d) => `<a class="card door" href="${ctx.link("services", d.anchor)}">
+    (d) => `<a class="card door" href="${ctx.link(d.page)}">
   <h2 class="card-title">${ctx.txt(d.title)}</h2>
   <p>${ctx.txt(d.text)}</p>
   <span class="more-link">${ctx.txt(d.link)}</span>
@@ -280,20 +329,28 @@ ${h.doors
 </div></section>
 
 <section class="section section-soft"><div class="container">
-  <h2>${ctx.txt(h.breaksTitle)}</h2>
-  <ul class="dash-list breaks">${h.breaks.map((b) => `<li>${ctx.txt(b)}</li>`).join("")}</ul>
+  <h2 data-reveal>${ctx.txt(h.breaksTitle)}</h2>
+  <ul class="dash-list breaks" data-stagger>${h.breaks.map((b) => `<li>${ctx.txt(b)}</li>`).join("")}</ul>
 </div></section>
 
 <section class="section"><div class="container">
-  <h2>${ctx.txt(h.stepsTitle)}</h2>
-  <ol class="steps grid grid-3">${h.steps.map((s) => `<li><h3>${ctx.txt(s.title)}</h3><p>${ctx.txt(s.text)}</p></li>`).join("")}</ol>
+  <h2 data-reveal>${ctx.txt(h.stepsTitle)}</h2>
+  <ol class="steps grid grid-3" data-stagger>${h.steps.map((s) => `<li><h3>${ctx.txt(s.title)}</h3><p>${ctx.txt(s.text)}</p></li>`).join("")}</ol>
+</div></section>
+
+<section class="section stats-band"><div class="container">
+  <ul class="stats" data-stagger>${h.stats
+    .map(
+      (s) => `<li><p class="stat-value"><span class="stat-num" data-count="${s.value}">${s.value}</span><span class="stat-unit">${esc(s.unit).replace(/^ /, "&nbsp;")}</span></p><p class="stat-label">${ctx.txt(s.label)}</p></li>`
+    )
+    .join("")}</ul>
 </div></section>
 
 <section class="section section-soft"><div class="container">
-  <div class="section-head"><h2>${ctx.txt(h.pricesTitle)}</h2><a class="more-link" href="${ctx.link("services")}">${ctx.txt(h.pricesMore)}</a></div>
-  <div class="grid grid-4">${h.prices
+  <div class="section-head" data-reveal><h2>${ctx.txt(h.pricesTitle)}</h2><a class="more-link" href="${ctx.link("services")}">${ctx.txt(h.pricesMore)}</a></div>
+  <div class="grid grid-4" data-stagger>${h.prices
     .map(
-      (p) => `<a class="card price-card" href="${ctx.link("services", p.anchor)}">
+      (p) => `<a class="card price-card" href="${ctx.link(p.page)}">
     <h3>${ctx.txt(p.name)}</h3>
     ${p.note ? `<p class="note-line">${ctx.txt(p.note)}</p>` : ""}
     <p class="price">${ctx.txt(p.price)}</p>
@@ -303,18 +360,18 @@ ${h.doors
 </div></section>
 
 <section class="section"><div class="container">
-  <div class="section-head"><h2>${ctx.txt(h.workTitle)}</h2><a class="more-link" href="${ctx.link("work")}">${ctx.txt(h.workMore)}</a></div>
-  <div class="grid grid-3">${workCards(ctx, 3)}</div>
+  <div class="section-head" data-reveal><h2>${ctx.txt(h.workTitle)}</h2><a class="more-link" href="${ctx.link("work")}">${ctx.txt(h.workMore)}</a></div>
+  <div class="grid grid-3" data-stagger>${workCards(ctx, 3)}</div>
 </div></section>
 
 <section class="section section-soft"><div class="container split">
-  <h2>${ctx.txt(h.aboutTitle)}</h2>
-  <div><p class="about-quote">${ctx.txt(h.aboutText)}</p><a class="more-link" href="${ctx.link("about")}">${ctx.txt(h.aboutMore)}</a></div>
+  <h2 data-reveal>${ctx.txt(h.aboutTitle)}</h2>
+  <div data-reveal><p class="about-quote">${ctx.txt(h.aboutText)}</p><a class="more-link" href="${ctx.link("about")}">${ctx.txt(h.aboutMore)}</a></div>
 </div></section>
 
 <section class="section"><div class="container split">
-  <h2>${ctx.txt(h.faqTitle)}</h2>
-  <div class="faq">${h.faq.map((f) => `<details><summary>${ctx.txt(f.q)}</summary><p>${ctx.txt(f.a)}</p></details>`).join("")}</div>
+  <h2 data-reveal>${ctx.txt(h.faqTitle)}</h2>
+  ${faqBlock(ctx, h.faq)}
 </div></section>
 ${ctaBand(ctx)}`;
     const jsonld = {
@@ -325,12 +382,20 @@ ${ctaBand(ctx)}`;
       email: config.email,
       description: h.description,
       areaServed: "FR",
+      address: { "@type": "PostalAddress", addressLocality: "Paris", addressCountry: "FR" },
       founder: {
         "@type": "Person",
         name: "Albert Grabar",
         jobTitle: ctx.lang === "fr" ? "Développeur web full-stack" : "Full-stack web developer",
         sameAs: [config.linkedin, config.github],
       },
+      makesOffer: ctx.t.services.offers.map((o) => ({
+        "@type": "Offer",
+        url: absUrl(o.page, ctx.lang),
+        priceCurrency: "EUR",
+        price: o.schemaPrice,
+        itemOffered: { "@type": "Service", name: o.name },
+      })),
     };
     return { title: h.title, description: h.description, body, jsonld };
   },
@@ -340,8 +405,8 @@ ${ctaBand(ctx)}`;
     const L = s.labels;
     const offers = s.offers
       .map(
-        (o) => `<article class="offer" id="${o.id}">
-  <div class="offer-head"><h2>${ctx.txt(o.name)}</h2><p class="offer-price">${ctx.txt(o.price)}</p></div>
+        (o) => `<article class="offer" id="${o.id}" data-reveal>
+  <div class="offer-head"><h2><a href="${ctx.link(o.page)}">${ctx.txt(o.name)}</a></h2><p class="offer-price">${ctx.txt(o.price)}</p></div>
   <div class="offer-body">
     <div>
       <h3>${ctx.txt(o.listTitle)}</h3>
@@ -357,6 +422,7 @@ ${ctaBand(ctx)}`;
       </dl>
       <div class="actions">
         <a class="btn" href="${ctx.link("contact")}?need=${o.need}#form">${ctx.txt(o.cta)}</a>
+        <a class="more-link" href="${ctx.link(o.page)}">${ctx.txt(L.more)}</a>
         ${o.extraLink ? `<a class="more-link" href="${ctx.link("work")}">${ctx.txt(o.extraLink)}</a>` : ""}
       </div>
     </div>
@@ -367,16 +433,22 @@ ${ctaBand(ctx)}`;
     const body = `${pageHead(ctx, s.h1, s.lead)}
 <section class="section"><div class="container">
 ${offers}
-<div class="notice"><p>${ctx.txt(s.vat)}</p><p>${ctx.txt(s.platforms)}</p></div>
+${consumerNote(ctx)}
+<div class="notice" data-reveal><p>${ctx.txt(s.vat)}</p><p>${ctx.txt(s.platforms)}</p></div>
 </div></section>
 ${ctaBand(ctx)}`;
     return { title: s.title, description: s.description, body };
   },
 
+  svcAudit: (ctx) => serviceDetail(ctx, "audit"),
+  svcLaunch: (ctx) => serviceDetail(ctx, "launch"),
+  svcSite: (ctx) => serviceDetail(ctx, "site"),
+  svcFixes: (ctx) => serviceDetail(ctx, "fixes"),
+
   work(ctx) {
     const w = ctx.t.work;
     const body = `${pageHead(ctx, w.h1, w.lead)}
-<section class="section"><div class="container grid grid-3">
+<section class="section"><div class="container grid grid-3" data-stagger>
 ${workCards(ctx, 2)}
 </div></section>
 ${ctaBand(ctx)}`;
@@ -395,8 +467,8 @@ ${ctaBand(ctx)}`;
     const ext = ' target="_blank" rel="noopener"';
     const body = `${pageHead(ctx, a.h1)}
 <section class="section" style="padding-top:24px"><div class="container split">
-  <div class="prose">${a.paragraphs.map((p) => `<p>${ctx.txt(p)}</p>`).join("")}</div>
-  <aside>
+  <div class="prose" data-stagger>${a.paragraphs.map((p) => `<p>${ctx.txt(p)}</p>`).join("")}</div>
+  <aside data-stagger>
     <div class="side-block"><h2>${ctx.txt(a.skillsTitle)}</h2>
       ${a.skills.map((g) => `<div class="skill-group"><h3>${ctx.txt(g.title)}</h3><ul class="chips">${g.items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul></div>`).join("")}
     </div>
@@ -424,22 +496,30 @@ ${ctaBand(ctx)}`;
       <div class="hp-field" aria-hidden="true"><label for="f-website">Website</label><input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off"></div>
       <p class="small muted">* ${esc(c.required)}</p>
       <div class="form-row">
-        <div class="field"><label for="f-name">${esc(F.name)} *</label><input type="text" id="f-name" name="name" required autocomplete="name" maxlength="120"></div>
-        <div class="field"><label for="f-email">${esc(F.email)} *</label><input type="email" id="f-email" name="email" required autocomplete="email" maxlength="160"></div>
+        <div class="field"><label for="f-name">${ctx.txt(F.name)} *</label><input type="text" id="f-name" name="name" required autocomplete="name" maxlength="120"></div>
+        <div class="field"><label for="f-email">${ctx.txt(F.email)} *</label><input type="email" id="f-email" name="email" required autocomplete="email" maxlength="160"></div>
       </div>
-      <div class="field"><label for="f-company">${esc(F.company)} *</label><input type="text" id="f-company" name="company" required autocomplete="organization" maxlength="200"></div>
+      <fieldset class="field choice">
+        <legend>${ctx.txt(F.client)} *</legend>
+        <div class="choice-options">${Object.entries(c.clients)
+          .map(
+            ([value, label], i) =>
+              `<label class="radio"><input type="radio" name="client" value="${value}"${i === 0 ? " required" : ""}><span>${ctx.txt(label)}</span></label>`
+          )
+          .join("")}</div>
+      </fieldset>
+      <div class="field" data-company><label for="f-company">${ctx.txt(F.company)} ${opt}</label><input type="text" id="f-company" name="company" autocomplete="organization" maxlength="200"></div>
       <div class="form-row">
-        <div class="field"><label for="f-need">${esc(F.need)} *</label><select id="f-need" name="need" required><option value="">${esc(c.choose)}</option>${Object.entries(c.needs)
+        <div class="field"><label for="f-need">${ctx.txt(F.need)} *</label><select id="f-need" name="need" required><option value="">${esc(c.choose)}</option>${Object.entries(c.needs)
           .map(([value, label]) => `<option value="${value}">${ctx.txt(label)}</option>`)
           .join("")}</select></div>
-        <div class="field"><label for="f-budget">${esc(F.budget)} ${opt}</label><select id="f-budget" name="budget"><option value="">${esc(c.choose)}</option>${c.budgets
+        <div class="field"><label for="f-budget">${ctx.txt(F.budget)} ${opt}</label><select id="f-budget" name="budget"><option value="">${esc(c.choose)}</option>${c.budgets
           .map((label, i) => `<option value="${i}">${ctx.txt(label)}</option>`)
           .join("")}</select></div>
       </div>
-      <div class="field"><label for="f-link">${esc(F.link)} ${opt}</label><input type="url" id="f-link" name="link" placeholder="https://" maxlength="300"></div>
-      <div class="field"><label for="f-message">${esc(F.message)} *</label><textarea id="f-message" name="message" required minlength="10" maxlength="4000"></textarea></div>
-      <div class="field"><label for="f-deadline">${esc(F.deadline)} ${opt}</label><input type="text" id="f-deadline" name="deadline" maxlength="120"></div>
-      <label class="check"><input type="checkbox" name="pro" value="yes" required><span>${ctx.txt(F.pro)} *</span></label>
+      <div class="field"><label for="f-link">${ctx.txt(F.link)} ${opt}</label><input type="url" id="f-link" name="link" placeholder="https://" maxlength="300"></div>
+      <div class="field"><label for="f-message">${ctx.txt(F.message)} *</label><textarea id="f-message" name="message" required minlength="10" maxlength="4000"></textarea></div>
+      <div class="field"><label for="f-deadline">${ctx.txt(F.deadline)} ${opt}</label><input type="text" id="f-deadline" name="deadline" maxlength="120"></div>
       <p class="small muted">${ctx.txt(c.privacy, { email: mail, privacyLink: `<a href="${ctx.link("privacy")}">${esc(c.privacyLink)}</a>` })}</p>
       <div><button class="btn" type="submit">${esc(c.submit)}</button></div>
     </form>
@@ -480,6 +560,103 @@ ${ctaBand(ctx)}`;
     return { title: n.title, description: n.description, body };
   },
 };
+
+// Full description of one service (one page per offer, texts in services.offers[].detail)
+function serviceDetail(ctx, offerId) {
+  const s = ctx.t.services;
+  const L = s.labels;
+  const o = s.offers.find((x) => x.id === offerId);
+  const d = o.detail;
+
+  const sections = d.sections
+    .map((sec) => {
+      let inner = "";
+      if (sec.type === "list") {
+        inner = `<ul class="dash-list${sec.muted ? " is-muted" : ""}" data-stagger>${sec.items.map((it) => `<li>${ctx.txt(it)}</li>`).join("")}</ul>`;
+      } else if (sec.type === "features") {
+        inner = `<div class="features" data-stagger>${sec.items
+          .map(
+            (it, n) => `<div class="feature"><span class="feature-num" aria-hidden="true">${String(n + 1).padStart(2, "0")}</span><h3>${ctx.txt(it.t)}</h3><p>${ctx.txt(it.d)}</p></div>`
+          )
+          .join("")}</div>`;
+      } else if (sec.type === "steps") {
+        inner = `<ol class="timeline" data-stagger>${sec.items.map((it) => `<li><h3>${ctx.txt(it.t)}</h3><p>${ctx.txt(it.d)}</p></li>`).join("")}</ol>`;
+      }
+      return `<section class="svc-section"><h2 data-reveal>${ctx.txt(sec.title)}</h2>${inner}</section>`;
+    })
+    .join("\n");
+
+  const crumbs = `<nav class="breadcrumb rise" aria-label="${esc(ctx.t.ui.breadcrumb)}"><ol>
+  <li><a href="${ctx.link("services")}">${esc(ctx.t.nav.services)}</a></li>
+  <li aria-current="page">${ctx.txt(o.name)}</li>
+</ol></nav>
+<p class="kicker rise">${ctx.txt(L.audience)}</p>`;
+
+  const aside = `<aside class="svc-aside">
+  <div class="price-box">
+    <p class="price-box-label">${ctx.txt(L.summary)}</p>
+    <p class="price-box-price">${ctx.txt(o.price)}</p>
+    <dl class="facts">
+      <dt>${esc(L.delay)}</dt><dd>${ctx.txt(o.delay)}</dd>
+      <dt>${esc(L.payment)}</dt><dd>${ctx.txt(o.payment)}</dd>
+      <dt>${esc(L.for)}</dt><dd>${ctx.txt(o.for)}</dd>
+    </dl>
+    <a class="btn" href="${ctx.link("contact")}?need=${o.need}#form">${ctx.txt(o.cta)}</a>
+    <p class="price-box-links"><a class="more-link" href="${ctx.link("services")}">${ctx.txt(L.all)}</a>${
+      o.extraLink ? ` <a class="more-link" href="${ctx.link("work")}">${ctx.txt(o.extraLink)}</a>` : ""
+    }</p>
+  </div>
+</aside>`;
+
+  const others = s.offers
+    .filter((x) => x.id !== offerId)
+    .map(
+      (x) => `<a class="card svc-mini" href="${ctx.link(x.page)}">
+  <h3>${ctx.txt(x.name)}</h3>
+  <p class="price">${ctx.txt(x.price)}</p>
+  <span class="more-link">${ctx.txt(L.more)}</span>
+</a>`
+    )
+    .join("\n");
+
+  const body = `${pageHead(ctx, d.h1, d.lead, {}, crumbs)}
+<section class="section svc-body"><div class="container svc-layout">
+${aside}
+<div class="svc-main">
+${sections}
+${consumerNote(ctx)}
+<section class="svc-section"><h2 data-reveal>${ctx.txt(ctx.t.home.faqTitle)}</h2>${faqBlock(ctx, d.faq)}</section>
+</div>
+</div></section>
+<section class="section section-soft"><div class="container">
+  <h2 data-reveal>${ctx.txt(L.others)}</h2>
+  <div class="grid grid-3" data-stagger>${others}</div>
+</div></section>
+${ctaBand(ctx)}`;
+
+  const id = ctx.id;
+  const jsonld = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: o.name,
+      description: d.description,
+      url: absUrl(id, ctx.lang),
+      areaServed: "FR",
+      provider: { "@type": "Person", name: config.owner, url: absUrl("home", ctx.lang) },
+      offers: { "@type": "Offer", priceCurrency: "EUR", price: o.schemaPrice, url: absUrl(id, ctx.lang) },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: ctx.t.nav.services, item: absUrl("services", ctx.lang) },
+        { "@type": "ListItem", position: 2, name: o.name, item: absUrl(id, ctx.lang) },
+      ],
+    },
+  ];
+  return { title: d.title, description: d.description, body, jsonld };
+}
 
 function legalPage(ctx, id) {
   const meta = ctx.t[id];

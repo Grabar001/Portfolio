@@ -3,10 +3,10 @@
 
 <h2>Données collectées</h2>
 <ul>
-  <li><strong>Formulaire de contact :</strong> nom, e-mail, entreprise et SIRET, description du projet, lien, budget et délai.</li>
+  <li><strong>Formulaire de contact :</strong> nom, e-mail, particulier ou professionnel, entreprise et SIRET (facultatif), description du projet, lien, budget et délai.</li>
   <li><strong>Clients :</strong> données de facturation.</li>
   <li><strong>Paiement :</strong> traité par Stripe ; je ne vois jamais les numéros de carte.</li>
-  <li><strong>Journaux techniques de l'hébergeur :</strong> adresse IP et pages demandées, pour la sécurité du site.</li>
+  <li><strong>Journaux techniques de l'hébergeur :</strong> adresse IP et pages demandées, pour la sécurité du site. Pour limiter les envois abusifs du formulaire, une empreinte (hachage) de l'adresse IP est gardée sur le serveur quelques heures.</li>
 </ul>
 
 <h2>Pourquoi et sur quelle base</h2>
@@ -24,7 +24,7 @@
 </ul>
 
 <h2>Destinataires</h2>
-<p>Moi seul, et mes prestataires techniques : PlanetHoster (hébergement du site), {{mailProvider}} (messagerie) et Stripe (paiement). Ces prestataires peuvent transférer des données hors de l'Union européenne avec les garanties prévues par le RGPD.</p>
+<p>Moi seul, et mes prestataires techniques : PlanetHoster (hébergement du site et envoi des messages du formulaire), {{mailProvider}} (messagerie) et Stripe (paiement). En cas de litige, le médiateur de la consommation saisi reçoit les informations utiles au dossier. Ces prestataires peuvent transférer des données hors de l'Union européenne avec les garanties prévues par le RGPD.</p>
 
 <h2>Vos droits</h2>
 <p>Accès, rectification, effacement, opposition, limitation et portabilité : écrivez à <a href="mailto:{{email}}">{{email}}</a>, réponse sous un mois. Vous pouvez aussi adresser une réclamation à la CNIL (cnil.fr).</p>

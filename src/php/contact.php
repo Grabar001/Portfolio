@@ -13,6 +13,7 @@ const SITE_NAME = 'albert-grabar.com';
 const MAX_PER_HOUR = 5;
 const MIN_SECONDS = 3;
 const NEEDS = ['audit', 'launch', 'site', 'fixes', 'other'];
+const CLIENTS = ['particulier' => 'Particulier', 'professionnel' => 'Professionnel'];
 const BUDGETS = ['0', '1', '2', '3'];
 const BUDGET_LABELS = ['< 300 €', '300–700 €', '700–1 000 €', '> 1 000 €'];
 
@@ -52,21 +53,20 @@ if ($started > 0 && (time() - $started) < MIN_SECONDS) {
 
 $name = line('name', 120);
 $email = line('email', 160);
+$client = line('client', 20);
 $company = line('company', 200);
 $need = line('need', 20);
 $link = line('link', 300);
 $budget = line('budget', 2);
 $deadline = line('deadline', 120);
-$pro = ($_POST['pro'] ?? '') === 'yes';
 $message = trim((string)($_POST['message'] ?? ''));
 $message = mb_substr(str_replace("\r\n", "\n", $message), 0, 4000);
 
 $valid = $name !== ''
     && filter_var($email, FILTER_VALIDATE_EMAIL) !== false
-    && $company !== ''
+    && array_key_exists($client, CLIENTS)
     && in_array($need, NEEDS, true)
     && mb_strlen($message) >= 10
-    && $pro
     && ($budget === '' || in_array($budget, BUDGETS, true))
     && ($link === '' || filter_var($link, FILTER_VALIDATE_URL) !== false);
 
@@ -77,6 +77,11 @@ if (!$valid) {
 // Rate limit: at most MAX_PER_HOUR messages per visitor per hour (hashed IP, temp file).
 $bucket = hash('sha256', ($_SERVER['REMOTE_ADDR'] ?? 'unknown') . '|' . date('Y-m-d-H'));
 $counterFile = sys_get_temp_dir() . '/ag_contact_' . substr($bucket, 0, 24);
+foreach (glob(sys_get_temp_dir() . '/ag_contact_*') ?: [] as $oldFile) {
+    if (filemtime($oldFile) < time() - 7200) {
+        @unlink($oldFile);
+    }
+}
 $count = is_file($counterFile) ? (int)file_get_contents($counterFile) : 0;
 if ($count >= MAX_PER_HOUR) {
     go($errorUrl);
@@ -90,12 +95,12 @@ $body = implode("\n", [
     '',
     'Nom : ' . $name,
     'E-mail : ' . $email,
-    'Entreprise / SIRET : ' . $company,
+    'Client : ' . CLIENTS[$client],
+    'Entreprise / SIRET : ' . ($company !== '' ? $company : '—'),
     'Besoin : ' . $need,
     'Lien : ' . ($link !== '' ? $link : '—'),
     'Budget : ' . $budgetLabel,
     'Délai : ' . ($deadline !== '' ? $deadline : '—'),
-    'Usage professionnel confirmé : oui',
     '',
     'Projet :',
     $message,
@@ -110,6 +115,10 @@ $headers = [
     'MIME-Version' => '1.0',
 ];
 
-$sent = mail(TO_EMAIL, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, $headers);
+// "-f" sets the envelope sender to the site's own domain (better delivery to Gmail).
+// Some hosts refuse it: then the message is sent again without it.
+$encodedSubject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
+$sent = mail(TO_EMAIL, $encodedSubject, $body, $headers, '-f' . FROM_EMAIL)
+    || mail(TO_EMAIL, $encodedSubject, $body, $headers);
 
 go($sent ? $okUrl : $errorUrl);
