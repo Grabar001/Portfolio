@@ -8,11 +8,15 @@ ErrorDocument 404 /404.html
   RewriteEngine On
 
   # 1) After checking that https://www.albert-grabar.com opens correctly,
-  #    remove the "#" in front of the next 4 lines to force HTTPS + www.
-  # RewriteCond %{HTTPS} !=on [OR]
-  # RewriteCond %{HTTP_HOST} !^www\. [NC]
-  # RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
-  # RewriteRule ^ https://www.%1%{REQUEST_URI} [R=301,L]
+  #    remove the "#" in front of the 6 lines below: one address only,
+  #    https://www.albert-grabar.com (albert-grabar.com and albertgrabar.com redirect to it).
+  #    Subdomains such as technoir.albert-grabar.com are not touched.
+  # RewriteCond %{HTTP_HOST} ^(?:www\.)?albertgrabar\.com$ [NC,OR]
+  # RewriteCond %{HTTP_HOST} ^albert-grabar\.com$ [NC]
+  # RewriteRule ^ https://www.albert-grabar.com%{REQUEST_URI} [R=301,L]
+  # RewriteCond %{HTTP_HOST} ^www\.albert-grabar\.com$ [NC]
+  # RewriteCond %{HTTPS} !=on
+  # RewriteRule ^ https://www.albert-grabar.com%{REQUEST_URI} [R=301,L]
 
   # 2) Short addresses: /services opens /services.html
   RewriteCond %{REQUEST_FILENAME} !-d

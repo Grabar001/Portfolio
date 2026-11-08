@@ -10,13 +10,17 @@
     "theme": "Noir / Blanc",
     "themeAria": "Passer du thème clair au thème sombre",
     "tagline": "Développeur web · lancement et sécurité d'applications",
-    "external": "(nouvel onglet)"
+    "external": "(nouvel onglet)",
+    "breadcrumb": "Fil d'Ariane",
+    "badge": "Disponible · Réponse sous 24 h · Paris · ",
+    "badgeLabel": "Disponible : écrivez-moi"
   },
   "nav": {
     "services": "Services",
     "work": "Réalisations",
     "about": "À propos",
-    "contact": "Contact"
+    "contact": "Contact",
+    "site": "Plan du site"
   },
   "footer": {
     "identity": "Albert Grabar EI · SIRET {{siret}}",
@@ -25,34 +29,54 @@
     "terms": "CGV",
     "privacy": "Confidentialité",
     "cookies": "Aucun cookie de suivi sur ce site.",
-    "b2b": "Services réservés aux professionnels : entreprises, indépendants, associations."
+    "audience": "Pour les particuliers et les professionnels. Devis écrit avant chaque mission."
   },
   "home": {
     "title": "Albert Grabar — Sécuriser et lancer votre app créée avec l'IA",
-    "description": "Audit, sécurité, paiement Stripe et RGPD pour les applications créées avec Lovable, Bolt ou Cursor. Prix annoncé par écrit, réponse sous 24 h.",
+    "description": "Audit, sécurité, paiement Stripe et RGPD pour les applications créées avec Lovable, Bolt ou Cursor, sites vitrines et sites personnels, corrections PHP et WordPress. Pour les particuliers et les professionnels.",
     "kicker": "Développeur full-stack à Paris · PHP/Symfony · React",
     "h1": "Votre application créée avec l'IA, prête pour de vrais clients.",
     "lead": "Lovable, Bolt, Cursor ou v0 vous ont donné un prototype. Je le sécurise, j'ajoute le paiement Stripe, je le mets en conformité RGPD et je le mets en ligne. Prix fixe, délai annoncé, tout par écrit.",
     "ctaPrimary": "Demander un audit (dès 150 €)",
-    "ctaSecondary": "Voir les tarifs",
+    "ctaSecondary": "Voir les services",
     "promises": [
       "Prix annoncé par écrit avant de commencer",
       "Tout par écrit : devis, suivi, livraison",
       "Paiement sécurisé par Stripe",
       "Le code et les accès sont à vous"
     ],
+    "marquee": [
+      "Sécurité",
+      "Paiement Stripe",
+      "RGPD",
+      "Mise en ligne",
+      "Sites vitrines",
+      "Symfony",
+      "React",
+      "WordPress",
+      "Lovable",
+      "Bolt",
+      "Cursor",
+      "Maintenance"
+    ],
     "doors": [
       {
         "title": "Vous avez une application faite avec l'IA",
         "text": "Elle marche en démo, mais vous hésitez à la montrer à des clients ? Je vérifie la sécurité, les paiements et les données, puis je corrige.",
         "link": "Audit et lancement",
-        "anchor": "audit"
+        "page": "svcAudit"
       },
       {
         "title": "Vous avez besoin d'un site pour votre activité",
-        "text": "Artisan, café, salon, indépendant : un site clair et rapide en 5 jours, avec vos services, vos horaires et un formulaire de contact.",
+        "text": "Artisan, café, salon, indépendant, association : un site clair et rapide en 5 jours, avec vos services, vos horaires et un formulaire de contact.",
         "link": "Site vitrine dès 390 €",
-        "anchor": "site"
+        "page": "svcSite"
+      },
+      {
+        "title": "Vous êtes un particulier",
+        "text": "Un portfolio, un CV en ligne, un site pour un événement, un blog WordPress à réparer ou une app pour un projet personnel : devis écrit, et vos droits de consommateur s'appliquent.",
+        "link": "Voir les offres",
+        "page": "services"
       }
     ],
     "breaksTitle": "Ce qui casse le plus souvent dans les apps créées avec l'IA",
@@ -78,38 +102,48 @@
         "text": "14 jours de corrections offertes, puis maintenance mensuelle sur devis."
       }
     ],
+    "stats": [
+      { "value": 24, "unit": " h", "label": "pour une réponse écrite, du lundi au samedi" },
+      { "value": 2, "unit": " jours", "label": "pour un audit complet de votre app" },
+      { "value": 14, "unit": " jours", "label": "de corrections offertes après un lancement" },
+      { "value": 100, "unit": " %", "label": "du code et des accès à vous, après paiement" }
+    ],
     "pricesTitle": "Tarifs",
     "prices": [
       {
         "name": "Audit d'application IA",
         "price": "dès 150 €",
-        "anchor": "audit"
+        "page": "svcAudit"
       },
       {
         "name": "Lancement",
         "price": "dès 490 €",
-        "anchor": "launch"
+        "page": "svcLaunch"
       },
       {
-        "name": "Site vitrine",
+        "name": "Site vitrine ou personnel",
         "price": "dès 390 €",
         "note": "suivi 29 €/mois en option",
-        "anchor": "site"
+        "page": "svcSite"
       },
       {
         "name": "Corrections PHP, Symfony, WordPress",
         "price": "35–45 €/h",
-        "anchor": "fixes"
+        "page": "svcFixes"
       }
     ],
     "pricesMore": "Détail des offres",
     "workTitle": "Réalisations",
     "workMore": "Toutes les réalisations",
     "aboutTitle": "Qui suis-je",
-    "aboutText": "Je suis Albert Grabar, développeur full-stack à Paris (PHP/Symfony, React). Avant le code, neuf ans à la Légion étrangère : je livre ce qui est annoncé, à la date annoncée.",
+    "aboutText": "Je suis Albert Grabar, développeur full-stack à Paris (PHP/Symfony, React). Avant le code, la Légion étrangère, de 2016 à 2024 : je livre ce qui est annoncé, à la date annoncée.",
     "aboutMore": "En savoir plus",
     "faqTitle": "Questions fréquentes",
     "faq": [
+      {
+        "q": "Travaillez-vous pour les particuliers ?",
+        "a": "Oui : site personnel, portfolio, blog WordPress, app créée avec l'IA pour un projet personnel. Vous recevez un devis écrit et vous gardez vos droits de consommateur : 14 jours de rétractation et médiation gratuite en cas de litige."
+      },
       {
         "q": "Je ne suis pas développeur, est-ce un problème ?",
         "a": "Non : le rapport est écrit en langage simple, avec les risques et les priorités."
@@ -133,23 +167,30 @@
   },
   "services": {
     "title": "Services et tarifs — Albert Grabar",
-    "description": "Audit d'application IA dès 150 €, lancement dès 490 €, site vitrine dès 390 €, corrections PHP, Symfony et WordPress. Devis écrit avant chaque mission.",
+    "description": "Audit d'application IA dès 150 €, lancement dès 490 €, site vitrine ou personnel dès 390 €, corrections PHP, Symfony et WordPress. Pour les particuliers et les professionnels, devis écrit avant chaque mission.",
     "h1": "Services et tarifs",
-    "lead": "Quatre offres, des prix publics et un devis écrit avant chaque mission.",
+    "lead": "Quatre offres pour les particuliers et les professionnels, des prix publics et un devis écrit avant chaque mission.",
     "labels": {
       "for": "Pour",
       "price": "Prix",
       "delay": "Délai",
       "payment": "Paiement",
-      "result": "Vous recevez"
+      "result": "Vous recevez",
+      "more": "Description complète",
+      "summary": "En bref",
+      "all": "Toutes les offres",
+      "others": "Les autres services",
+      "audience": "Particuliers et professionnels"
     },
     "offers": [
       {
         "id": "audit",
+        "page": "svcAudit",
         "name": "Audit d'application IA",
         "price": "150 € ou 250 €",
+        "schemaPrice": "150",
         "delay": "2 jours ouvrés",
-        "for": "Les applications créées avec Lovable, Bolt, Cursor, v0 ou Replit.",
+        "for": "Particuliers et professionnels qui ont créé une application avec Lovable, Bolt, Cursor, v0 ou Replit.",
         "listTitle": "Je vérifie",
         "list": [
           "Clés et secrets",
@@ -163,14 +204,103 @@
         "priceNote": "150 € jusqu'à 10 écrans, 250 € au-delà. Déduit du Lancement s'il est commandé sous 30 jours.",
         "payment": "À la commande.",
         "cta": "Commander un audit",
-        "need": "audit"
+        "need": "audit",
+        "detail": {
+          "title": "Audit d'application créée avec l'IA — 150 € ou 250 € | Albert Grabar",
+          "description": "Audit de sécurité, de paiement et de RGPD pour les applications créées avec Lovable, Bolt, Cursor, v0 ou Replit. Rapport écrit en 2 jours ouvrés, prix fixe. Particuliers et professionnels.",
+          "h1": "Audit de votre application créée avec l'IA",
+          "lead": "Vous avez construit une application avec Lovable, Bolt, Cursor, v0 ou Replit. Avant de la montrer à des clients ou d'encaisser des paiements, je vérifie ce qui peut casser ou fuiter, et je vous dis quoi corriger, dans quel ordre et pour quel prix.",
+          "sections": [
+            {
+              "type": "list",
+              "title": "Pour qui",
+              "items": [
+                "Particuliers : vous avez créé une app pour un projet personnel ou une future activité, et vous voulez savoir si elle est sûre.",
+                "Créateurs et petites entreprises : vous allez ouvrir l'app à de vrais clients, encaisser des paiements ou collecter des données personnelles.",
+                "Agences et indépendants non techniques : vous voulez un second avis avant de livrer à votre client."
+              ]
+            },
+            {
+              "type": "features",
+              "title": "Ce que je vérifie",
+              "items": [
+                { "t": "Clés et secrets", "d": "Aucune clé d'API ni aucun mot de passe ne doit être visible dans le code envoyé au navigateur ou dans le dépôt Git." },
+                { "t": "Accès à la base de données", "d": "Les règles d'accès (par exemple Row Level Security sur Supabase) : chaque utilisateur ne lit et ne modifie que ses propres données." },
+                { "t": "Connexion et comptes", "d": "Inscription, mot de passe oublié, sessions, pages privées et rôles administrateur." },
+                { "t": "Paiement", "d": "Stripe en mode réel : montants vérifiés côté serveur, webhooks, reçus, échecs de paiement et remboursements." },
+                { "t": "Données personnelles et RGPD", "d": "Quelles données sont collectées et où elles sont stockées ; mentions légales, politique de confidentialité, cookies." },
+                { "t": "Performances et Google", "d": "Temps de chargement, version mobile, titres et descriptions des pages." }
+              ]
+            },
+            {
+              "type": "steps",
+              "title": "Comment ça se passe",
+              "items": [
+                { "t": "Vous m'écrivez", "d": "Le lien de l'app, l'outil utilisé et ce qu'elle doit faire. Je confirme le prix (150 € ou 250 €) par écrit." },
+                { "t": "Vous payez et donnez les accès", "d": "Un accès en lecture au code (GitHub) et un compte de test. Je n'ai jamais besoin de vos mots de passe personnels." },
+                { "t": "J'analyse pendant 2 jours ouvrés", "d": "Lecture du code, tests dans le navigateur, vérification de la base de données et du paiement en mode test." },
+                { "t": "Vous recevez le rapport", "d": "Les problèmes classés par gravité (critique, important, mineur), expliqués en langage simple, avec un plan de correction et un prix fixe." }
+              ]
+            },
+            {
+              "type": "list",
+              "title": "Ce que vous recevez",
+              "items": [
+                "Un rapport écrit (PDF) en français ou en anglais.",
+                "Pour chaque problème : où il se trouve, le risque concret et comment le corriger.",
+                "Un plan de correction dans l'ordre, avec un prix fixe si vous voulez que je m'en charge.",
+                "Mes réponses écrites à vos questions sur le rapport."
+              ]
+            },
+            {
+              "type": "list",
+              "title": "Ce qui n'est pas inclus",
+              "muted": true,
+              "items": [
+                "Les corrections elles-mêmes : elles font partie du Lancement ou d'un devis séparé.",
+                "Un test d'intrusion complet ou une certification de sécurité.",
+                "Un audit juridique : je signale ce qui manque (mentions, RGPD), sans remplacer un avocat."
+              ]
+            },
+            {
+              "type": "list",
+              "title": "Prix et paiement",
+              "items": [
+                "150 € jusqu'à 10 écrans, 250 € au-delà. Prix fixe, confirmé par écrit avant de commencer.",
+                "Paiement à la commande, par carte (Stripe) ou par virement.",
+                "Déduit du prix du Lancement si vous le commandez dans les 30 jours.",
+                "TVA non applicable, art. 293 B du CGI : le prix affiché est le prix final."
+              ]
+            }
+          ],
+          "faq": [
+            {
+              "q": "Mon app est faite avec un outil sans code. Pouvez-vous l'auditer ?",
+              "a": "Oui, si j'ai accès au code ou à son export : Lovable, Bolt et v0 permettent de l'envoyer sur GitHub. Pour un outil sans export, je vous dis d'abord par écrit ce que je peux vérifier."
+            },
+            {
+              "q": "Allez-vous modifier mon application ?",
+              "a": "Non. L'audit se fait en lecture seule : je ne change rien sans votre accord écrit."
+            },
+            {
+              "q": "Et si l'audit ne trouve rien de grave ?",
+              "a": "Tant mieux : le rapport le dit clairement, avec les améliorations possibles. Le prix reste le même, car le travail de vérification est le même."
+            },
+            {
+              "q": "Que faites-vous de mon code et de mes données ?",
+              "a": "Je les utilise uniquement pour l'audit et je supprime mes copies à la fin de la mission. Je peux signer un accord de confidentialité."
+            }
+          ]
+        }
       },
       {
         "id": "launch",
+        "page": "svcLaunch",
         "name": "Lancement",
         "price": "490 – 990 €",
+        "schemaPrice": "490",
         "delay": "5 à 10 jours ouvrés",
-        "for": "Passer du prototype à une app utilisable par de vrais clients.",
+        "for": "Particuliers et professionnels qui veulent passer du prototype à une app utilisable par de vrais clients.",
         "listTitle": "Inclus",
         "list": [
           "Correction des problèmes critiques de l'audit",
@@ -185,14 +315,96 @@
         "priceNote": "Prix exact dans le devis, après l'audit.",
         "payment": "50 % à la commande, 50 % à la livraison.",
         "cta": "Demander un devis",
-        "need": "launch"
+        "need": "launch",
+        "detail": {
+          "title": "Lancement d'application créée avec l'IA — de 490 à 990 € | Albert Grabar",
+          "description": "Je corrige les failles, j'ajoute le paiement Stripe réel, je mets l'app en conformité RGPD et je la mets en ligne sur votre nom de domaine. 5 à 10 jours ouvrés, prix fixe après l'audit.",
+          "h1": "Lancement : du prototype à l'application en ligne",
+          "lead": "Votre app marche en démo. Je la rends sûre et utilisable par de vrais clients : failles corrigées, paiement réel, RGPD, nom de domaine en HTTPS et sauvegardes. Le prix est fixé par écrit après l'audit.",
+          "sections": [
+            {
+              "type": "list",
+              "title": "Pour qui",
+              "items": [
+                "Vous lancez votre projet, seul ou en petite équipe : premiers clients, premières ventes.",
+                "Vous avez fait l'audit, ici ou ailleurs, et vous voulez qu'un développeur corrige.",
+                "Votre app doit accepter des paiements ou garder des données personnelles."
+              ]
+            },
+            {
+              "type": "features",
+              "title": "Ce qui est inclus",
+              "items": [
+                { "t": "Corrections critiques", "d": "Tous les problèmes classés « critique » dans l'audit sont corrigés et testés." },
+                { "t": "Connexion sécurisée", "d": "Inscription, connexion, mot de passe oublié et protection des pages privées." },
+                { "t": "Paiement Stripe réel", "d": "Passage du mode test au mode réel : paiement, webhooks, reçus par e-mail, échecs de paiement." },
+                { "t": "RGPD", "d": "Politique de confidentialité, mentions légales, suppression des comptes et des données, consentement aux cookies si nécessaire." },
+                { "t": "Mise en ligne", "d": "Votre nom de domaine en HTTPS, variables d'environnement, hébergement à votre nom." },
+                { "t": "Sauvegardes", "d": "Sauvegarde automatique de la base de données et restauration testée une fois avec vous." },
+                { "t": "Notice de prise en main", "d": "Un document écrit : comment l'app est organisée, comment la mettre à jour, que faire en cas de problème." },
+                { "t": "14 jours de corrections offertes", "d": "Après la livraison, je corrige gratuitement les défauts liés à mon travail." }
+              ]
+            },
+            {
+              "type": "steps",
+              "title": "Comment ça se passe",
+              "items": [
+                { "t": "L'audit", "d": "Si vous n'en avez pas encore, on commence par là. Son prix est déduit du Lancement." },
+                { "t": "Le devis écrit", "d": "La liste des travaux, le prix fixe et la date de livraison. Il est valable 30 jours." },
+                { "t": "Les travaux", "d": "5 à 10 jours ouvrés après l'acompte et la réception des accès. Vous suivez l'avancement par écrit." },
+                { "t": "La livraison", "d": "L'app en ligne, le code à jour sur votre dépôt, la notice et la liste des accès. Vous avez 7 jours pour vérifier." },
+                { "t": "Le suivi", "d": "14 jours de corrections offertes, puis maintenance mensuelle sur devis si vous le souhaitez." }
+              ]
+            },
+            {
+              "type": "list",
+              "title": "Ce qui n'est pas inclus",
+              "muted": true,
+              "items": [
+                "Les nouvelles fonctionnalités : devis séparé, pour garder le prix du Lancement fixe.",
+                "Les abonnements des services tiers (hébergement, nom de domaine, Stripe, base de données) : vous les payez directement, à votre nom.",
+                "Les documents juridiques sur mesure : j'installe des modèles adaptés à votre app ; pour un cas particulier, un avocat reste conseillé."
+              ]
+            },
+            {
+              "type": "list",
+              "title": "Prix et paiement",
+              "items": [
+                "De 490 à 990 € selon le rapport d'audit ; le prix exact et fixe est dans le devis.",
+                "50 % à la commande, 50 % à la livraison, par carte (Stripe) ou par virement.",
+                "Le prix de l'audit est déduit si vous commandez dans les 30 jours.",
+                "TVA non applicable, art. 293 B du CGI : le prix affiché est le prix final."
+              ]
+            }
+          ],
+          "faq": [
+            {
+              "q": "Mon app est sur Lovable ou Bolt. Faut-il la quitter ?",
+              "a": "Pas forcément. Je vous conseille la solution la plus simple : rester sur l'outil si c'est sûr, ou exporter le code vers un hébergement à votre nom si c'est nécessaire. Le choix est écrit dans le devis."
+            },
+            {
+              "q": "Les comptes (hébergement, Stripe) seront-ils à mon nom ?",
+              "a": "Oui, toujours. Je travaille avec des accès que vous me donnez et que vous pouvez retirer à tout moment."
+            },
+            {
+              "q": "Et si le délai n'est pas tenu ?",
+              "a": "Le délai court à partir de l'acompte et de la réception des accès. Si je prends du retard de mon fait, je vous préviens par écrit avec une nouvelle date ; vous pouvez alors annuler la partie non réalisée."
+            },
+            {
+              "q": "Pouvez-vous ajouter une fonctionnalité ?",
+              "a": "Oui, sur devis séparé. Ainsi, le prix du Lancement reste celui annoncé."
+            }
+          ]
+        }
       },
       {
         "id": "site",
-        "name": "Site vitrine",
+        "page": "svcSite",
+        "name": "Site vitrine ou personnel",
         "price": "390 € ou 690 €",
+        "schemaPrice": "390",
         "delay": "5 jours ouvrés",
-        "for": "Artisans, cafés, salons, indépendants.",
+        "for": "Artisans, cafés, salons, indépendants, associations — et particuliers : portfolio, CV en ligne, site d'événement.",
         "listTitle": "Inclus",
         "list": [
           "Jusqu'à 5 pages (390 €) ou jusqu'à 10 pages avec réservation ou galerie (690 €)",
@@ -206,14 +418,96 @@
         "payment": "50 % à la commande, 50 % à la livraison.",
         "cta": "Demander un site",
         "need": "site",
-        "extraLink": "Voir les sites de démonstration"
+        "extraLink": "Voir les sites de démonstration",
+        "detail": {
+          "title": "Site vitrine ou site personnel — 390 € ou 690 € | Albert Grabar",
+          "description": "Un site clair, rapide et adapté au mobile pour votre activité ou votre projet personnel : jusqu'à 5 pages pour 390 €, jusqu'à 10 pages avec réservation ou galerie pour 690 €. En ligne en 5 jours ouvrés.",
+          "h1": "Un site pour votre activité ou votre projet personnel",
+          "lead": "Artisan, café, salon, indépendant, association — ou particulier qui veut un portfolio, un CV en ligne ou un site pour un événement : un site clair et rapide, en ligne en 5 jours ouvrés, à prix fixe.",
+          "sections": [
+            {
+              "type": "list",
+              "title": "Pour qui",
+              "items": [
+                "Artisans, commerçants, cafés, salons : vos services, vos horaires, votre zone et un formulaire de contact.",
+                "Indépendants et associations : présenter votre offre ou vos actions et recevoir des demandes.",
+                "Particuliers : portfolio, CV en ligne, site de mariage ou d'événement, page pour un projet personnel."
+              ]
+            },
+            {
+              "type": "features",
+              "title": "Ce qui est inclus",
+              "items": [
+                { "t": "Jusqu'à 5 pages — 390 €", "d": "Par exemple : accueil, services, à propos, galerie, contact." },
+                { "t": "Jusqu'à 10 pages — 690 €", "d": "Avec une galerie photo ou une réservation en ligne (par un outil de réservation existant)." },
+                { "t": "Version mobile", "d": "Le site s'adapte au téléphone, à la tablette et à l'ordinateur." },
+                { "t": "Formulaire de contact", "d": "Les demandes arrivent dans votre boîte e-mail, avec une protection contre le spam." },
+                { "t": "Référencement de base", "d": "Titres, descriptions, plan du site pour Google ; fiche Google Business Profile pour les entreprises." },
+                { "t": "Mentions légales et confidentialité", "d": "Les pages obligatoires, adaptées à votre site, sans bandeau cookies inutile." },
+                { "t": "Mise en ligne", "d": "Sur votre nom de domaine, en HTTPS, avec un hébergement à votre nom." },
+                { "t": "Deux séries de retours", "d": "Vous relisez le site en préproduction et je fais vos modifications deux fois avant la mise en ligne." }
+              ]
+            },
+            {
+              "type": "steps",
+              "title": "Comment ça se passe",
+              "items": [
+                { "t": "Vous m'écrivez", "d": "Votre activité ou votre projet, les pages souhaitées et 2 ou 3 sites que vous aimez." },
+                { "t": "Le devis écrit", "d": "Les pages, le prix fixe et la date de mise en ligne." },
+                { "t": "Vos contenus", "d": "Textes, photos, logo, horaires. Je peux reformuler vos textes pour le web." },
+                { "t": "La création", "d": "5 jours ouvrés après l'acompte et la réception des contenus. Vous recevez un lien de prévisualisation." },
+                { "t": "La mise en ligne", "d": "Après vos retours, le site part sur votre domaine, avec une notice écrite et la liste des accès." }
+              ]
+            },
+            {
+              "type": "list",
+              "title": "Ce qui n'est pas inclus",
+              "muted": true,
+              "items": [
+                "L'hébergement et le nom de domaine : environ 5 à 10 € par mois chez l'hébergeur, à votre nom.",
+                "La rédaction complète des textes et les photos professionnelles.",
+                "La vente en ligne de produits (boutique) : sur devis."
+              ]
+            },
+            {
+              "type": "list",
+              "title": "Prix et paiement",
+              "items": [
+                "390 € jusqu'à 5 pages, 690 € jusqu'à 10 pages avec réservation ou galerie.",
+                "50 % à la commande, 50 % à la livraison, par carte (Stripe) ou par virement.",
+                "Suivi en option : 29 €/mois, sans engagement — mises à jour de sécurité, sauvegardes, petites modifications jusqu'à 1 h par mois.",
+                "TVA non applicable, art. 293 B du CGI : le prix affiché est le prix final."
+              ]
+            }
+          ],
+          "faq": [
+            {
+              "q": "Je n'ai ni nom de domaine ni hébergement.",
+              "a": "Je vous explique par écrit comment les prendre à votre nom (environ 5 à 10 € par mois) ou je le fais avec vous. Ils restent à vous, même si nous arrêtons de travailler ensemble."
+            },
+            {
+              "q": "Pourrai-je modifier le site moi-même ?",
+              "a": "Le suivi à 29 €/mois inclut les petites modifications. Si vous préférez tout modifier vous-même, dites-le dans votre demande : je vous propose une solution adaptée (par exemple WordPress) dans le devis."
+            },
+            {
+              "q": "Quand serai-je visible sur Google ?",
+              "a": "Le site est déclaré à Google dès la mise en ligne. L'apparition dans les résultats prend en général de quelques jours à quelques semaines ; personne ne peut garantir une position."
+            },
+            {
+              "q": "Je suis un particulier. Puis-je commander ?",
+              "a": "Oui. Vous recevez un devis écrit et vous gardez vos droits de consommateur : 14 jours de rétractation et médiation gratuite en cas de litige."
+            }
+          ]
+        }
       },
       {
         "id": "fixes",
+        "page": "svcFixes",
         "name": "Corrections PHP, Symfony, WordPress",
         "price": "35 – 45 €/h",
+        "schemaPrice": "35",
         "delay": "selon la tâche",
-        "for": "Sites et applications existants.",
+        "for": "Particuliers et professionnels : sites et applications existants.",
         "listTitle": "Exemples",
         "list": [
           "Un bug à corriger",
@@ -225,9 +519,84 @@
         "priceNote": "35 €/h pour WordPress, 45 €/h pour Symfony et le code sur mesure ; forfait si la tâche est claire. Devis écrit avant de commencer.",
         "payment": "Forfait à la commande ; au-delà de 300 €, 50 % à la commande et 50 % à la livraison.",
         "cta": "Décrire la tâche",
-        "need": "fixes"
+        "need": "fixes",
+        "detail": {
+          "title": "Corrections et maintenance PHP, Symfony, WordPress — 35 à 45 €/h | Albert Grabar",
+          "description": "Un bug, une mise à jour de PHP ou de Symfony, un conflit d'extensions WordPress, une page lente, un formulaire qui n'envoie plus : diagnostic et devis écrit avant de commencer. 35 à 45 €/h ou forfait.",
+          "h1": "Corrections et maintenance PHP, Symfony, WordPress",
+          "lead": "Votre site ou votre application existe déjà, mais quelque chose ne va pas. Décrivez le problème par écrit : je réponds avec un diagnostic et un prix avant de toucher à quoi que ce soit.",
+          "sections": [
+            {
+              "type": "list",
+              "title": "Pour qui",
+              "items": [
+                "Le site WordPress d'une entreprise, d'une association ou d'un particulier (blog, portfolio).",
+                "Une application PHP ou Symfony existante.",
+                "Un site créé par un autre développeur qui n'est plus disponible."
+              ]
+            },
+            {
+              "type": "features",
+              "title": "Exemples de tâches",
+              "items": [
+                { "t": "Un bug à corriger", "d": "Page blanche, erreur 500, fonctionnalité cassée après une mise à jour." },
+                { "t": "Une mise à jour", "d": "PHP, Symfony, WordPress, thème ou extensions, avec une sauvegarde avant d'intervenir." },
+                { "t": "Un conflit d'extensions", "d": "Je trouve l'extension en cause, puis je la règle ou la remplace." },
+                { "t": "Une page lente", "d": "Images trop lourdes, cache, requêtes à la base de données." },
+                { "t": "Un formulaire qui n'envoie plus", "d": "Envoi des e-mails, protection contre le spam, messages d'erreur." }
+              ]
+            },
+            {
+              "type": "steps",
+              "title": "Comment ça se passe",
+              "items": [
+                { "t": "Vous décrivez le problème", "d": "L'adresse du site, ce qui se passe, depuis quand, avec une capture d'écran si possible." },
+                { "t": "Diagnostic et devis", "d": "Je réponds par écrit avec la cause probable, le temps estimé et le prix : forfait ou taux horaire." },
+                { "t": "Sauvegarde", "d": "Avant toute intervention, je fais une sauvegarde complète du site." },
+                { "t": "Correction et test", "d": "Sur une copie du site quand c'est possible, puis en ligne." },
+                { "t": "Compte rendu", "d": "Ce qui a été fait, ce qui reste à surveiller et le temps passé." }
+              ]
+            },
+            {
+              "type": "list",
+              "title": "Ce qui n'est pas inclus",
+              "muted": true,
+              "items": [
+                "Le développement de nouvelles fonctionnalités importantes : devis séparé.",
+                "Les licences d'extensions ou de thèmes payants : à votre charge, à votre nom."
+              ]
+            },
+            {
+              "type": "list",
+              "title": "Prix et paiement",
+              "items": [
+                "35 €/h pour WordPress, 45 €/h pour Symfony et le code sur mesure.",
+                "Forfait si la tâche est claire ; sinon, le temps estimé est dans le devis et je vous préviens par écrit avant de le dépasser.",
+                "Forfait payé à la commande ; au-delà de 300 €, 50 % à la commande et 50 % à la livraison.",
+                "TVA non applicable, art. 293 B du CGI : le prix affiché est le prix final."
+              ]
+            }
+          ],
+          "faq": [
+            {
+              "q": "Et si vous ne trouvez pas la cause ?",
+              "a": "Je vous le dis par écrit dès que je le sais, avec ce que j'ai vérifié. Seul le temps de diagnostic accepté dans le devis est facturé."
+            },
+            {
+              "q": "Pouvez-vous intervenir en urgence ?",
+              "a": "Écrivez « urgent » dans votre demande : je réponds sous 24 h, plus vite si je suis disponible."
+            },
+            {
+              "q": "Avez-vous besoin de mes mots de passe ?",
+              "a": "J'ai besoin d'un accès à l'administration ou au serveur. Le mieux : un compte créé pour moi, que vous supprimez après l'intervention."
+            }
+          ]
+        }
       }
     ],
+    "consumerTitle": "Vous êtes un particulier ?",
+    "consumerNote": "Vous disposez d'un délai de rétractation de 14 jours à compter de l'acceptation du devis. Si vous voulez que je commence avant la fin de ce délai, vous me le demandez par écrit : en cas de rétractation, vous payez alors seulement le travail déjà fait, et vous ne pouvez plus vous rétracter une fois la prestation entièrement réalisée. En cas de litige, vous pouvez recourir gratuitement à un médiateur de la consommation. Détails dans les {{termsLink}}.",
+    "termsLinkText": "conditions générales de vente",
     "vat": "Prix en euros, TVA non applicable, art. 293 B du CGI.",
     "platforms": "Vous m'avez trouvé sur Malt, ComeUp, Upwork ou Fiverr ? Écrivez-moi là-bas : la commande et le paiement se font sur la plateforme."
   },
@@ -235,11 +604,11 @@
     "title": "Réalisations — Albert Grabar",
     "description": "TECH NOIR, boutique en ligne en Symfony et React, et des sites vitrines de démonstration pour artisans et cafés.",
     "h1": "Réalisations",
-    "lead": "Un projet de formation et des sites de démonstration. Les projets de clients seront ajoutés avec leur accord.",
+    "lead": "Un projet personnel et des sites de démonstration. Les projets de clients seront ajoutés avec leur accord.",
     "projects": [
       {
         "id": "technoir",
-        "tag": "Projet de formation · AFPA, 2025",
+        "tag": "Projet personnel · 2025",
         "name": "TECH NOIR",
         "subtitle": "Boutique en ligne full-stack (Symfony + React)",
         "text": "Une API REST en Symfony, une interface en React, des styles en SCSS. Tests automatisés avec PHPUnit ; mise en cache qui rend les pages environ 20 % plus rapides.",
@@ -286,12 +655,12 @@
   },
   "about": {
     "title": "À propos — Albert Grabar, développeur web full-stack à Paris",
-    "description": "Neuf ans à la Légion étrangère, puis le titre professionnel Développeur web et web mobile. J'aide à lancer des applications créées avec l'IA et des sites de petites entreprises.",
+    "description": "De la Légion étrangère (2016–2024) au titre professionnel Développeur web et web mobile. J'aide particuliers et professionnels à lancer des applications créées avec l'IA et des sites qui marchent.",
     "h1": "Albert Grabar, développeur web full-stack à Paris",
     "paragraphs": [
-      "J'ai passé neuf ans à la Légion étrangère, au 2e régiment étranger de génie. J'y ai appris à préparer une mission, à la mener dans les délais et à rendre compte par écrit.",
-      "En 2025, j'ai obtenu le titre professionnel Développeur web et web mobile (niveau 5) à l'AFPA de Chartres. Mon projet de fin de formation, TECH NOIR, est une boutique en ligne en Symfony et React. Avant la Légion, j'ai étudié le droit : c'est utile quand une application doit respecter le RGPD.",
-      "Aujourd'hui, j'aide les créateurs d'applications faites avec l'IA à passer du prototype au vrai produit, et les petites entreprises à avoir un site qui marche. Je travaille seul, en micro-entreprise, avec des outils d'IA que je contrôle."
+      "De 2016 à 2024, j'ai servi à la Légion étrangère, comme caporal au 2e régiment étranger de génie. J'étais responsable de l'armurerie de ma compagnie : entretien du matériel, inventaires, procédures de sécurité strictes. J'y ai appris à préparer une mission, à la mener dans les délais et à rendre compte par écrit.",
+      "En juillet 2025, j'ai obtenu le titre professionnel Développeur web et web mobile (niveau 5) à l'AFPA de Chartres. Mon projet personnel, TECH NOIR, est une boutique en ligne en Symfony et React. Avant la Légion, j'ai étudié le droit : c'est utile quand une application doit respecter le RGPD.",
+      "Aujourd'hui, j'aide les créateurs d'applications faites avec l'IA à passer du prototype au vrai produit, et les petites entreprises comme les particuliers à avoir un site qui marche. Je travaille seul, en micro-entreprise, avec des outils d'IA que je contrôle."
     ],
     "skillsTitle": "Compétences",
     "skills": [
@@ -333,7 +702,7 @@
       }
     ],
     "languagesTitle": "Langues",
-    "languages": "Français, anglais, russe.",
+    "languages": "Français, anglais, russe ; polonais et tchèque (niveau intermédiaire).",
     "cvTitle": "Recruteur ?",
     "cvText": "Mon CV en PDF :",
     "cvFr": "CV en français",
@@ -342,35 +711,39 @@
   },
   "contact": {
     "title": "Contact — Albert Grabar",
-    "description": "Décrivez votre projet en trois lignes : réponse écrite sous 24 h, du lundi au samedi.",
+    "description": "Décrivez votre projet en trois lignes : réponse écrite sous 24 h, du lundi au samedi. Particuliers et professionnels.",
     "h1": "Écrivez-moi",
     "lead": "Le plus simple : le formulaire ci-dessous, ou {{emailLink}}. Je travaille par écrit : réponse sous 24 h, du lundi au samedi.",
     "required": "Champs obligatoires",
     "optional": "facultatif",
     "fields": {
       "name": "Nom et prénom",
-      "email": "E-mail professionnel",
+      "email": "E-mail",
+      "client": "Vous êtes",
       "company": "Entreprise et SIRET (ou numéro d'entreprise hors de France)",
       "need": "Votre besoin",
       "link": "Lien vers l'app ou le site",
       "message": "Le projet en trois lignes",
       "budget": "Budget",
-      "deadline": "Délai souhaité",
-      "pro": "Je fais cette demande pour mon activité professionnelle"
+      "deadline": "Délai souhaité"
+    },
+    "clients": {
+      "particulier": "Un particulier",
+      "professionnel": "Un professionnel (entreprise, indépendant, association)"
     },
     "choose": "Choisir…",
     "needs": {
       "audit": "Audit d'app IA",
       "launch": "Lancement",
-      "site": "Site vitrine",
+      "site": "Site vitrine ou personnel",
       "fixes": "Corrections PHP, Symfony, WordPress",
       "other": "Autre"
     },
     "budgets": [
       "Moins de 300 €",
       "300–700 €",
-      "700–1 000 €",
-      "Plus de 1 000 €"
+      "700–1 000 €",
+      "Plus de 1 000 €"
     ],
     "submit": "Envoyer ma demande",
     "privacy": "Vos données servent uniquement à répondre à votre demande et à préparer un devis. Elles sont conservées 3 ans après notre dernier échange. Pour les consulter ou les faire supprimer : {{email}}. Détails : {{privacyLink}}.",
@@ -386,17 +759,17 @@
     "title": "Merci — demande envoyée",
     "description": "Votre demande est bien arrivée.",
     "h1": "Merci, votre demande est bien arrivée.",
-    "text": "Je vous réponds par écrit sous 24 h, du lundi au samedi. Pour gagner du temps, vous pouvez déjà préparer : le lien de l'app, un accès en lecture au code (GitHub) et ce qui doit marcher en priorité.",
+    "text": "Je vous réponds par écrit sous 24 h, du lundi au samedi. Pour gagner du temps, vous pouvez déjà préparer : le lien du site ou de l'app, des exemples qui vous plaisent et ce qui doit marcher en priorité.",
     "back": "Retour à l'accueil"
   },
   "legal": {
     "title": "Mentions légales — Albert Grabar",
-    "description": "Éditeur, hébergeur et informations légales du site albert-grabar.com.",
+    "description": "Éditeur, hébergeur, médiateur et informations légales du site albert-grabar.com.",
     "h1": "Mentions légales"
   },
   "terms": {
     "title": "Conditions générales de vente — Albert Grabar",
-    "description": "Conditions générales de vente des prestations d'Albert Grabar EI, réservées aux professionnels.",
+    "description": "Conditions générales de vente des prestations d'Albert Grabar EI, pour les particuliers et les professionnels : commande, prix, rétractation, garanties, médiation.",
     "h1": "Conditions générales de vente"
   },
   "privacy": {

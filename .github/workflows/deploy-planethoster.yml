@@ -2,7 +2,7 @@
 # Before the first run (Settings → Secrets and variables → Actions):
 #   secrets: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD (an FTP account limited to the site folder)
 #   variable: FTP_DIR — the folder of albert-grabar.com on the server, ending with "/"
-# The build is strict: it stops if the address or the host details are still missing.
+# The build is strict: it stops if the host or the consumer mediator details are still missing.
 name: Deploy to albert-grabar.com
 
 on:

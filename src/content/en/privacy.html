@@ -5,10 +5,10 @@
 
 <h2>Data collected</h2>
 <ul>
-  <li><strong>Contact form:</strong> name, email, company and registration number, project description, link, budget and deadline.</li>
+  <li><strong>Contact form:</strong> name, email, private individual or business, company and registration number (optional), project description, link, budget and deadline.</li>
   <li><strong>Clients:</strong> billing details.</li>
   <li><strong>Payments:</strong> handled by Stripe; I never see card numbers.</li>
-  <li><strong>Host's technical logs:</strong> IP address and pages requested, for site security.</li>
+  <li><strong>Host's technical logs:</strong> IP address and pages requested, for site security. To limit abusive use of the form, a hash of the IP address is kept on the server for a few hours.</li>
 </ul>
 
 <h2>Purposes and legal bases</h2>
@@ -26,7 +26,7 @@
 </ul>
 
 <h2>Recipients</h2>
-<p>Only me, and my technical providers: PlanetHoster (website hosting), {{mailProvider}} (email) and Stripe (payments). These providers may transfer data outside the European Union with the safeguards provided by the GDPR.</p>
+<p>Only me, and my technical providers: PlanetHoster (website hosting and sending the form messages), {{mailProvider}} (email) and Stripe (payments). If there is a dispute, the consumer mediator involved receives the information needed for the case. These providers may transfer data outside the European Union with the safeguards provided by the GDPR.</p>
 
 <h2>Your rights</h2>
 <p>Access, rectification, erasure, objection, restriction and portability: write to <a href="mailto:{{email}}">{{email}}</a>; I reply within one month. You can also complain to the French data protection authority, the CNIL (cnil.fr).</p>

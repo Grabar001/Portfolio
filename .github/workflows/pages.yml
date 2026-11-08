@@ -1,7 +1,8 @@
-# Builds the site (npm run build) and publishes dist/ to GitHub Pages
-# as a preview: https://grabar001.github.io/Portfolio/
-# The real site lives on albert-grabar.com (PlanetHoster); the contact form only works there.
-name: Deploy preview to GitHub Pages
+# The site lives only on https://www.albert-grabar.com (PlanetHoster).
+# This workflow turns the old GitHub Pages address (https://grabar001.github.io/Portfolio/)
+# into a redirect, so old links from a CV or LinkedIn still land on the real site.
+# Settings → Pages → Source must be "GitHub Actions".
+name: Redirect github.io to albert-grabar.com
 
 on:
   push:
@@ -24,25 +25,31 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - run: npm ci
-
-      - name: Build site
-        run: npm run build
-        env:
-          BASE_PATH: /Portfolio/
+      - name: Write the redirect pages
+        run: |
+          mkdir -p redirect
+          cat > redirect/index.html <<'HTML'
+          <!DOCTYPE html>
+          <html lang="fr">
+          <head>
+          <meta charset="utf-8">
+          <title>Albert Grabar — albert-grabar.com</title>
+          <meta name="robots" content="noindex">
+          <link rel="canonical" href="https://www.albert-grabar.com/">
+          <meta http-equiv="refresh" content="0; url=https://www.albert-grabar.com/">
+          </head>
+          <body>
+          <p>Le site a déménagé : <a href="https://www.albert-grabar.com/">www.albert-grabar.com</a></p>
+          </body>
+          </html>
+          HTML
+          cp redirect/index.html redirect/404.html
 
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: redirect
 
       - id: deployment
         uses: actions/deploy-pages@v4
