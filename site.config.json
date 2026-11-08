@@ -1,0 +1,22 @@
+{
+  "baseUrl": "https://www.albert-grabar.com",
+  "owner": "Albert Grabar",
+  "legalForm": "entrepreneur individuel (EI), micro-entreprise",
+  "siren": "995 090 735",
+  "siret": "995 090 735 00011",
+  "email": "contact@albert-grabar.com",
+  "formRecipient": "grabarweb@gmail.com",
+  "formSender": "no-reply@albert-grabar.com",
+  "phone": "+33 7 79 73 07 42",
+  "address": "[ADRESSE À COMPLÉTER — tâche T03]",
+  "host": "PlanetHoster — [raison sociale, adresse et téléphone à compléter depuis l'espace client]",
+  "linkedin": "https://www.linkedin.com/in/albert-grabar",
+  "github": "https://github.com/Grabar001",
+  "techNoirUrl": "https://technoir.albert-grabar.com",
+  "techNoirRepo": "https://github.com/Grabar001",
+  "cv": {
+    "fr": "files/cv-albert-grabar-fr.pdf",
+    "en": "files/cv-albert-grabar-en.pdf"
+  },
+  "mailProvider": "Google (Gmail)"
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Café Brindille — démo de site vitrine pour café</title>
+<meta name="description" content="Site de démonstration réalisé par Albert Grabar pour un café fictif.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23b5532f'/%3E%3Ctext x='32' y='42' font-family='Georgia' font-size='28' fill='%23f6efe4' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+<style>
+  :root { --cream: #f6efe4; --paper: #fbf7f0; --coffee: #2e1f16; --terra: #b5532f; --sage: #66775a; --line: #e4d6c3; --muted: #6d5a4b; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--coffee); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; line-height: 1.6; }
+  h1, h2, h3, .logo { font-family: Georgia, "Times New Roman", serif; }
+  a { color: var(--terra); }
+  .wrap { width: min(100% - 32px, 1040px); margin-inline: auto; }
+  .demo-bar { background: #111; color: #fff; font-size: 14px; padding: 9px 0; }
+  .demo-bar .wrap { display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: space-between; }
+  .demo-bar a { color: #fff; font-weight: 600; }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 76px; flex-wrap: wrap; }
+  .logo { font-size: 26px; color: var(--coffee); text-decoration: none; }
+  .logo span { color: var(--terra); }
+  nav.menu { display: flex; gap: 22px; flex-wrap: wrap; }
+  nav.menu a { color: var(--coffee); text-decoration: none; padding: 10px 0; }
+  .btn { display: inline-block; padding: 13px 24px; border-radius: 999px; background: var(--terra); color: #fff; text-decoration: none; font-weight: 700; border: 0; font: inherit; font-weight: 700; }
+  .btn[disabled] { opacity: .75; cursor: not-allowed; }
+  .hero { padding: 56px 0 72px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 44px; align-items: center; }
+  .hero h1 { font-size: clamp(34px, 5vw, 58px); line-height: 1.05; margin: 0 0 18px; }
+  .hero p { font-size: 19px; color: var(--muted); margin: 0 0 26px; }
+  .plate { aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 50% 50%, #fff 0 34%, var(--cream) 35% 52%, #ead9c2 53% 56%, var(--cream) 57%); display: grid; place-items: center; box-shadow: 0 30px 60px rgba(46,31,22,.12); }
+  .cup { width: 44%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, #6b3e22 0 52%, #8a5432 53% 60%, #fff 61% 70%, #f1e6d6 71%); }
+  section { padding: 64px 0; }
+  h2 { font-size: clamp(28px, 3.4vw, 40px); margin: 0 0 8px; }
+  .sub { color: var(--muted); margin: 0 0 30px; }
+  .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 56px; }
+  .menu-grid h3 { font-size: 24px; margin: 0 0 12px; color: var(--terra); }
+  .item { display: flex; align-items: baseline; gap: 10px; padding: 8px 0; border-bottom: 1px dotted var(--line); }
+  .item span:first-child { flex: 1; }
+  .item small { display: block; color: var(--muted); }
+  .item b { white-space: nowrap; }
+  .band { background: var(--cream); }
+  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+  .card h3 { margin: 0 0 8px; font-size: 22px; }
+  .card p { margin: 0; }
+  .note { font-size: 14px; color: var(--muted); }
+  footer { padding: 34px 0; font-size: 15px; color: var(--muted); border-top: 1px solid var(--line); }
+  @media (max-width: 820px) { .hero .wrap, .menu-grid { grid-template-columns: 1fr; } .cards { grid-template-columns: 1fr; } .plate { max-width: 320px; margin-inline: auto; } }
+</style>
+</head>
+<body>
+<div class="demo-bar"><div class="wrap"><span>Site de démonstration réalisé par Albert Grabar — entreprise fictive.</span><span><a href="../../services.html#site">Un site comme celui-ci : dès 390 €</a> · <a href="../../realisations.html">Retour aux réalisations</a></span></div></div>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="#">Café <span>Brindille</span></a>
+  <nav class="menu" aria-label="Menu"><a href="#carte">La carte</a><a href="#infos">Horaires et accès</a><a href="#reserver">Réserver</a></nav>
+</div></header>
+
+<main>
+  <div class="hero"><div class="wrap">
+    <div>
+      <h1>Café de quartier, pâtisseries maison.</h1>
+      <p>Café de torréfacteur, gâteaux du jour et une formule midi simple. Ouvert du mardi au dimanche.</p>
+      <a class="btn" href="#reserver">Réserver une table</a>
+    </div>
+    <div class="plate" role="img" aria-label="Illustration d'une tasse de café vue du dessus"><div class="cup"></div></div>
+  </div></div>
+
+  <section class="band" id="carte"><div class="wrap">
+    <h2>La carte</h2>
+    <p class="sub">Exemple de carte : les prix sont fictifs.</p>
+    <div class="menu-grid">
+      <div>
+        <h3>À boire</h3>
+        <div class="item"><span>Espresso</span><b>2,20 €</b></div>
+        <div class="item"><span>Cappuccino<small>lait entier ou avoine</small></span><b>3,80 €</b></div>
+        <div class="item"><span>Chocolat chaud maison</span><b>4,20 €</b></div>
+        <div class="item"><span>Thé en vrac</span><b>3,50 €</b></div>
+      </div>
+      <div>
+        <h3>À manger</h3>
+        <div class="item"><span>Croissant au beurre</span><b>1,60 €</b></div>
+        <div class="item"><span>Gâteau du jour</span><b>4,50 €</b></div>
+        <div class="item"><span>Tartine de saison</span><b>7,50 €</b></div>
+        <div class="item"><span>Formule midi<small>tartine, dessert et boisson</small></span><b>13 €</b></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="infos"><div class="wrap">
+    <h2>Horaires et accès</h2>
+    <p class="sub">Tout ce qu'il faut savoir avant de passer.</p>
+    <div class="cards">
+      <div class="card"><h3>Horaires</h3><p>Mardi – vendredi : 8 h – 18 h<br>Samedi – dimanche : 9 h – 18 h<br>Lundi : fermé</p></div>
+      <div class="card"><h3>Adresse</h3><p>12 rue des Lilas, 75000 Paris<br><span class="note">Adresse fictive pour la démo.</span></p></div>
+      <div class="card"><h3>Sur place</h3><p>24 places, terrasse l'été, wifi gratuit, chiens bienvenus.</p></div>
+    </div>
+  </div></section>
+
+  <section class="band" id="reserver"><div class="wrap">
+    <h2>Réserver une table</h2>
+    <p class="sub">Sur un vrai site, ce bouton ouvre la réservation en ligne ou le formulaire.</p>
+    <button class="btn" type="button" disabled>Réserver (démo)</button>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <p>Café Brindille — entreprise fictive. Démo réalisée par <a href="../../index.html">Albert Grabar</a>. Sur un vrai site : mentions légales, politique de confidentialité et SIRET de l'entreprise.</p>
+</div></footer>
+</body>
+</html>

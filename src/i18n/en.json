@@ -1,0 +1,416 @@
+{
+  "lang": "en",
+  "locale": "en_GB",
+  "short": "EN",
+  "name": "English",
+  "ui": {
+    "skip": "Skip to content",
+    "menu": "Main navigation",
+    "langLabel": "Language",
+    "theme": "Black / White",
+    "themeAria": "Switch between light and dark theme",
+    "tagline": "Web developer · app launch and security",
+    "external": "(new tab)"
+  },
+  "nav": {
+    "services": "Services",
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "footer": {
+    "identity": "Albert Grabar EI · SIRET {{siret}}",
+    "vat": "No VAT charged (French VAT exemption, art. 293 B CGI)",
+    "legal": "Legal notice",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "cookies": "No tracking cookies on this site.",
+    "b2b": "Services for businesses only: companies, freelancers, non-profits."
+  },
+  "home": {
+    "title": "Albert Grabar — Secure and launch your AI-built app",
+    "description": "Audit, security, Stripe payments and GDPR for apps built with Lovable, Bolt or Cursor. Price agreed in writing, reply within 24 hours.",
+    "kicker": "Full-stack developer in Paris · PHP/Symfony · React",
+    "h1": "Your AI-built app, ready for real customers.",
+    "lead": "Lovable, Bolt, Cursor or v0 got you a prototype. I secure it, add Stripe payments, make it GDPR-compliant and put it live. Fixed price, clear deadline, everything in writing.",
+    "ctaPrimary": "Request an audit (from €150)",
+    "ctaSecondary": "See pricing",
+    "promises": [
+      "Price agreed in writing before work starts",
+      "Everything in writing: quote, progress, delivery",
+      "Secure payment via Stripe",
+      "You own the code and all access"
+    ],
+    "doors": [
+      {
+        "title": "You built an app with AI",
+        "text": "It works in the demo, but you're not sure it's safe to show customers? I check security, payments and data, then fix what's wrong.",
+        "link": "Audit & launch",
+        "anchor": "audit"
+      },
+      {
+        "title": "You need a website for your business",
+        "text": "Tradespeople, cafés, salons, freelancers: a clear, fast website in 5 days, with your services, opening hours and a contact form.",
+        "link": "Website from €390",
+        "anchor": "site"
+      }
+    ],
+    "breaksTitle": "What usually breaks in AI-built apps",
+    "breaks": [
+      "Secret keys visible in the browser code",
+      "An open database where anyone can read other users' data",
+      "Payments that work in test mode but not with real customers",
+      "No legal notice, terms or privacy policy",
+      "Slow pages that don't show up on Google"
+    ],
+    "stepsTitle": "How we work",
+    "steps": [
+      {
+        "title": "Audit — 2 days",
+        "text": "I read the code and test the app. You get a written report: issues ranked by severity, a fix plan and a fixed price."
+      },
+      {
+        "title": "Fixes and launch — 5 to 10 days",
+        "text": "Security, Stripe payments, GDPR, custom domain, backups. You follow progress in writing."
+      },
+      {
+        "title": "Aftercare — optional",
+        "text": "14 days of free fixes, then monthly maintenance on quote."
+      }
+    ],
+    "pricesTitle": "Pricing",
+    "prices": [
+      {
+        "name": "AI app audit",
+        "price": "from €150",
+        "anchor": "audit"
+      },
+      {
+        "name": "Launch",
+        "price": "from €490",
+        "anchor": "launch"
+      },
+      {
+        "name": "Business website",
+        "price": "from €390",
+        "note": "optional care plan €29/month",
+        "anchor": "site"
+      },
+      {
+        "name": "PHP, Symfony, WordPress fixes",
+        "price": "€35–45/h",
+        "anchor": "fixes"
+      }
+    ],
+    "pricesMore": "All offers in detail",
+    "workTitle": "Work",
+    "workMore": "All work",
+    "aboutTitle": "Who I am",
+    "aboutText": "I'm Albert Grabar, a full-stack developer in Paris (PHP/Symfony, React). Before code, nine years in the French Foreign Legion: I deliver what I promise, when I promise it.",
+    "aboutMore": "More about me",
+    "faqTitle": "Questions",
+    "faq": [
+      {
+        "q": "I'm not a developer — is that a problem?",
+        "a": "No: the report is written in plain language, with risks and priorities."
+      },
+      {
+        "q": "Do I own the code?",
+        "a": "Yes: once paid in full, the code and all access are yours."
+      },
+      {
+        "q": "Do you use AI?",
+        "a": "Yes, as a tool and under my control: every change is reviewed and tested before delivery."
+      },
+      {
+        "q": "Why only in writing?",
+        "a": "Everything stays traceable: what was asked, what's done, what's left. Write any time; I reply within 24 hours."
+      }
+    ],
+    "ctaTitle": "Describe your project in three lines.",
+    "ctaText": "Written reply within 24 hours, Monday to Saturday.",
+    "ctaButton": "Describe my project"
+  },
+  "services": {
+    "title": "Services and pricing — Albert Grabar",
+    "description": "AI app audit from €150, launch from €490, business website from €390, PHP, Symfony and WordPress fixes. Written quote before every job.",
+    "h1": "Services and pricing",
+    "lead": "Four offers, public prices and a written quote before every job.",
+    "labels": {
+      "for": "For",
+      "price": "Price",
+      "delay": "Turnaround",
+      "payment": "Payment",
+      "result": "You get"
+    },
+    "offers": [
+      {
+        "id": "audit",
+        "name": "AI app audit",
+        "price": "€150 or €250",
+        "delay": "2 working days",
+        "for": "Apps built with Lovable, Bolt, Cursor, v0 or Replit.",
+        "listTitle": "I check",
+        "list": [
+          "Keys and secrets",
+          "Database access rules",
+          "Login and passwords",
+          "Payments",
+          "Personal data",
+          "Performance"
+        ],
+        "result": "A written report in English or French, issues ranked by severity, a fix plan and a fixed price.",
+        "priceNote": "€150 up to 10 screens, €250 above. Deducted from Launch if ordered within 30 days.",
+        "payment": "Upfront.",
+        "cta": "Order an audit",
+        "need": "audit"
+      },
+      {
+        "id": "launch",
+        "name": "Launch",
+        "price": "€490 – 990",
+        "delay": "5 to 10 working days",
+        "for": "Turning a prototype into an app real customers can use.",
+        "listTitle": "Includes",
+        "list": [
+          "Fixing the critical issues from the audit",
+          "Secure login and password reset",
+          "Live Stripe payments: checkout, webhooks, receipts",
+          "GDPR basics: privacy policy, data deletion, consent where needed",
+          "Going live on your domain over HTTPS",
+          "Backups",
+          "A written handover guide",
+          "14 days of free fixes"
+        ],
+        "priceNote": "Exact figure in the quote, after the audit.",
+        "payment": "50% on order, 50% on delivery.",
+        "cta": "Request a quote",
+        "need": "launch"
+      },
+      {
+        "id": "site",
+        "name": "Business website",
+        "price": "€390 or €690",
+        "delay": "5 working days",
+        "for": "Tradespeople, cafés, salons, freelancers.",
+        "listTitle": "Includes",
+        "list": [
+          "Up to 5 pages (€390) or up to 10 pages with booking or gallery (€690)",
+          "Mobile version",
+          "Contact form",
+          "Basic SEO and Google Business Profile",
+          "Legal notice and privacy policy",
+          "Going live"
+        ],
+        "priceNote": "Hosting and domain in your name, about €5–10/month with the host. Care plan €29/month, cancel anytime: security updates, backups, small edits up to 1 hour a month.",
+        "payment": "50% on order, 50% on delivery.",
+        "cta": "Request a website",
+        "need": "site",
+        "extraLink": "See the demo websites"
+      },
+      {
+        "id": "fixes",
+        "name": "PHP, Symfony, WordPress fixes",
+        "price": "€35 – 45/h",
+        "delay": "depends on the task",
+        "for": "Existing websites and apps.",
+        "listTitle": "Examples",
+        "list": [
+          "A bug to fix",
+          "A PHP or Symfony upgrade",
+          "A WordPress plugin conflict",
+          "A slow page",
+          "A form that no longer sends"
+        ],
+        "priceNote": "€35/h for WordPress, €45/h for Symfony and custom code; fixed price when the task is clear. Written quote before I start.",
+        "payment": "Fixed price upfront; above €300, 50% on order and 50% on delivery.",
+        "cta": "Describe the task",
+        "need": "fixes"
+      }
+    ],
+    "vat": "Prices in euros. No VAT charged (French VAT exemption, art. 293 B CGI).",
+    "platforms": "Found me on Malt, ComeUp, Upwork or Fiverr? Message me there: orders and payment go through the platform."
+  },
+  "work": {
+    "title": "Work — Albert Grabar",
+    "description": "TECH NOIR, an online store built with Symfony and React, and demo websites for tradespeople and cafés.",
+    "h1": "Work",
+    "lead": "A training project and demo websites. Client projects will be added with their permission.",
+    "projects": [
+      {
+        "id": "technoir",
+        "tag": "Training project · AFPA, 2025",
+        "name": "TECH NOIR",
+        "subtitle": "Full-stack online store (Symfony + React)",
+        "text": "A REST API in Symfony, a React front end, SCSS styles. Automated tests with PHPUnit; caching that makes pages about 20% faster.",
+        "links": [
+          {
+            "label": "See the demo",
+            "href": "{{techNoirUrl}}",
+            "external": true
+          },
+          {
+            "label": "Code on GitHub",
+            "href": "{{techNoirRepo}}",
+            "external": true
+          }
+        ]
+      },
+      {
+        "id": "plomberie",
+        "tag": "Demo · fictional business",
+        "name": "Lumen Plomberie",
+        "subtitle": "Website for a plumber (in French)",
+        "text": "One clear page: services, service area, opening hours and a quote request. An example of what you get for €390.",
+        "links": [
+          {
+            "label": "See the demo",
+            "href": "demos/lumen-plomberie/index.html"
+          }
+        ]
+      },
+      {
+        "id": "cafe",
+        "tag": "Demo · fictional business",
+        "name": "Café Brindille",
+        "subtitle": "Website for a café (in French)",
+        "text": "The menu, opening hours, directions and table booking. An example of what you get for €390.",
+        "links": [
+          {
+            "label": "See the demo",
+            "href": "demos/cafe-brindille/index.html"
+          }
+        ]
+      }
+    ]
+  },
+  "about": {
+    "title": "About — Albert Grabar, full-stack web developer in Paris",
+    "description": "Nine years in the French Foreign Legion, then a professional diploma in web and mobile development. I help launch AI-built apps and small business websites.",
+    "h1": "Albert Grabar, full-stack web developer in Paris",
+    "paragraphs": [
+      "I spent nine years in the French Foreign Legion, with the 2nd Foreign Engineer Regiment. It taught me to prepare a mission, deliver it on time and report in writing.",
+      "In 2025 I earned the French professional diploma in web and mobile development (EQF level 5) at AFPA Chartres. My final project, TECH NOIR, is an online store built with Symfony and React. Before the Legion I studied law, which helps when an app has to comply with GDPR.",
+      "Today I help founders of AI-built apps go from prototype to real product, and small businesses get a website that works. I work solo as a registered French micro-business, using AI tools under my control."
+    ],
+    "skillsTitle": "Skills",
+    "skills": [
+      {
+        "title": "Back end",
+        "items": [
+          "PHP",
+          "Symfony",
+          "Twig",
+          "Doctrine",
+          "MySQL",
+          "REST APIs",
+          "PHPUnit"
+        ]
+      },
+      {
+        "title": "Front end",
+        "items": [
+          "React",
+          "JavaScript",
+          "HTML",
+          "SCSS"
+        ]
+      },
+      {
+        "title": "AI-built apps",
+        "items": [
+          "Stripe",
+          "Supabase",
+          "TypeScript"
+        ]
+      },
+      {
+        "title": "Tools",
+        "items": [
+          "Git",
+          "WordPress"
+        ]
+      }
+    ],
+    "languagesTitle": "Languages",
+    "languages": "English, French, Russian.",
+    "cvTitle": "Recruiter?",
+    "cvText": "My CV as a PDF:",
+    "cvFr": "CV in French",
+    "cvEn": "CV in English",
+    "elsewhere": "Elsewhere on the web"
+  },
+  "contact": {
+    "title": "Contact — Albert Grabar",
+    "description": "Describe your project in three lines: written reply within 24 hours, Monday to Saturday.",
+    "h1": "Write to me",
+    "lead": "The easiest way is the form below, or {{emailLink}}. I work in writing: reply within 24 hours, Monday to Saturday.",
+    "required": "Required fields",
+    "optional": "optional",
+    "fields": {
+      "name": "Full name",
+      "email": "Work email",
+      "company": "Company and registration number",
+      "need": "What you need",
+      "link": "Link to the app or site",
+      "message": "The project in three lines",
+      "budget": "Budget",
+      "deadline": "Desired deadline",
+      "pro": "I'm making this request for my business"
+    },
+    "choose": "Choose…",
+    "needs": {
+      "audit": "AI app audit",
+      "launch": "Launch",
+      "site": "Business website",
+      "fixes": "PHP, Symfony, WordPress fixes",
+      "other": "Other"
+    },
+    "budgets": [
+      "Under €300",
+      "€300–700",
+      "€700–1,000",
+      "Over €1,000"
+    ],
+    "submit": "Send my request",
+    "privacy": "Your data is used only to answer your request and prepare a quote. It is kept for 3 years after our last exchange. To access or delete it: {{email}}. Details: {{privacyLink}}.",
+    "privacyLink": "privacy policy",
+    "error": "Sending failed. Check the fields or write directly to {{email}}.",
+    "platforms": "Found me on Malt, ComeUp, Upwork or Fiverr? Message me there: orders and payment go through the platform.",
+    "asideEmail": "Email",
+    "asideReply": "Reply time",
+    "asideReplyText": "In writing within 24 hours, Monday to Saturday.",
+    "asidePlatforms": "Platforms"
+  },
+  "thanks": {
+    "title": "Thank you — request sent",
+    "description": "Your request has arrived.",
+    "h1": "Thanks, your request has arrived.",
+    "text": "I'll reply in writing within 24 hours, Monday to Saturday. To save time, you can already prepare: the app link, read access to the code (GitHub) and what must work first.",
+    "back": "Back to home"
+  },
+  "legal": {
+    "title": "Legal notice — Albert Grabar",
+    "description": "Publisher, host and legal information for albert-grabar.com.",
+    "h1": "Legal notice"
+  },
+  "terms": {
+    "title": "Terms of sale — Albert Grabar",
+    "description": "Terms of sale for the services of Albert Grabar EI, for business clients only.",
+    "h1": "Terms of sale"
+  },
+  "privacy": {
+    "title": "Privacy policy — Albert Grabar",
+    "description": "What data albert-grabar.com collects, why, for how long and how to exercise your rights.",
+    "h1": "Privacy policy"
+  },
+  "notfound": {
+    "title": "Page not found — Albert Grabar",
+    "description": "This page does not exist.",
+    "h1": "Page not found",
+    "text": "This page doesn't exist or has moved.",
+    "home": "Home",
+    "other": "Version française"
+  },
+  "updated": "Last updated: {{date}}"
+}

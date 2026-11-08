@@ -1,0 +1,18 @@
+{
+  "name": "albert-grabar-site",
+  "version": "2.0.0",
+  "private": true,
+  "description": "albert-grabar.com — site vitrine FR/EN (static, built from src/ with build.mjs)",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "build:strict": "node build.mjs --strict",
+    "serve": "node build.mjs && cd dist && python3 -m http.server 8080"
+  },
+  "devDependencies": {
+    "@fontsource/playfair-display": "^5.3.0",
+    "@fontsource/poppins": "^5.3.0",
+    "sass": "^1.80.6"
+  },
+  "license": "UNLICENSED"
+}
