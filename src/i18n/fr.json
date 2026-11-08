@@ -1,0 +1,416 @@
+{
+  "lang": "fr",
+  "locale": "fr_FR",
+  "short": "FR",
+  "name": "Français",
+  "ui": {
+    "skip": "Aller au contenu",
+    "menu": "Navigation principale",
+    "langLabel": "Langue",
+    "theme": "Noir / Blanc",
+    "themeAria": "Passer du thème clair au thème sombre",
+    "tagline": "Développeur web · lancement et sécurité d'applications",
+    "external": "(nouvel onglet)"
+  },
+  "nav": {
+    "services": "Services",
+    "work": "Réalisations",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "footer": {
+    "identity": "Albert Grabar EI · SIRET {{siret}}",
+    "vat": "TVA non applicable, art. 293 B du CGI",
+    "legal": "Mentions légales",
+    "terms": "CGV",
+    "privacy": "Confidentialité",
+    "cookies": "Aucun cookie de suivi sur ce site.",
+    "b2b": "Services réservés aux professionnels : entreprises, indépendants, associations."
+  },
+  "home": {
+    "title": "Albert Grabar — Sécuriser et lancer votre app créée avec l'IA",
+    "description": "Audit, sécurité, paiement Stripe et RGPD pour les applications créées avec Lovable, Bolt ou Cursor. Prix annoncé par écrit, réponse sous 24 h.",
+    "kicker": "Développeur full-stack à Paris · PHP/Symfony · React",
+    "h1": "Votre application créée avec l'IA, prête pour de vrais clients.",
+    "lead": "Lovable, Bolt, Cursor ou v0 vous ont donné un prototype. Je le sécurise, j'ajoute le paiement Stripe, je le mets en conformité RGPD et je le mets en ligne. Prix fixe, délai annoncé, tout par écrit.",
+    "ctaPrimary": "Demander un audit (dès 150 €)",
+    "ctaSecondary": "Voir les tarifs",
+    "promises": [
+      "Prix annoncé par écrit avant de commencer",
+      "Tout par écrit : devis, suivi, livraison",
+      "Paiement sécurisé par Stripe",
+      "Le code et les accès sont à vous"
+    ],
+    "doors": [
+      {
+        "title": "Vous avez une application faite avec l'IA",
+        "text": "Elle marche en démo, mais vous hésitez à la montrer à des clients ? Je vérifie la sécurité, les paiements et les données, puis je corrige.",
+        "link": "Audit et lancement",
+        "anchor": "audit"
+      },
+      {
+        "title": "Vous avez besoin d'un site pour votre activité",
+        "text": "Artisan, café, salon, indépendant : un site clair et rapide en 5 jours, avec vos services, vos horaires et un formulaire de contact.",
+        "link": "Site vitrine dès 390 €",
+        "anchor": "site"
+      }
+    ],
+    "breaksTitle": "Ce qui casse le plus souvent dans les apps créées avec l'IA",
+    "breaks": [
+      "Des clés secrètes visibles dans le code du navigateur",
+      "Une base de données ouverte : n'importe qui lit les données des autres",
+      "Un paiement qui marche en test, mais pas avec de vrais clients",
+      "Pas de mentions légales, de CGV ni de politique de confidentialité",
+      "Des pages lentes, absentes de Google"
+    ],
+    "stepsTitle": "Comment on travaille",
+    "steps": [
+      {
+        "title": "Audit — 2 jours",
+        "text": "Je lis le code et je teste l'app. Vous recevez un rapport écrit : problèmes classés par gravité, plan de correction, prix fixe."
+      },
+      {
+        "title": "Corrections et mise en ligne — 5 à 10 jours",
+        "text": "Sécurité, paiement Stripe, RGPD, nom de domaine, sauvegardes. Vous suivez l'avancement par écrit."
+      },
+      {
+        "title": "Suivi — en option",
+        "text": "14 jours de corrections offertes, puis maintenance mensuelle sur devis."
+      }
+    ],
+    "pricesTitle": "Tarifs",
+    "prices": [
+      {
+        "name": "Audit d'application IA",
+        "price": "dès 150 €",
+        "anchor": "audit"
+      },
+      {
+        "name": "Lancement",
+        "price": "dès 490 €",
+        "anchor": "launch"
+      },
+      {
+        "name": "Site vitrine",
+        "price": "dès 390 €",
+        "note": "suivi 29 €/mois en option",
+        "anchor": "site"
+      },
+      {
+        "name": "Corrections PHP, Symfony, WordPress",
+        "price": "35–45 €/h",
+        "anchor": "fixes"
+      }
+    ],
+    "pricesMore": "Détail des offres",
+    "workTitle": "Réalisations",
+    "workMore": "Toutes les réalisations",
+    "aboutTitle": "Qui suis-je",
+    "aboutText": "Je suis Albert Grabar, développeur full-stack à Paris (PHP/Symfony, React). Avant le code, neuf ans à la Légion étrangère : je livre ce qui est annoncé, à la date annoncée.",
+    "aboutMore": "En savoir plus",
+    "faqTitle": "Questions fréquentes",
+    "faq": [
+      {
+        "q": "Je ne suis pas développeur, est-ce un problème ?",
+        "a": "Non : le rapport est écrit en langage simple, avec les risques et les priorités."
+      },
+      {
+        "q": "Le code m'appartient-il ?",
+        "a": "Oui : après paiement complet, le code et tous les accès sont à vous."
+      },
+      {
+        "q": "Utilisez-vous l'IA ?",
+        "a": "Oui, comme outil et sous mon contrôle : chaque modification est relue et testée avant livraison."
+      },
+      {
+        "q": "Pourquoi uniquement par écrit ?",
+        "a": "Tout reste traçable : ce qui a été demandé, ce qui est fait, ce qui reste à faire. Écrivez à toute heure, je réponds sous 24 h."
+      }
+    ],
+    "ctaTitle": "Décrivez votre projet en trois lignes.",
+    "ctaText": "Réponse écrite sous 24 h, du lundi au samedi.",
+    "ctaButton": "Décrire mon projet"
+  },
+  "services": {
+    "title": "Services et tarifs — Albert Grabar",
+    "description": "Audit d'application IA dès 150 €, lancement dès 490 €, site vitrine dès 390 €, corrections PHP, Symfony et WordPress. Devis écrit avant chaque mission.",
+    "h1": "Services et tarifs",
+    "lead": "Quatre offres, des prix publics et un devis écrit avant chaque mission.",
+    "labels": {
+      "for": "Pour",
+      "price": "Prix",
+      "delay": "Délai",
+      "payment": "Paiement",
+      "result": "Vous recevez"
+    },
+    "offers": [
+      {
+        "id": "audit",
+        "name": "Audit d'application IA",
+        "price": "150 € ou 250 €",
+        "delay": "2 jours ouvrés",
+        "for": "Les applications créées avec Lovable, Bolt, Cursor, v0 ou Replit.",
+        "listTitle": "Je vérifie",
+        "list": [
+          "Clés et secrets",
+          "Règles d'accès à la base de données",
+          "Connexion et mots de passe",
+          "Paiement",
+          "Données personnelles",
+          "Performances"
+        ],
+        "result": "Un rapport écrit en français ou en anglais, les problèmes classés par gravité, un plan de correction et un prix fixe.",
+        "priceNote": "150 € jusqu'à 10 écrans, 250 € au-delà. Déduit du Lancement s'il est commandé sous 30 jours.",
+        "payment": "À la commande.",
+        "cta": "Commander un audit",
+        "need": "audit"
+      },
+      {
+        "id": "launch",
+        "name": "Lancement",
+        "price": "490 – 990 €",
+        "delay": "5 à 10 jours ouvrés",
+        "for": "Passer du prototype à une app utilisable par de vrais clients.",
+        "listTitle": "Inclus",
+        "list": [
+          "Correction des problèmes critiques de l'audit",
+          "Connexion sécurisée et réinitialisation du mot de passe",
+          "Paiement Stripe réel : paiement, webhooks, reçus",
+          "Bases RGPD : politique de confidentialité, suppression des données, consentement si nécessaire",
+          "Mise en ligne sur votre nom de domaine en HTTPS",
+          "Sauvegardes",
+          "Notice écrite de prise en main",
+          "14 jours de corrections offertes"
+        ],
+        "priceNote": "Prix exact dans le devis, après l'audit.",
+        "payment": "50 % à la commande, 50 % à la livraison.",
+        "cta": "Demander un devis",
+        "need": "launch"
+      },
+      {
+        "id": "site",
+        "name": "Site vitrine",
+        "price": "390 € ou 690 €",
+        "delay": "5 jours ouvrés",
+        "for": "Artisans, cafés, salons, indépendants.",
+        "listTitle": "Inclus",
+        "list": [
+          "Jusqu'à 5 pages (390 €) ou jusqu'à 10 pages avec réservation ou galerie (690 €)",
+          "Version mobile",
+          "Formulaire de contact",
+          "Référencement de base et fiche Google",
+          "Mentions légales et politique de confidentialité",
+          "Mise en ligne"
+        ],
+        "priceNote": "Hébergement et nom de domaine à votre nom, environ 5–10 €/mois chez l'hébergeur. Suivi 29 €/mois, sans engagement : mises à jour de sécurité, sauvegardes, petites modifications jusqu'à 1 h par mois.",
+        "payment": "50 % à la commande, 50 % à la livraison.",
+        "cta": "Demander un site",
+        "need": "site",
+        "extraLink": "Voir les sites de démonstration"
+      },
+      {
+        "id": "fixes",
+        "name": "Corrections PHP, Symfony, WordPress",
+        "price": "35 – 45 €/h",
+        "delay": "selon la tâche",
+        "for": "Sites et applications existants.",
+        "listTitle": "Exemples",
+        "list": [
+          "Un bug à corriger",
+          "Une mise à jour de PHP ou de Symfony",
+          "Un conflit d'extensions WordPress",
+          "Une page lente",
+          "Un formulaire qui n'envoie plus"
+        ],
+        "priceNote": "35 €/h pour WordPress, 45 €/h pour Symfony et le code sur mesure ; forfait si la tâche est claire. Devis écrit avant de commencer.",
+        "payment": "Forfait à la commande ; au-delà de 300 €, 50 % à la commande et 50 % à la livraison.",
+        "cta": "Décrire la tâche",
+        "need": "fixes"
+      }
+    ],
+    "vat": "Prix en euros, TVA non applicable, art. 293 B du CGI.",
+    "platforms": "Vous m'avez trouvé sur Malt, ComeUp, Upwork ou Fiverr ? Écrivez-moi là-bas : la commande et le paiement se font sur la plateforme."
+  },
+  "work": {
+    "title": "Réalisations — Albert Grabar",
+    "description": "TECH NOIR, boutique en ligne en Symfony et React, et des sites vitrines de démonstration pour artisans et cafés.",
+    "h1": "Réalisations",
+    "lead": "Un projet de formation et des sites de démonstration. Les projets de clients seront ajoutés avec leur accord.",
+    "projects": [
+      {
+        "id": "technoir",
+        "tag": "Projet de formation · AFPA, 2025",
+        "name": "TECH NOIR",
+        "subtitle": "Boutique en ligne full-stack (Symfony + React)",
+        "text": "Une API REST en Symfony, une interface en React, des styles en SCSS. Tests automatisés avec PHPUnit ; mise en cache qui rend les pages environ 20 % plus rapides.",
+        "links": [
+          {
+            "label": "Voir la démo",
+            "href": "{{techNoirUrl}}",
+            "external": true
+          },
+          {
+            "label": "Code sur GitHub",
+            "href": "{{techNoirRepo}}",
+            "external": true
+          }
+        ]
+      },
+      {
+        "id": "plomberie",
+        "tag": "Démo · entreprise fictive",
+        "name": "Lumen Plomberie",
+        "subtitle": "Site vitrine pour un artisan",
+        "text": "Une page claire : services, zone d'intervention, horaires et demande de devis. Exemple de ce que vous obtenez pour 390 €.",
+        "links": [
+          {
+            "label": "Voir la démo",
+            "href": "demos/lumen-plomberie/index.html"
+          }
+        ]
+      },
+      {
+        "id": "cafe",
+        "tag": "Démo · entreprise fictive",
+        "name": "Café Brindille",
+        "subtitle": "Site vitrine pour un café",
+        "text": "La carte, les horaires, l'accès et la réservation d'une table. Exemple de ce que vous obtenez pour 390 €.",
+        "links": [
+          {
+            "label": "Voir la démo",
+            "href": "demos/cafe-brindille/index.html"
+          }
+        ]
+      }
+    ]
+  },
+  "about": {
+    "title": "À propos — Albert Grabar, développeur web full-stack à Paris",
+    "description": "Neuf ans à la Légion étrangère, puis le titre professionnel Développeur web et web mobile. J'aide à lancer des applications créées avec l'IA et des sites de petites entreprises.",
+    "h1": "Albert Grabar, développeur web full-stack à Paris",
+    "paragraphs": [
+      "J'ai passé neuf ans à la Légion étrangère, au 2e régiment étranger de génie. J'y ai appris à préparer une mission, à la mener dans les délais et à rendre compte par écrit.",
+      "En 2025, j'ai obtenu le titre professionnel Développeur web et web mobile (niveau 5) à l'AFPA de Chartres. Mon projet de fin de formation, TECH NOIR, est une boutique en ligne en Symfony et React. Avant la Légion, j'ai étudié le droit : c'est utile quand une application doit respecter le RGPD.",
+      "Aujourd'hui, j'aide les créateurs d'applications faites avec l'IA à passer du prototype au vrai produit, et les petites entreprises à avoir un site qui marche. Je travaille seul, en micro-entreprise, avec des outils d'IA que je contrôle."
+    ],
+    "skillsTitle": "Compétences",
+    "skills": [
+      {
+        "title": "Back-end",
+        "items": [
+          "PHP",
+          "Symfony",
+          "Twig",
+          "Doctrine",
+          "MySQL",
+          "API REST",
+          "PHPUnit"
+        ]
+      },
+      {
+        "title": "Front-end",
+        "items": [
+          "React",
+          "JavaScript",
+          "HTML",
+          "SCSS"
+        ]
+      },
+      {
+        "title": "Apps créées avec l'IA",
+        "items": [
+          "Stripe",
+          "Supabase",
+          "TypeScript"
+        ]
+      },
+      {
+        "title": "Outils",
+        "items": [
+          "Git",
+          "WordPress"
+        ]
+      }
+    ],
+    "languagesTitle": "Langues",
+    "languages": "Français, anglais, russe.",
+    "cvTitle": "Recruteur ?",
+    "cvText": "Mon CV en PDF :",
+    "cvFr": "CV en français",
+    "cvEn": "CV en anglais",
+    "elsewhere": "Ailleurs sur le web"
+  },
+  "contact": {
+    "title": "Contact — Albert Grabar",
+    "description": "Décrivez votre projet en trois lignes : réponse écrite sous 24 h, du lundi au samedi.",
+    "h1": "Écrivez-moi",
+    "lead": "Le plus simple : le formulaire ci-dessous, ou {{emailLink}}. Je travaille par écrit : réponse sous 24 h, du lundi au samedi.",
+    "required": "Champs obligatoires",
+    "optional": "facultatif",
+    "fields": {
+      "name": "Nom et prénom",
+      "email": "E-mail professionnel",
+      "company": "Entreprise et SIRET (ou numéro d'entreprise hors de France)",
+      "need": "Votre besoin",
+      "link": "Lien vers l'app ou le site",
+      "message": "Le projet en trois lignes",
+      "budget": "Budget",
+      "deadline": "Délai souhaité",
+      "pro": "Je fais cette demande pour mon activité professionnelle"
+    },
+    "choose": "Choisir…",
+    "needs": {
+      "audit": "Audit d'app IA",
+      "launch": "Lancement",
+      "site": "Site vitrine",
+      "fixes": "Corrections PHP, Symfony, WordPress",
+      "other": "Autre"
+    },
+    "budgets": [
+      "Moins de 300 €",
+      "300–700 €",
+      "700–1 000 €",
+      "Plus de 1 000 €"
+    ],
+    "submit": "Envoyer ma demande",
+    "privacy": "Vos données servent uniquement à répondre à votre demande et à préparer un devis. Elles sont conservées 3 ans après notre dernier échange. Pour les consulter ou les faire supprimer : {{email}}. Détails : {{privacyLink}}.",
+    "privacyLink": "politique de confidentialité",
+    "error": "L'envoi n'a pas fonctionné. Vérifiez les champs ou écrivez directement à {{email}}.",
+    "platforms": "Vous m'avez trouvé sur Malt, ComeUp, Upwork ou Fiverr ? Écrivez-moi là-bas : la commande et le paiement se font sur la plateforme.",
+    "asideEmail": "E-mail",
+    "asideReply": "Réponse",
+    "asideReplyText": "Par écrit sous 24 h, du lundi au samedi.",
+    "asidePlatforms": "Plateformes"
+  },
+  "thanks": {
+    "title": "Merci — demande envoyée",
+    "description": "Votre demande est bien arrivée.",
+    "h1": "Merci, votre demande est bien arrivée.",
+    "text": "Je vous réponds par écrit sous 24 h, du lundi au samedi. Pour gagner du temps, vous pouvez déjà préparer : le lien de l'app, un accès en lecture au code (GitHub) et ce qui doit marcher en priorité.",
+    "back": "Retour à l'accueil"
+  },
+  "legal": {
+    "title": "Mentions légales — Albert Grabar",
+    "description": "Éditeur, hébergeur et informations légales du site albert-grabar.com.",
+    "h1": "Mentions légales"
+  },
+  "terms": {
+    "title": "Conditions générales de vente — Albert Grabar",
+    "description": "Conditions générales de vente des prestations d'Albert Grabar EI, réservées aux professionnels.",
+    "h1": "Conditions générales de vente"
+  },
+  "privacy": {
+    "title": "Politique de confidentialité — Albert Grabar",
+    "description": "Quelles données sont collectées sur albert-grabar.com, pourquoi, combien de temps et comment exercer vos droits.",
+    "h1": "Politique de confidentialité"
+  },
+  "notfound": {
+    "title": "Page introuvable — Albert Grabar",
+    "description": "Cette page n'existe pas.",
+    "h1": "Page introuvable",
+    "text": "Cette page n'existe pas ou a été déplacée.",
+    "home": "Accueil",
+    "other": "English version"
+  },
+  "updated": "Mise à jour : {{date}}"
+}

@@ -1,12 +1,12 @@
-# Публикует сайт на GitHub Pages при каждом изменении ветки main.
-# Перед публикацией заново собирает styles.css из styles.scss,
-# так что достаточно править только styles.scss.
-name: Deploy to GitHub Pages
+# Builds the site (npm run build) and publishes dist/ to GitHub Pages
+# as a preview: https://grabar001.github.io/Portfolio/
+# The real site lives on albert-grabar.com (PlanetHoster); the contact form only works there.
+name: Deploy preview to GitHub Pages
 
 on:
   push:
     branches: [main]
-  workflow_dispatch: # ручной запуск со вкладки Actions
+  workflow_dispatch: # manual run from the Actions tab
 
 permissions:
   contents: read
@@ -29,18 +29,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+
+      - run: npm ci
 
       - name: Build site
-        run: |
-          mkdir -p _site
-          npx --yes sass@1.80.6 --no-source-map --style=compressed styles.scss _site/styles.css
-          cp index.html scripts.js _site/
+        run: npm run build
+        env:
+          BASE_PATH: /Portfolio/
 
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: dist
 
       - id: deployment
         uses: actions/deploy-pages@v4
