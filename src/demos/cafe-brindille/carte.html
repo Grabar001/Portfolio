@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La carte — Café Brindille (démo)</title>
+<meta name="description" content="Site de démonstration réalisé par Albert Grabar pour un café fictif.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23c8553d'/%3E%3Ctext x='32' y='43' font-family='Georgia' font-size='30' fill='%23fff7ec' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+<style>
+  @font-face { font-family: "PF"; font-weight: 700; src: url("../../assets/fonts/playfair-display-latin-700-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Pop"; font-weight: 400; src: url("../../assets/fonts/poppins-latin-400-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Pop"; font-weight: 600; src: url("../../assets/fonts/poppins-latin-600-normal.woff2") format("woff2"); }
+  :root { --cream: #fff7ec; --paper: #fffaf3; --coffee: #3b2418; --terra: #c8553d; --mustard: #f2a541; --sage: #7a9e7e; --rose: #f4b6a6; --line: #ecdcc6; --muted: #7a6150; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: "Pop", system-ui, sans-serif; color: var(--coffee); background: var(--paper); line-height: 1.6; }
+  h1, h2, h3, .logo { font-family: "PF", Georgia, serif; }
+  a { color: var(--terra); }
+  .wrap { width: min(100% - 32px, 1100px); margin-inline: auto; }
+  .demo-bar { background: #111; color: #fff; font-size: 13px; padding: 8px 0; }
+  .demo-bar .wrap { display: flex; flex-wrap: wrap; gap: 4px 18px; justify-content: space-between; }
+  .demo-bar a { color: #fff; font-weight: 600; }
+  header.top { position: sticky; top: 0; z-index: 10; background: rgba(255,250,243,.93); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 72px; flex-wrap: wrap; }
+  .logo { font-size: 27px; color: var(--coffee); text-decoration: none; }
+  .logo span { color: var(--terra); }
+  nav.menu { display: flex; gap: 22px; flex-wrap: wrap; }
+  nav.menu a { color: var(--coffee); text-decoration: none; font-weight: 600; font-size: 15px; }
+  .btn { display: inline-block; padding: 13px 24px; border-radius: 999px; background: var(--terra); color: #fff; text-decoration: none; font: inherit; font-weight: 600; border: 0; transition: transform .2s, background .2s; }
+  .btn:hover { transform: translateY(-2px); background: #b04430; }
+  .btn.alt { background: var(--coffee); }
+  .btn[disabled] { opacity: .8; cursor: not-allowed; }
+  /* Hero */
+  .hero { position: relative; overflow: hidden; padding: 60px 0 80px; background: linear-gradient(180deg, var(--cream), var(--paper)); }
+  .hero::before { content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%; background: var(--mustard); opacity: .25; right: -120px; top: -140px; }
+  .hero .wrap { position: relative; display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; }
+  .tag { display: inline-block; padding: 6px 14px; border-radius: 999px; background: #e6efe5; color: #3f6b46; font-weight: 600; font-size: 14px; }
+  .hero h1 { font-size: clamp(38px, 5.4vw, 64px); line-height: 1.02; margin: 16px 0; }
+  .hero h1 em { font-style: normal; color: var(--terra); }
+  .hero p { font-size: 19px; color: var(--muted); margin: 0 0 26px; max-width: 30em; }
+  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .cup-scene { position: relative; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 50% 55%, #fff 0 36%, #f7e7d3 37% 52%, #efd6b9 53% 55%, var(--cream) 56%); display: grid; place-items: center; box-shadow: 0 40px 70px -40px rgba(59,36,24,.55); }
+  .cup { position: relative; width: 44%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 50% 50%, #6b3e22 0 50%, #8a5432 51% 58%, #fff 59% 69%, #f1e6d6 70%); }
+  .cup::after { content: ""; position: absolute; width: 38%; height: 16%; border: 6px solid #fff; border-left: 0; border-radius: 0 40px 40px 0; right: -26%; top: 42%; }
+  .steam { position: absolute; top: 8%; left: 50%; width: 120px; margin-left: -60px; display: flex; justify-content: space-between; }
+  .steam i { width: 10px; height: 70px; border-radius: 10px; background: linear-gradient(transparent, rgba(255,255,255,.95)); opacity: 0; animation: steam 3s ease-in-out infinite; }
+  .steam i:nth-child(2) { animation-delay: .8s; } .steam i:nth-child(3) { animation-delay: 1.6s; }
+  @keyframes steam { 0% { transform: translateY(20px) scaleX(1); opacity: 0; } 40% { opacity: .9; } 100% { transform: translateY(-40px) scaleX(1.6); opacity: 0; } }
+  .leaf { position: absolute; width: 60px; height: 30px; background: var(--sage); border-radius: 60px 0; transform: rotate(-30deg); }
+  .l1 { left: 4%; bottom: 14%; } .l2 { right: 8%; top: 12%; transform: rotate(140deg); background: #9cbf9f; }
+  section { padding: 72px 0; }
+  h2 { font-size: clamp(30px, 3.6vw, 44px); margin: 0 0 8px; }
+  .sub { color: var(--muted); margin: 0 0 32px; }
+  /* Menu */
+  .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .menu-card { border-radius: 26px; padding: 26px; color: var(--coffee); position: relative; overflow: hidden; transition: transform .25s; }
+  .menu-card:hover { transform: rotate(-1deg) translateY(-4px); }
+  .m1 { background: #fde6c5; } .m2 { background: #f9d3c8; } .m3 { background: #dfeadd; }
+  .menu-card h3 { font-size: 26px; margin: 0 0 14px; }
+  .item { display: flex; align-items: baseline; gap: 8px; padding: 7px 0; }
+  .item span:first-child { white-space: nowrap; }
+  .item i { flex: 1; border-bottom: 2px dotted rgba(59,36,24,.3); }
+  .item b { font-weight: 600; }
+  .item small { display: block; color: var(--muted); }
+  .daily { margin-top: 26px; background: var(--coffee); color: var(--cream); border-radius: 26px; padding: 28px; display: grid; grid-template-columns: auto 1fr auto; gap: 22px; align-items: center; }
+  .daily .big { font-family: "PF", serif; font-size: 52px; color: var(--mustard); line-height: 1; }
+  .daily h3 { margin: 0 0 4px; font-size: 26px; color: #fff; }
+  .daily p { margin: 0; color: #e9d9c6; }
+  /* Gallery */
+  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 170px; gap: 12px; }
+  .ph { border-radius: 20px; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 14px; color: #fff; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,.25); transition: transform .3s; }
+  .ph:hover { transform: scale(1.02); }
+  .ph.tall { grid-row: span 2; } .ph.wide { grid-column: span 2; }
+  .p1 { background: radial-gradient(circle at 30% 30%, #f6c38b, transparent 40%), linear-gradient(135deg, #8a5432, #3b2418); }
+  .p2 { background: radial-gradient(circle at 70% 40%, #fff3, transparent 30%), linear-gradient(135deg, #f2a541, #c8553d); }
+  .p3 { background: repeating-linear-gradient(45deg, #9cbf9f 0 14px, #7a9e7e 14px 28px); }
+  .p4 { background: radial-gradient(circle at 50% 60%, #fff 0 18%, #f4b6a6 19% 40%, #e8927c 41%); }
+  .p5 { background: linear-gradient(160deg, #f9d3c8, #c8553d); }
+  .p6 { background: radial-gradient(circle at 40% 40%, #fde6c5 0 25%, #f2a541 26% 45%, #c8553d 46%); }
+  .p7 { background: linear-gradient(135deg, #3b2418, #7a9e7e); }
+  /* Info */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+  .box { background: #fff; border: 1px solid var(--line); border-radius: 26px; padding: 28px; }
+  .hours div { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px dashed var(--line); }
+  .hours div:last-child { border-bottom: 0; }
+  .map { margin-top: 14px; border-radius: 18px; height: 160px; background: linear-gradient(90deg, transparent 48%, #fff 48% 52%, transparent 52%), linear-gradient(0deg, transparent 46%, #fff 46% 54%, transparent 54%), linear-gradient(135deg, #dfeadd, #fde6c5); position: relative; }
+  .map::after { content: ""; position: absolute; left: 50%; top: 50%; width: 24px; height: 24px; margin: -24px 0 0 -12px; background: var(--terra); border-radius: 50% 50% 50% 0; transform: rotate(-45deg); box-shadow: 0 8px 14px rgba(0,0,0,.25); }
+  form { display: grid; gap: 12px; }
+  label { display: grid; gap: 6px; font-weight: 600; font-size: 14px; }
+  input, select { font: inherit; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .quote { text-align: center; padding: 70px 0; background: var(--terra); color: var(--cream); }
+  .quote p { font-family: "PF", serif; font-size: clamp(24px, 3vw, 36px); margin: 0 auto 10px; max-width: 26em; }
+  .quote small { opacity: .85; }
+  footer { background: var(--coffee); color: #e9d9c6; padding: 40px 0; font-size: 15px; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px; }
+  footer strong { color: #fff; font-family: "PF", serif; font-size: 22px; }
+  @media (max-width: 860px) { .hero .wrap, .two { grid-template-columns: 1fr; } .menu-grid { grid-template-columns: 1fr; } .gallery { grid-template-columns: 1fr 1fr; } .cup-scene { max-width: 340px; } .daily { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .row { grid-template-columns: 1fr; } nav.menu { gap: 14px; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+  nav.menu a.on { position: relative; }
+  nav.menu a.on::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 3px; border-radius: 3px; background: currentColor; }
+  .page-hero { padding: 64px 0 40px; }
+  .page-hero h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.05; margin: 0 0 10px; }
+  .page-hero p { font-size: 19px; margin: 0; max-width: 40em; }
+  .cta-band { padding: 56px 0; text-align: center; }
+  .cta-band h2 { margin: 0 0 8px; }
+  .cta-band p { margin: 0 0 20px; }
+
+  .page-hero { background: linear-gradient(180deg, var(--cream), var(--paper)); }
+  .page-hero p { color: var(--muted); }
+  .cta-band { background: var(--coffee); color: var(--cream); }
+  .cta-band h2 { color: #fff; }
+  .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .value { border-radius: 26px; padding: 26px; }
+  .value h3 { margin: 10px 0 6px; font-size: 24px; } .value p { margin: 0; color: var(--muted); }
+  .v1 { background: #fde6c5; } .v2 { background: #dfeadd; } .v3 { background: #f9d3c8; }
+  .big-ico { font-size: 34px; }
+  @media (max-width: 860px) { .values { grid-template-columns: 1fr; } }
+
+</style>
+</head>
+<body>
+<div class="demo-bar"><div class="wrap"><span>Site de démonstration réalisé par Albert Grabar — entreprise fictive.</span><span><a href="../../site-vitrine.html">Un site comme celui-ci : 890 €</a> · <a href="../../realisations.html">Retour aux réalisations</a></span></div></div>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html">Café <span>Brindille</span></a>
+  <nav class="menu" aria-label="Menu"><a href="carte.html" class="on" aria-current="page">La carte</a><a href="galerie.html">Galerie</a><a href="infos.html">Horaires et accès</a><a href="reserver.html">Réserver</a></nav>
+  
+</div></header>
+
+<main>
+<section class="page-hero"><div class="wrap"><h1>La carte</h1><p>Cafés, douceurs et formule du midi — tout est fait ici.</p></div></section>
+<section id="carte"><div class="wrap">
+    <p class="sub">Tout est fait ici, chaque matin. Les prix sont ceux de la salle et de la terrasse.</p>
+  <div class="menu-grid">
+    <div class="menu-card m1"><h3>Cafés</h3>
+      <div class="item"><span>Espresso</span><i></i><b>2,20 €</b></div>
+      <div class="item"><span>Flat white</span><i></i><b>4,20 €</b></div>
+      <div class="item"><span>Cappuccino</span><i></i><b>4,00 €</b></div>
+      <div class="item"><span>Filtre du jour</span><i></i><b>3,50 €</b></div>
+      <div class="item"><span>Chaï latte</span><i></i><b>4,50 €</b></div>
+    </div>
+    <div class="menu-card m2"><h3>Douceurs</h3>
+      <div class="item"><span>Cookie noisette</span><i></i><b>3,00 €</b></div>
+      <div class="item"><span>Cheesecake citron</span><i></i><b>5,50 €</b></div>
+      <div class="item"><span>Banana bread</span><i></i><b>4,00 €</b></div>
+      <div class="item"><span>Tarte du jour</span><i></i><b>5,00 €</b></div>
+      <div class="item"><span>Granola maison</span><i></i><b>6,50 €</b></div>
+    </div>
+    <div class="menu-card m3"><h3>Le midi</h3>
+      <div class="item"><span>Soupe et pain</span><i></i><b>8,50 €</b></div>
+      <div class="item"><span>Tartine du jour</span><i></i><b>11,00 €</b></div>
+      <div class="item"><span>Salade de saison</span><i></i><b>12,00 €</b></div>
+      <div class="item"><span>Quiche et salade</span><i></i><b>12,50 €</b></div>
+      <div class="item"><span>Formule + boisson</span><i></i><b>15,00 €</b></div>
+    </div>
+  </div>
+  <div class="daily"><div class="big">15 €</div><div><h3>Formule du midi</h3><p>Plat du jour, douceur et café, du mardi au vendredi de 12 h à 14 h 30.</p></div><a class="btn" href="reserver.html">Réserver</a></div>
+</div></section>
+<section class="cta-band"><div class="wrap"><h2>Une table pour midi ?</h2><p>Réservation en ligne, confirmation par SMS.</p><a class="btn" href="reserver.html">Réserver une table</a></div></section>
+</main>
+
+<footer><div class="wrap">
+  <div><strong>Café Brindille</strong><br>8 rue de l'Exemple, 75011 Paris · 01 23 45 67 89</div>
+  <div style="max-width:520px"><a href="index.html" style="color:inherit">Accueil</a> · <a href="carte.html" style="color:inherit">La carte</a> · <a href="galerie.html" style="color:inherit">Galerie</a> · <a href="infos.html" style="color:inherit">Horaires et accès</a> · <a href="reserver.html" style="color:inherit">Réserver</a></div>
+  <div>Entreprise fictive — site de démonstration.<br>Réalisé par <a href="../../index.html" style="color:var(--mustard)">Albert Grabar</a></div>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Services — Lumen Plomberie (démo)</title>
+<meta name="description" content="Site de démonstration réalisé par Albert Grabar pour un plombier fictif.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231f6fff'/%3E%3Cpath d='M32 12c8 11 14 18 14 26a14 14 0 0 1-28 0c0-8 6-15 14-26z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+  @font-face { font-family: "Pop"; font-weight: 400; src: url("../../assets/fonts/poppins-latin-400-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Pop"; font-weight: 600; src: url("../../assets/fonts/poppins-latin-600-normal.woff2") format("woff2"); }
+  :root { --navy: #0b1f3a; --blue: #1f6fff; --cyan: #22d3ee; --orange: #ff7a1a; --ink: #13233d; --muted: #5b6b85; --soft: #f2f7ff; --line: #dbe6f7; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: "Pop", system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--ink); background: #fff; line-height: 1.6; }
+  a { color: var(--blue); }
+  .wrap { width: min(100% - 32px, 1120px); margin-inline: auto; }
+  .demo-bar { background: #111; color: #fff; font-size: 13px; padding: 8px 0; }
+  .demo-bar .wrap { display: flex; flex-wrap: wrap; gap: 4px 18px; justify-content: space-between; }
+  .demo-bar a { color: #fff; font-weight: 600; }
+  header.top { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 70px; flex-wrap: wrap; padding-block: 8px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 20px; color: var(--navy); text-decoration: none; }
+  .logo-mark { width: 38px; height: 38px; border-radius: 12px; background: linear-gradient(135deg, var(--blue), var(--cyan)); display: grid; place-items: center; box-shadow: 0 8px 20px -8px var(--blue); }
+  nav.menu { display: flex; gap: 22px; flex-wrap: wrap; }
+  nav.menu a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; }
+  nav.menu a:hover { color: var(--blue); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 999px; background: var(--orange); color: #fff; font-weight: 600; text-decoration: none; border: 0; font: inherit; font-weight: 600; box-shadow: 0 12px 24px -12px var(--orange); transition: transform .2s, box-shadow .2s; }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -12px var(--orange); }
+  .btn.ghost { background: rgba(255,255,255,.12); box-shadow: none; border: 1px solid rgba(255,255,255,.45); }
+  .btn[disabled] { opacity: .8; cursor: not-allowed; }
+  /* Hero */
+  .hero { position: relative; overflow: hidden; color: #fff; background: radial-gradient(900px 500px at 85% -10%, rgba(34,211,238,.45), transparent 60%), radial-gradient(700px 500px at -10% 110%, rgba(31,111,255,.6), transparent 60%), var(--navy); padding: 72px 0 96px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); font-size: 14px; }
+  .pulse { width: 9px; height: 9px; border-radius: 50%; background: #3ef08f; box-shadow: 0 0 0 0 rgba(62,240,143,.7); animation: pulse 1.8s infinite; }
+  @keyframes pulse { 70% { box-shadow: 0 0 0 10px rgba(62,240,143,0); } 100% { box-shadow: 0 0 0 0 rgba(62,240,143,0); } }
+  .hero h1 { font-size: clamp(34px, 5.2vw, 60px); line-height: 1.05; margin: 18px 0; letter-spacing: -.02em; }
+  .hero h1 span { background: linear-gradient(90deg, var(--cyan), #7dd3fc); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { font-size: 19px; color: #c9d6ec; max-width: 34em; margin: 0 0 28px; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .drop-card { position: relative; aspect-ratio: 1; border-radius: 32px; background: linear-gradient(160deg, rgba(255,255,255,.14), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.2); display: grid; place-items: center; }
+  .drop { width: 46%; animation: float 4s ease-in-out infinite; filter: drop-shadow(0 30px 40px rgba(34,211,238,.35)); }
+  @keyframes float { 50% { transform: translateY(-14px); } }
+  .badge { position: absolute; padding: 10px 14px; border-radius: 14px; background: #fff; color: var(--navy); font-weight: 600; font-size: 14px; box-shadow: 0 18px 30px -18px rgba(0,0,0,.6); }
+  .badge small { display: block; color: var(--muted); font-weight: 400; font-size: 12px; }
+  .b1 { top: 8%; left: -6%; } .b2 { bottom: 12%; right: -6%; } .b3 { bottom: -4%; left: 10%; }
+  /* Sections */
+  section { padding: 76px 0; }
+  .eyebrow { color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: .12em; font-size: 13px; }
+  h2 { font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; margin: 6px 0 12px; color: var(--navy); }
+  .sub { color: var(--muted); margin: 0 0 34px; max-width: 40em; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .card { padding: 26px; border-radius: 22px; background: #fff; border: 1px solid var(--line); transition: transform .25s, box-shadow .25s, border-color .25s; }
+  .card:hover { transform: translateY(-5px); border-color: transparent; box-shadow: 0 24px 40px -24px rgba(31,111,255,.5); }
+  .ico { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 14px; }
+  .card h3 { margin: 0 0 6px; font-size: 19px; color: var(--navy); }
+  .card p { margin: 0 0 10px; color: var(--muted); font-size: 15px; }
+  .price { font-weight: 600; color: var(--blue); }
+  .c1 { background: #e3eeff; } .c2 { background: #dcfaff; } .c3 { background: #fff0e3; } .c4 { background: #e9e5ff; } .c5 { background: #dcfce7; } .c6 { background: #ffe4ec; }
+  .urgent { background: linear-gradient(90deg, var(--orange), #ff4d6d); color: #fff; padding: 22px 0; }
+  .urgent .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; font-size: 18px; }
+  .urgent strong { font-size: 24px; }
+  .urgent .btn { background: #fff; color: var(--orange); }
+  .band { background: var(--soft); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 42px; align-items: start; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips span { padding: 8px 14px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-weight: 600; font-size: 14px; }
+  .chips span:nth-child(3n) { background: #e3eeff; } .chips span:nth-child(4n) { background: #dcfaff; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); }
+  td { padding: 14px 18px; border-bottom: 1px solid var(--line); }
+  tr:last-child td { border-bottom: 0; }
+  td:last-child { text-align: right; font-weight: 600; }
+  .steps { counter-reset: s; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .step { position: relative; padding: 24px; border-radius: 20px; background: linear-gradient(160deg, #fff, var(--soft)); border: 1px solid var(--line); }
+  .step::before { counter-increment: s; content: counter(s); display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--blue); color: #fff; font-weight: 600; margin-bottom: 12px; }
+  .step h3 { margin: 0 0 4px; font-size: 17px; }
+  .step p { margin: 0; color: var(--muted); font-size: 14px; }
+  .review { position: relative; }
+  .stars { color: #ffb400; letter-spacing: 2px; }
+  .note { font-size: 13px; color: var(--muted); }
+  details { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px 20px; margin-bottom: 10px; }
+  summary { cursor: pointer; font-weight: 600; color: var(--navy); }
+  form { background: #fff; border-radius: 24px; padding: 28px; box-shadow: 0 30px 60px -36px rgba(11,31,58,.5); display: grid; gap: 14px; }
+  label { font-weight: 600; font-size: 14px; display: grid; gap: 6px; }
+  input, select, textarea { font: inherit; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--soft); }
+  textarea { min-height: 110px; }
+  footer { background: var(--navy); color: #c9d6ec; padding: 44px 0; font-size: 15px; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px; }
+  footer strong { color: #fff; }
+  @media (max-width: 860px) { .hero .wrap, .two { grid-template-columns: 1fr; } .grid3 { grid-template-columns: 1fr 1fr; } .steps { grid-template-columns: 1fr 1fr; } .drop-card { max-width: 340px; } }
+  @media (max-width: 560px) { .grid3, .steps { grid-template-columns: 1fr; } nav.menu { gap: 14px; } .badge { display: none; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before { animation: none !important; transition: none !important; } }
+
+  nav.menu a.on { position: relative; }
+  nav.menu a.on::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 3px; border-radius: 3px; background: currentColor; }
+  .page-hero { padding: 64px 0 40px; }
+  .page-hero h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.05; margin: 0 0 10px; }
+  .page-hero p { font-size: 19px; margin: 0; max-width: 40em; }
+  .cta-band { padding: 56px 0; text-align: center; }
+  .cta-band h2 { margin: 0 0 8px; }
+  .cta-band p { margin: 0 0 20px; }
+
+  .page-hero { background: radial-gradient(700px 300px at 90% 0, rgba(34,211,238,.35), transparent 60%), var(--navy); color: #fff; }
+  .page-hero p { color: #c9d6ec; }
+  .cta-band { background: linear-gradient(90deg, var(--blue), var(--cyan)); color: #fff; }
+  .cta-band h2 { color: #fff; }
+  .guar .ico { margin: 0 auto 12px; } .guar { text-align: center; }
+  .contact-cards .card h3 { margin-bottom: 4px; }
+
+</style>
+</head>
+<body>
+<div class="demo-bar"><div class="wrap"><span>Site de démonstration réalisé par Albert Grabar — entreprise fictive.</span><span><a href="../../site-vitrine.html">Un site comme celui-ci : 890 €</a> · <a href="../../realisations.html">Retour aux réalisations</a></span></div></div>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html"><span class="logo-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 2c4 5.5 7 9 7 13a7 7 0 0 1-14 0c0-4 3-7.5 7-13z"/></svg></span>Lumen Plomberie</a>
+  <nav class="menu" aria-label="Menu"><a href="services.html" class="on" aria-current="page">Services</a><a href="tarifs.html">Tarifs</a><a href="zone.html">Zone et horaires</a><a href="contact.html">Devis et contact</a></nav>
+  <a class="btn" href="contact.html">Devis gratuit</a>
+</div></header>
+
+<main>
+<section class="page-hero"><div class="wrap"><h1>Nos services</h1><p>Dépannage, entretien et travaux de plomberie, expliqués simplement.</p></div></section>
+<section id="services"><div class="wrap">
+  <h2>Ce que nous faisons</h2>
+  <p class="sub">Des interventions courantes, faites proprement et expliquées simplement.</p>
+  <div class="grid3">
+    <article class="card"><div class="ico c1"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1f6fff" stroke-width="2" stroke-linecap="round"><path d="M12 3c3 4 5 7 5 10a5 5 0 0 1-10 0c0-3 2-6 5-10z"/></svg></div><h3>Recherche de fuite</h3><p>Robinet, chasse d'eau, canalisation : on trouve la fuite et on la répare.</p><span class="price">dès 89 €</span></article>
+    <article class="card"><div class="ico c2"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2" stroke-linecap="round"><rect x="6" y="3" width="12" height="18" rx="3"/><path d="M10 8h4M12 13v4"/></svg></div><h3>Chauffe-eau</h3><p>Dépannage, détartrage ou remplacement, ballon électrique ou thermodynamique.</p><span class="price">dès 120 €</span></article>
+    <article class="card"><div class="ico c3"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round"><path d="M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></div><h3>Débouchage</h3><p>Évier, douche, WC, colonne : furet ou hydrocurage selon le cas.</p><span class="price">dès 95 €</span></article>
+    <article class="card"><div class="ico c4"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#6d28d9" stroke-width="2" stroke-linecap="round"><path d="M4 20h16M6 20V10l6-5 6 5v10"/></svg></div><h3>Salle de bains</h3><p>Pose de WC, lavabo, douche à l'italienne, raccordements.</p><span class="price">sur devis</span></article>
+    <article class="card"><div class="ico c5"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div><h3>Entretien annuel</h3><p>Contrôle des joints, de la pression et du chauffe-eau, une fois par an.</p><span class="price">69 €</span></article>
+    <article class="card"><div class="ico c6"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4 10-10"/></svg></div><h3>Mise aux normes</h3><p>Avant une vente ou une location : diagnostic écrit et travaux nécessaires.</p><span class="price">sur devis</span></article>
+  </div>
+</div></section>
+<section><div class="wrap">
+  <span class="eyebrow">Nos engagements</span><h2>Garanties</h2><p class="sub">Ce qui est écrit sur le devis est ce que vous payez.</p>
+  <div class="grid3 guar">
+    <article class="card"><div class="ico c5"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4 10-10"/></svg></div><h3>Garantie 1 an</h3><p>Pièces et main-d'œuvre garanties un an sur chaque réparation.</p></article>
+    <article class="card"><div class="ico c1"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1f6fff" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></div><h3>Assurance décennale</h3><p>Toutes les installations sont couvertes pendant dix ans.</p></article>
+    <article class="card"><div class="ico c3"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round"><rect x="4" y="7" width="16" height="12" rx="2"/><path d="M9 7V5h6v2"/></svg></div><h3>Pièces de marque</h3><p>Grohe, Hansgrohe, Atlantic : des pièces faciles à remplacer.</p></article>
+  </div>
+</div></section>
+<section class="cta-band"><div class="wrap"><h2>Un problème de plomberie ?</h2><p>Devis gratuit et écrit, intervention sous 24 h.</p><a class="btn" href="contact.html" style="background:#fff;color:#1f6fff">Demander un devis</a></div></section>
+</main>
+
+<footer><div class="wrap">
+  <div><strong>Lumen Plomberie</strong><br>12 rue de l'Exemple, 75015 Paris · 01 23 45 67 89</div>
+  <div style="max-width:520px"><a href="index.html" style="color:inherit">Accueil</a> · <a href="services.html" style="color:inherit">Services</a> · <a href="tarifs.html" style="color:inherit">Tarifs</a> · <a href="zone.html" style="color:inherit">Zone et horaires</a> · <a href="contact.html" style="color:inherit">Devis et contact</a></div>
+  <div>Entreprise fictive — site de démonstration.<br>Réalisé par <a href="../../index.html" style="color:#7dd3fc">Albert Grabar</a></div>
+</div></footer>
+</body>
+</html>

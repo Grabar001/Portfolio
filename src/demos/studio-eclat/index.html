@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Studio Éclat — démo de site vitrine pour salon de coiffure</title>
+<title>Studio Éclat — salon de coiffure à Paris 9e (démo)</title>
 <meta name="description" content="Site de démonstration réalisé par Albert Grabar pour un salon de coiffure fictif.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23e0218a'/%3E%3Cstop offset='1' stop-color='%23ff9f80'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='20' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-family='Georgia' font-size='30' fill='%23fff' text-anchor='middle'%3EÉ%3C/text%3E%3C/svg%3E">
@@ -104,15 +104,49 @@
   @media (max-width: 860px) { .hero .wrap, .book .wrap { grid-template-columns: 1fr; } .tabs, .team, .ba, .reviews { grid-template-columns: 1fr 1fr; } .portrait { max-width: 320px; } }
   @media (max-width: 560px) { .tabs, .team, .ba, .reviews, .row { grid-template-columns: 1fr; } nav.menu { gap: 14px; } }
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+  nav.menu a.on { position: relative; }
+  nav.menu a.on::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 3px; border-radius: 3px; background: currentColor; }
+  .page-hero { padding: 64px 0 40px; }
+  .page-hero h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.05; margin: 0 0 10px; }
+  .page-hero p { font-size: 19px; margin: 0; max-width: 40em; }
+  .cta-band { padding: 56px 0; text-align: center; }
+  .cta-band h2 { margin: 0 0 8px; }
+  .cta-band p { margin: 0 0 20px; }
+
+  .page-hero { position: relative; overflow: hidden; background: var(--plum); color: #fff; }
+  .page-hero h1 { color: #fff; } .page-hero p { color: #eadcf7; }
+  .page-hero::after { content: ""; position: absolute; width: 360px; height: 360px; right: -80px; top: -160px; border-radius: 50%; background: var(--magenta); filter: blur(60px); opacity: .6; }
+  .page-hero .wrap { position: relative; z-index: 1; }
+  .cta-band { background: linear-gradient(90deg, var(--magenta), var(--peach)); color: #fff; }
+  .cta-band h2 { color: #fff; }
+  .cta-band .btn { background: #fff; color: var(--magenta); }
+  .feature-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .swatch { aspect-ratio: 4/3; border-radius: 28px; }
+  .sw1 { background: linear-gradient(135deg, #ff9f80, #e0218a 60%, #7c3aed); }
+  .sw2 { background: linear-gradient(135deg, #c9b6ff, #f5c46b); }
+  .sw3 { background: linear-gradient(135deg, #2a0f3d, #e0218a); }
+  .checks { list-style: none; padding: 0; margin: 0; }
+  .checks li { padding: 8px 0 8px 30px; position: relative; }
+  .checks li::before { content: "✓"; position: absolute; left: 0; color: var(--magenta); font-weight: 600; }
+  .steps4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: s; }
+  .steps4 div { padding: 22px; border-radius: 22px; background: var(--soft); }
+  .steps4 div::before { counter-increment: s; content: counter(s); display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--magenta); color: #fff; font-weight: 600; margin-bottom: 10px; }
+  details { background: var(--soft); border-radius: 18px; padding: 16px 20px; margin-bottom: 10px; }
+  summary { cursor: pointer; font-weight: 600; }
+  .salon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .salon-grid .svc h3 { font-size: 22px; }
+  @media (max-width: 860px) { .feature-row, .steps4, .salon-grid { grid-template-columns: 1fr; } }
+
 </style>
 </head>
 <body>
 <div class="demo-bar"><div class="wrap"><span>Site de démonstration réalisé par Albert Grabar — entreprise fictive.</span><span><a href="../../site-vitrine.html">Un site comme celui-ci : 1 490 €</a> · <a href="../../realisations.html">Retour aux réalisations</a></span></div></div>
 
 <header class="top"><div class="wrap">
-  <a class="logo" href="#">Studio <span>Éclat</span></a>
-  <nav class="menu" aria-label="Menu"><a href="#prestations">Prestations</a><a href="#equipe">Équipe</a><a href="#galerie">Avant / après</a><a href="#rdv">Rendez-vous</a></nav>
-  <a class="btn" href="#rdv">Prendre rendez-vous</a>
+  <a class="logo" href="index.html">Studio <span>Éclat</span></a>
+  <nav class="menu" aria-label="Menu"><a href="prestations.html">Prestations</a><a href="couleur.html">Couleur</a><a href="soins.html">Soins</a><a href="equipe.html">Équipe</a><a href="galerie.html">Galerie</a><a href="le-salon.html">Le salon</a><a href="faq.html">FAQ</a></nav>
+  <a class="btn" href="rendez-vous.html">Prendre rendez-vous</a>
 </div></header>
 
 <main>
@@ -121,11 +155,10 @@
     <span class="kicker">Salon de coiffure · Paris 9e</span>
     <h1>Votre couleur, <em>votre éclat</em>.</h1>
     <p>Coupe, couleur, balayage et soins dans un salon lumineux. Diagnostic offert, produits respectueux du cheveu, rendez-vous en ligne en deux minutes.</p>
-    <div class="actions"><a class="btn" href="#rdv">Prendre rendez-vous</a><a class="btn line" href="#prestations">Voir les tarifs</a></div>
+    <div class="actions"><a class="btn" href="rendez-vous.html">Prendre rendez-vous</a><a class="btn line" href="prestations.html">Voir les tarifs</a></div>
   </div>
   <div class="portrait" aria-hidden="true"><div class="rating">★★★★★ <b>4,9</b> · exemple de note</div></div>
 </div></section>
-
 <section id="prestations"><div class="wrap">
   <div class="center"><h2>Prestations et tarifs</h2><p class="sub">Prix indicatifs, confirmés après le diagnostic.</p></div>
   <div class="tabs">
@@ -149,40 +182,6 @@
     </div>
   </div>
 </div></section>
-
-<section class="band" id="equipe"><div class="wrap">
-  <div class="center"><h2>L'équipe</h2><p class="sub">Trois coiffeuses, trois spécialités.</p></div>
-  <div class="team">
-    <div class="member"><div class="avatar a1">L</div><h3>Léa</h3><p>Coloriste · balayage et blond</p></div>
-    <div class="member"><div class="avatar a2">S</div><h3>Sofia</h3><p>Coupes courtes et texturées</p></div>
-    <div class="member"><div class="avatar a3">N</div><h3>Nina</h3><p>Chignons et coiffures de mariée</p></div>
-  </div>
-</div></section>
-
-<section id="galerie"><div class="wrap">
-  <div class="center"><h2>Avant / après</h2><p class="sub">Sur un vrai site, ici : vos photos, avec l'accord des clientes.</p></div>
-  <div class="ba">
-    <div class="pair"><span class="before">Avant</span><span class="after1">Balayage cuivré</span></div>
-    <div class="pair"><span class="before">Avant</span><span class="after2">Blond doré</span></div>
-    <div class="pair"><span class="before">Avant</span><span class="after3">Gloss lilas</span></div>
-  </div>
-</div></section>
-
-<section class="book" id="rdv"><span class="blob bl1" style="opacity:.35"></span><div class="wrap">
-  <div>
-    <h2>Prendre rendez-vous</h2>
-    <p>Choisissez la prestation et le créneau : confirmation par SMS. Annulation gratuite jusqu'à 24 h avant.</p>
-    <p><strong>Mardi – samedi, 9 h 30 – 19 h 30</strong><br>14 rue de l'Exemple, 75009 Paris · 01 23 45 67 89</p>
-  </div>
-  <form action="#rdv">
-    <label>Prestation<select><option>Coupe femme</option><option>Balayage</option><option>Couleur racines</option><option>Soin profond</option></select></label>
-    <div class="row"><label>Coiffeuse<select><option>Peu importe</option><option>Léa</option><option>Sofia</option><option>Nina</option></select></label><label>Date<input type="date"></label></div>
-    <div><span style="font-size:14px;font-weight:600">Créneaux disponibles</span><div class="slots"><span>10:00</span><span>11:30</span><span>14:00</span><span>16:30</span><span>18:00</span></div></div>
-    <div class="row"><label>Nom<input type="text" placeholder="Julie Bernard"></label><label>Téléphone<input type="tel" placeholder="06 12 34 56 78"></label></div>
-    <button class="btn" type="button" disabled>Réserver (désactivé sur la démo)</button>
-  </form>
-</div></section>
-
 <section><div class="wrap">
   <div class="center"><h2>Avis</h2><p class="note">Exemples de mise en page : sur un vrai site, seuls de vrais avis sont publiés.</p></div>
   <div class="reviews">
@@ -191,10 +190,12 @@
     <div class="rev"><div class="stars">★★★★★</div><p>« Coupe courte parfaite, conseils pour l'entretien à la maison. »</p><strong>Exemple d'avis</strong></div>
   </div>
 </div></section>
+<section class="cta-band"><div class="wrap"><h2>Envie de changement ?</h2><p>Diagnostic offert, rendez-vous en ligne en deux minutes.</p><a class="btn" href="rendez-vous.html">Prendre rendez-vous</a></div></section>
 </main>
 
 <footer><div class="wrap">
   <div><strong>Studio Éclat</strong><br>14 rue de l'Exemple, 75009 Paris · 01 23 45 67 89</div>
+  <div style="max-width:520px"><a href="index.html" style="color:inherit">Accueil</a> · <a href="prestations.html" style="color:inherit">Prestations</a> · <a href="couleur.html" style="color:inherit">Couleur</a> · <a href="soins.html" style="color:inherit">Soins</a> · <a href="equipe.html" style="color:inherit">Équipe</a> · <a href="galerie.html" style="color:inherit">Galerie</a> · <a href="avis.html" style="color:inherit">Avis</a> · <a href="le-salon.html" style="color:inherit">Le salon</a> · <a href="faq.html" style="color:inherit">FAQ</a> · <a href="rendez-vous.html" style="color:inherit">Rendez-vous</a></div>
   <div>Entreprise fictive — site de démonstration.<br>Réalisé par <a href="../../index.html" style="color:var(--gold)">Albert Grabar</a></div>
 </div></footer>
 </body>

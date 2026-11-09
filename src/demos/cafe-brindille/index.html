@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Café Brindille — démo de site vitrine pour café</title>
+<title>Café Brindille — café de quartier à Paris 11e (démo)</title>
 <meta name="description" content="Site de démonstration réalisé par Albert Grabar pour un café fictif.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23c8553d'/%3E%3Ctext x='32' y='43' font-family='Georgia' font-size='30' fill='%23fff7ec' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
@@ -99,14 +99,36 @@
   @media (max-width: 860px) { .hero .wrap, .two { grid-template-columns: 1fr; } .menu-grid { grid-template-columns: 1fr; } .gallery { grid-template-columns: 1fr 1fr; } .cup-scene { max-width: 340px; } .daily { grid-template-columns: 1fr; } }
   @media (max-width: 520px) { .row { grid-template-columns: 1fr; } nav.menu { gap: 14px; } }
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+  nav.menu a.on { position: relative; }
+  nav.menu a.on::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 3px; border-radius: 3px; background: currentColor; }
+  .page-hero { padding: 64px 0 40px; }
+  .page-hero h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.05; margin: 0 0 10px; }
+  .page-hero p { font-size: 19px; margin: 0; max-width: 40em; }
+  .cta-band { padding: 56px 0; text-align: center; }
+  .cta-band h2 { margin: 0 0 8px; }
+  .cta-band p { margin: 0 0 20px; }
+
+  .page-hero { background: linear-gradient(180deg, var(--cream), var(--paper)); }
+  .page-hero p { color: var(--muted); }
+  .cta-band { background: var(--coffee); color: var(--cream); }
+  .cta-band h2 { color: #fff; }
+  .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .value { border-radius: 26px; padding: 26px; }
+  .value h3 { margin: 10px 0 6px; font-size: 24px; } .value p { margin: 0; color: var(--muted); }
+  .v1 { background: #fde6c5; } .v2 { background: #dfeadd; } .v3 { background: #f9d3c8; }
+  .big-ico { font-size: 34px; }
+  @media (max-width: 860px) { .values { grid-template-columns: 1fr; } }
+
 </style>
 </head>
 <body>
 <div class="demo-bar"><div class="wrap"><span>Site de démonstration réalisé par Albert Grabar — entreprise fictive.</span><span><a href="../../site-vitrine.html">Un site comme celui-ci : 890 €</a> · <a href="../../realisations.html">Retour aux réalisations</a></span></div></div>
 
 <header class="top"><div class="wrap">
-  <a class="logo" href="#">Café <span>Brindille</span></a>
-  <nav class="menu" aria-label="Menu"><a href="#carte">La carte</a><a href="#galerie">Galerie</a><a href="#infos">Horaires et accès</a><a href="#reserver">Réserver</a></nav>
+  <a class="logo" href="index.html">Café <span>Brindille</span></a>
+  <nav class="menu" aria-label="Menu"><a href="carte.html">La carte</a><a href="galerie.html">Galerie</a><a href="infos.html">Horaires et accès</a><a href="reserver.html">Réserver</a></nav>
+  
 </div></header>
 
 <main>
@@ -115,81 +137,25 @@
     <span class="tag">☕ Torréfaction artisanale · Paris 11e</span>
     <h1>Café de quartier, <em>pâtisseries maison</em>.</h1>
     <p>Café de torréfacteur, gâteaux du jour et une formule midi simple. Ouvert du mardi au dimanche, terrasse au soleil.</p>
-    <div class="actions"><a class="btn" href="#reserver">Réserver une table</a><a class="btn alt" href="#carte">Voir la carte</a></div>
+    <div class="actions"><a class="btn" href="reserver.html">Réserver une table</a><a class="btn alt" href="carte.html">Voir la carte</a></div>
   </div>
   <div class="cup-scene" aria-hidden="true"><div class="steam"><i></i><i></i><i></i></div><div class="cup"></div><span class="leaf l1"></span><span class="leaf l2"></span></div>
 </div></section>
-
-<section id="carte"><div class="wrap">
-  <h2>La carte</h2>
-  <p class="sub">Tout est fait ici, chaque matin. Les prix sont ceux de la salle et de la terrasse.</p>
-  <div class="menu-grid">
-    <div class="menu-card m1"><h3>Cafés</h3>
-      <div class="item"><span>Espresso</span><i></i><b>2,20 €</b></div>
-      <div class="item"><span>Flat white</span><i></i><b>4,20 €</b></div>
-      <div class="item"><span>Cappuccino</span><i></i><b>4,00 €</b></div>
-      <div class="item"><span>Filtre du jour</span><i></i><b>3,50 €</b></div>
-      <div class="item"><span>Chaï latte</span><i></i><b>4,50 €</b></div>
-    </div>
-    <div class="menu-card m2"><h3>Douceurs</h3>
-      <div class="item"><span>Cookie noisette</span><i></i><b>3,00 €</b></div>
-      <div class="item"><span>Cheesecake citron</span><i></i><b>5,50 €</b></div>
-      <div class="item"><span>Banana bread</span><i></i><b>4,00 €</b></div>
-      <div class="item"><span>Tarte du jour</span><i></i><b>5,00 €</b></div>
-      <div class="item"><span>Granola maison</span><i></i><b>6,50 €</b></div>
-    </div>
-    <div class="menu-card m3"><h3>Le midi</h3>
-      <div class="item"><span>Soupe et pain</span><i></i><b>8,50 €</b></div>
-      <div class="item"><span>Tartine du jour</span><i></i><b>11,00 €</b></div>
-      <div class="item"><span>Salade de saison</span><i></i><b>12,00 €</b></div>
-      <div class="item"><span>Quiche et salade</span><i></i><b>12,50 €</b></div>
-      <div class="item"><span>Formule + boisson</span><i></i><b>15,00 €</b></div>
-    </div>
-  </div>
-  <div class="daily"><div class="big">15 €</div><div><h3>Formule du midi</h3><p>Plat du jour, douceur et café, du mardi au vendredi de 12 h à 14 h 30.</p></div><a class="btn" href="#reserver">Réserver</a></div>
-</div></section>
-
-<section id="galerie" style="background:var(--cream)"><div class="wrap">
-  <h2>L'ambiance</h2>
-  <p class="sub">Sur un vrai site, ici : vos photos de la salle, des plats et de l'équipe.</p>
-  <div class="gallery">
-    <div class="ph p1 tall">Le comptoir</div>
-    <div class="ph p2 wide">Pâtisseries du jour</div>
-    <div class="ph p3">La terrasse</div>
-    <div class="ph p4">Cheesecake</div>
-    <div class="ph p5">Latte art</div>
-    <div class="ph p6 wide">Brunch du dimanche</div>
-    <div class="ph p7">La salle</div>
+<section><div class="wrap">
+  <h2>Ce qui compte pour nous</h2><p class="sub">Un café de quartier, simple et soigné.</p>
+  <div class="values">
+    <div class="value v1"><span class="big-ico">☕</span><h3>Café de torréfacteur</h3><p>Grains torréfiés à Paris chaque semaine, moulus à la commande.</p></div>
+    <div class="value v2"><span class="big-ico">🌿</span><h3>Produits de saison</h3><p>Légumes de producteurs d'Île-de-France, carte du midi qui change chaque jour.</p></div>
+    <div class="value v3"><span class="big-ico">🍰</span><h3>Fait maison</h3><p>Gâteaux, pains et granola préparés ici, tôt le matin.</p></div>
   </div>
 </div></section>
-
 <div class="quote"><p>« Le meilleur flat white du quartier, et la tarte change tous les jours. »</p><small>Exemple d'avis — sur un vrai site, seuls de vrais avis sont publiés.</small></div>
-
-<section id="infos"><div class="wrap two">
-  <div class="box">
-    <h2>Horaires et accès</h2>
-    <div class="hours">
-      <div><span>Mardi – vendredi</span><b>8 h – 18 h</b></div>
-      <div><span>Samedi – dimanche</span><b>9 h – 19 h</b></div>
-      <div><span>Lundi</span><b>fermé</b></div>
-    </div>
-    <p>8 rue de l'Exemple, 75011 Paris · Métro Parmentier</p>
-    <div class="map" aria-label="Plan (illustration)"></div>
-  </div>
-  <div class="box" id="reserver">
-    <h2>Réserver une table</h2>
-    <form action="#reserver">
-      <label>Nom<input type="text" placeholder="Camille Martin"></label>
-      <div class="row"><label>Date<input type="date"></label><label>Heure<select><option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option></select></label></div>
-      <div class="row"><label>Personnes<select><option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option></select></label><label>Téléphone<input type="tel" placeholder="06 12 34 56 78"></label></div>
-      <button class="btn" type="button" disabled>Envoyer (désactivé sur la démo)</button>
-    </form>
-  </div>
-</div></section>
+<section class="cta-band"><div class="wrap"><h2>Une table pour midi ?</h2><p>Réservation en ligne, confirmation par SMS.</p><a class="btn" href="reserver.html">Réserver une table</a></div></section>
 </main>
 
 <footer><div class="wrap">
   <div><strong>Café Brindille</strong><br>8 rue de l'Exemple, 75011 Paris · 01 23 45 67 89</div>
+  <div style="max-width:520px"><a href="index.html" style="color:inherit">Accueil</a> · <a href="carte.html" style="color:inherit">La carte</a> · <a href="galerie.html" style="color:inherit">Galerie</a> · <a href="infos.html" style="color:inherit">Horaires et accès</a> · <a href="reserver.html" style="color:inherit">Réserver</a></div>
   <div>Entreprise fictive — site de démonstration.<br>Réalisé par <a href="../../index.html" style="color:var(--mustard)">Albert Grabar</a></div>
 </div></footer>
 </body>
