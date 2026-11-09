@@ -759,7 +759,7 @@
   },
   "work": {
     "title": "Réalisations — Albert Grabar",
-    "description": "TECH NOIR, boutique en ligne en Symfony et React, et des sites vitrines de démonstration pour artisans et cafés.",
+    "description": "TECH NOIR, boutique en ligne en Symfony et React, et des sites vitrines de démonstration pour un artisan, un café et un salon de coiffure.",
     "h1": "Réalisations",
     "lead": "Un projet personnel et des sites de démonstration. Les projets de clients seront ajoutés avec leur accord.",
     "projects": [
@@ -805,6 +805,19 @@
           {
             "label": "Voir la démo",
             "href": "demos/cafe-brindille/index.html"
+          }
+        ]
+      },
+      {
+        "id": "salon",
+        "tag": "Démo · entreprise fictive",
+        "name": "Studio Éclat",
+        "subtitle": "Site vitrine pour un salon de coiffure",
+        "text": "Prestations et tarifs, équipe, galerie avant/après et réservation en ligne. Exemple de ce que vous obtenez pour 690 €.",
+        "links": [
+          {
+            "label": "Voir la démo",
+            "href": "demos/studio-eclat/index.html"
           }
         ]
       }
@@ -911,7 +924,9 @@
     "asideEmail": "E-mail",
     "asideReply": "Réponse",
     "asideReplyText": "Par écrit sous 24 h, du lundi au samedi.",
-    "asidePlatforms": "Plateformes"
+    "asidePlatforms": "Plateformes",
+    "asidePhone": "Téléphone",
+    "asidePhoneText": "SMS ou message de préférence : je réponds par écrit."
   },
   "thanks": {
     "title": "Merci — demande envoyée",

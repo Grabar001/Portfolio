@@ -18,9 +18,9 @@ const CLIENTS = ['particulier' => 'Particulier', 'professionnel' => 'Professionn
 const BUDGETS = ['0', '1', '2', '3'];
 const BUDGET_LABELS = ['< 300 €', '300–700 €', '700–1 000 €', '> 1 000 €'];
 
-$lang = (($_POST['lang'] ?? '') === 'en') ? 'en' : 'fr';
-$okUrl = $lang === 'en' ? 'en/thanks.html' : 'merci.html';
-$errorUrl = $lang === 'en' ? 'en/contact.html?error=1#form' : 'contact.html?error=1#form';
+$lang = in_array($_POST['lang'] ?? '', ['en', 'ru'], true) ? $_POST['lang'] : 'fr';
+$okUrl = $lang === 'fr' ? 'merci.html' : $lang . '/thanks.html';
+$errorUrl = $lang === 'fr' ? 'contact.html?error=1#form' : $lang . '/contact.html?error=1#form';
 
 function go(string $path): never
 {

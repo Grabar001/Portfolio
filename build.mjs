@@ -21,7 +21,7 @@ const YEAR = TODAY.slice(0, 4);
 const readJson = (file) => JSON.parse(fs.readFileSync(path.join(ROOT, file), "utf8"));
 const config = readJson("site.config.json");
 
-const LANGS = ["fr", "en"];
+const LANGS = ["fr", "en", "ru"];
 // "consumers": false in site.config.json = services for professionals only (no consumer mediator needed).
 // Then the texts in i18n "b2b" replace the ones that speak to private individuals,
 // items marked "b2c": true are dropped and the *-b2b.html legal pages are used.
@@ -76,8 +76,12 @@ const PAGES = {
 };
 const NAV = ["services", "work", "about", "contact"];
 const SERVICE_PAGES = ["svcAudit", "svcLaunch", "svcSite", "svcFixes"];
+// Russian pages use the English file names (/ru/services.html, /ru/work.html…)
+for (const files of Object.values(PAGES)) if (!("ru" in files)) files.ru = files.en;
 const NOINDEX = new Set(["thanks", "notfound"]);
 const FONTS = [
+  ["playfair-display", "playfair-display-cyrillic-700-normal.woff2"],
+  ...["400", "500", "600"].map((w) => ["montserrat", `montserrat-cyrillic-${w}-normal.woff2`]),
   ["playfair-display", "playfair-display-latin-700-normal.woff2"],
   ["playfair-display", "playfair-display-latin-ext-700-normal.woff2"],
   ...["300", "400", "600"].flatMap((w) => [
@@ -195,6 +199,7 @@ function footer(ctx) {
     <div>
       <ul>
         <li><a href="mailto:${esc(config.email)}">${esc(config.email)}</a></li>
+        <li><a href="tel:${esc(config.phone.replace(/\s+/g, ""))}">${esc(config.phone)}</a></li>
         <li><a href="${esc(config.linkedin)}"${ext}>LinkedIn</a> · <a href="${esc(config.github)}"${ext}>GitHub</a></li>
         <li><a href="${ctx.link("legal")}">${esc(f.legal)}</a> · <a href="${ctx.link("terms")}">${esc(f.terms)}</a> · <a href="${ctx.link("privacy")}">${esc(f.privacy)}</a></li>
         <li class="muted">${ctx.txt(f.cookies)}</li>
@@ -227,7 +232,7 @@ ${seo}
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${absUrl(id, lang)}">
-<meta property="og:image" content="${config.baseUrl}/assets/img/og-${lang}.png">
+<meta property="og:image" content="${config.baseUrl}/assets/img/og-${hasImage(`og-${lang}.png`) ? lang : "en"}.png">
 <meta property="og:locale" content="${t.locale}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#ffffff">
@@ -396,7 +401,7 @@ ${h.doors
 
 <section class="section"><div class="container">
   <div class="section-head" data-reveal><h2>${ctx.txt(h.workTitle)}</h2><a class="more-link" href="${ctx.link("work")}">${ctx.txt(h.workMore)}</a></div>
-  <div class="grid grid-3" data-stagger>${workCards(ctx, 3)}</div>
+  <div class="grid grid-${ctx.t.work.projects.length % 2 ? 3 : 2} work-grid" data-stagger>${workCards(ctx, 3)}</div>
 </div></section>
 
 <section class="section section-soft"><div class="container split">
@@ -483,7 +488,7 @@ ${ctaBand(ctx)}`;
   work(ctx) {
     const w = ctx.t.work;
     const body = `${pageHead(ctx, w.h1, w.lead)}
-<section class="section"><div class="container grid grid-3" data-stagger>
+<section class="section"><div class="container grid grid-${ctx.t.work.projects.length % 2 ? 3 : 2} work-grid" data-stagger>
 ${workCards(ctx, 2)}
 </div></section>
 ${ctaBand(ctx)}`;
@@ -492,8 +497,9 @@ ${ctaBand(ctx)}`;
 
   about(ctx) {
     const a = ctx.t.about;
-    const cvLinks = LANGS.filter((l) => config.cv?.[l] && fs.existsSync(path.join(SRC, "static", config.cv[l])));
-    if (cvLinks.length < LANGS.length) warn("Нет PDF с CV в src/static/files/ — блок «Recruteur ?» показан без недостающих файлов");
+    const cvLangs = Object.keys(config.cv || {});
+    const cvLinks = cvLangs.filter((l) => fs.existsSync(path.join(SRC, "static", config.cv[l])));
+    if (cvLinks.length < cvLangs.length) warn("Нет PDF с CV в src/static/files/ — блок «Recruteur ?» показан без недостающих файлов");
     const cvBlock = cvLinks.length
       ? `<div class="side-block"><h2>${ctx.txt(a.cvTitle)}</h2><p>${ctx.txt(a.cvText)}</p><ul class="dash-list">${cvLinks
           .map((l) => `<li><a href="${ctx.asset(config.cv[l])}" download>${esc(l === "fr" ? a.cvFr : a.cvEn)}</a></li>`)
@@ -563,6 +569,7 @@ ${ctaBand(ctx)}`;
   <aside class="contact-aside">
     <div class="side-block"><h2>${esc(c.asideEmail)}</h2><p>${mail}</p></div>
     <div class="side-block"><h2>${esc(c.asideReply)}</h2><p>${ctx.txt(c.asideReplyText)}</p></div>
+    <div class="side-block"><h2>${esc(c.asidePhone)}</h2><p><a href="tel:${esc(config.phone.replace(/\s+/g, ""))}">${esc(config.phone)}</a><br><span class="small muted">${ctx.txt(c.asidePhoneText)}</span></p></div>
     <div class="side-block"><h2>${esc(c.asidePlatforms)}</h2><p>${ctx.txt(c.platforms)}</p></div>
   </aside>
 </div></section>`;

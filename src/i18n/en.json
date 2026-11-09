@@ -759,7 +759,7 @@
   },
   "work": {
     "title": "Work — Albert Grabar",
-    "description": "TECH NOIR, an online store built with Symfony and React, and demo websites for tradespeople and cafés.",
+    "description": "TECH NOIR, an online store built with Symfony and React, and demo websites for a tradesperson, a café and a hair salon.",
     "h1": "Work",
     "lead": "A personal project and demo websites. Client projects will be added with their permission.",
     "projects": [
@@ -805,6 +805,19 @@
           {
             "label": "See the demo",
             "href": "demos/cafe-brindille/index.html"
+          }
+        ]
+      },
+      {
+        "id": "salon",
+        "tag": "Demo · fictional business",
+        "name": "Studio Éclat",
+        "subtitle": "Website for a hair salon (in French)",
+        "text": "Services and prices, team, before/after gallery and online booking. An example of what you get for €690.",
+        "links": [
+          {
+            "label": "See the demo",
+            "href": "demos/studio-eclat/index.html"
           }
         ]
       }
@@ -911,7 +924,9 @@
     "asideEmail": "Email",
     "asideReply": "Reply time",
     "asideReplyText": "In writing within 24 hours, Monday to Saturday.",
-    "asidePlatforms": "Platforms"
+    "asidePlatforms": "Platforms",
+    "asidePhone": "Phone",
+    "asidePhoneText": "Text messages preferred: I reply in writing."
   },
   "thanks": {
     "title": "Thank you — request sent",
