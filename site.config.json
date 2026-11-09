@@ -1,5 +1,6 @@
 {
   "baseUrl": "https://www.albert-grabar.com",
+  "consumers": false,
   "owner": "Albert Grabar",
   "legalForm": "entrepreneur individuel (EI), micro-entreprise",
   "siren": "995 090 735",
@@ -9,13 +10,13 @@
   "formSender": "no-reply@albert-grabar.com",
   "phone": "+33 7 69 73 07 42",
   "address": "17 avenue de Saxe, 75007 Paris",
-  "host": "PlanetHoster — [raison sociale, adresse et téléphone à compléter depuis l'espace client]",
+  "host": "PlanetHoster inc., 4416 Louis-B.-Mayer, Laval (Québec) H7P 0G1, Canada — tél. +33 1 76 60 41 43",
   "mediatorName": "[MÉDIATEUR À COMPLÉTER]",
   "mediatorAddress": "[adresse du médiateur à compléter]",
   "mediatorUrl": "[site du médiateur à compléter]",
-  "linkedin": "https://www.linkedin.com/in/albert-grabar",
+  "linkedin": "https://www.linkedin.com/in/albertgrabar",
   "github": "https://github.com/Grabar001",
-  "techNoirUrl": "https://technoir.albert-grabar.com",
+  "techNoirUrl": "",
   "techNoirRepo": "https://github.com/Grabar001",
   "cv": {
     "fr": "files/cv-albert-grabar-fr.pdf",

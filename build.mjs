@@ -22,7 +22,40 @@ const readJson = (file) => JSON.parse(fs.readFileSync(path.join(ROOT, file), "ut
 const config = readJson("site.config.json");
 
 const LANGS = ["fr", "en"];
-const T = Object.fromEntries(LANGS.map((lang) => [lang, readJson(`src/i18n/${lang}.json`)]));
+// "consumers": false in site.config.json = services for professionals only (no consumer mediator needed).
+// Then the texts in i18n "b2b" replace the ones that speak to private individuals,
+// items marked "b2c": true are dropped and the *-b2b.html legal pages are used.
+const B2C = config.consumers !== false;
+
+function setPath(obj, dotted, value) {
+  const keys = dotted.split(".");
+  let node = obj;
+  for (const k of keys.slice(0, -1)) {
+    if (!(k in node)) throw new Error(`b2b override: unknown path ${dotted}`);
+    node = node[k];
+  }
+  if (!(keys.at(-1) in node)) throw new Error(`b2b override: unknown path ${dotted}`);
+  node[keys.at(-1)] = value;
+}
+
+function dropB2C(node) {
+  if (Array.isArray(node)) return node.filter((x) => !(x && typeof x === "object" && x.b2c)).map(dropB2C);
+  if (node && typeof node === "object") {
+    for (const k of Object.keys(node)) node[k] = dropB2C(node[k]);
+  }
+  return node;
+}
+
+function loadTexts(lang) {
+  const t = readJson(`src/i18n/${lang}.json`);
+  const overrides = t.b2b || {};
+  delete t.b2b;
+  if (B2C) return t;
+  for (const [dotted, value] of Object.entries(overrides)) setPath(t, dotted, value);
+  return dropB2C(t);
+}
+
+const T = Object.fromEntries(LANGS.map((lang) => [lang, loadTexts(lang)]));
 
 // Page id → file name in each language
 const PAGES = {
@@ -245,6 +278,7 @@ function faqBlock(ctx, items) {
 }
 
 function consumerNote(ctx) {
+  if (!B2C) return "";
   const s = ctx.t.services;
   const link = `<a href="${ctx.link("terms")}">${esc(s.termsLinkText)}</a>`;
   return `<div class="notice consumer-note" data-reveal>
@@ -269,6 +303,7 @@ function workCards(ctx, level) {
         }
       }
       const links = p.links
+        .filter((l) => l.href.replace(/\{\{(\w+)\}\}/g, (m, key) => config[key] ?? m) !== "")
         .map((l) => {
           let href = l.href.replace(/\{\{(\w+)\}\}/g, (m, key) => config[key] ?? m);
           if (href.startsWith("demos/")) href = ctx.asset(href);
@@ -316,7 +351,7 @@ const render = {
 
 <div class="marquee" aria-hidden="true"><div class="marquee-track">${marqueeList}${marqueeList}</div></div>
 
-<section class="section"><div class="container grid grid-3 doors" data-stagger>
+<section class="section"><div class="container grid grid-${h.doors.length} doors" data-stagger>
 ${h.doors
   .map(
     (d) => `<a class="card door" href="${ctx.link(d.page)}">
@@ -499,7 +534,7 @@ ${ctaBand(ctx)}`;
         <div class="field"><label for="f-name">${ctx.txt(F.name)} *</label><input type="text" id="f-name" name="name" required autocomplete="name" maxlength="120"></div>
         <div class="field"><label for="f-email">${ctx.txt(F.email)} *</label><input type="email" id="f-email" name="email" required autocomplete="email" maxlength="160"></div>
       </div>
-      <fieldset class="field choice">
+      ${B2C ? `<fieldset class="field choice">
         <legend>${ctx.txt(F.client)} *</legend>
         <div class="choice-options">${Object.entries(c.clients)
           .map(
@@ -508,7 +543,7 @@ ${ctaBand(ctx)}`;
           )
           .join("")}</div>
       </fieldset>
-      <div class="field" data-company><label for="f-company">${ctx.txt(F.company)} ${opt}</label><input type="text" id="f-company" name="company" autocomplete="organization" maxlength="200"></div>
+      <div class="field" data-company><label for="f-company">${ctx.txt(F.company)} ${opt}</label><input type="text" id="f-company" name="company" autocomplete="organization" maxlength="200"></div>` : `<div class="field"><label for="f-company">${ctx.txt(F.company)} *</label><input type="text" id="f-company" name="company" required autocomplete="organization" maxlength="200"></div>`}
       <div class="form-row">
         <div class="field"><label for="f-need">${ctx.txt(F.need)} *</label><select id="f-need" name="need" required><option value="">${esc(c.choose)}</option>${Object.entries(c.needs)
           .map(([value, label]) => `<option value="${value}">${ctx.txt(label)}</option>`)
@@ -520,6 +555,7 @@ ${ctaBand(ctx)}`;
       <div class="field"><label for="f-link">${ctx.txt(F.link)} ${opt}</label><input type="url" id="f-link" name="link" placeholder="https://" maxlength="300"></div>
       <div class="field"><label for="f-message">${ctx.txt(F.message)} *</label><textarea id="f-message" name="message" required minlength="10" maxlength="4000"></textarea></div>
       <div class="field"><label for="f-deadline">${ctx.txt(F.deadline)} ${opt}</label><input type="text" id="f-deadline" name="deadline" maxlength="120"></div>
+      ${B2C ? "" : `<label class="check"><input type="checkbox" name="pro" value="yes" required><span>${ctx.txt(F.pro)} *</span></label>`}
       <p class="small muted">${ctx.txt(c.privacy, { email: mail, privacyLink: `<a href="${ctx.link("privacy")}">${esc(c.privacyLink)}</a>` })}</p>
       <div><button class="btn" type="submit">${esc(c.submit)}</button></div>
     </form>
@@ -660,7 +696,9 @@ ${ctaBand(ctx)}`;
 
 function legalPage(ctx, id) {
   const meta = ctx.t[id];
-  const raw = fs.readFileSync(path.join(SRC, "content", ctx.lang, `${id}.html`), "utf8");
+  const b2bFile = path.join(SRC, "content", ctx.lang, `${id}-b2b.html`);
+  const file = !B2C && fs.existsSync(b2bFile) ? b2bFile : path.join(SRC, "content", ctx.lang, `${id}.html`);
+  const raw = fs.readFileSync(file, "utf8");
   const content = raw.replace(/\{\{(\w+)\}\}/g, (match, key) => {
     if (key === "privacyHref") return ctx.link("privacy");
     if (key === "termsHref") return ctx.link("terms");
@@ -715,6 +753,7 @@ write(
     .readFileSync(path.join(SRC, "php/contact.php"), "utf8")
     .replace("__TO_EMAIL__", config.formRecipient)
     .replace("__FROM_EMAIL__", config.formSender)
+    .replace("__CONSUMERS__", B2C ? "true" : "false")
 );
 
 // Pages
@@ -750,6 +789,7 @@ write("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${config.baseUrl}/sitem
 
 // Checks: details that must be filled before going live
 for (const [key, value] of Object.entries(config)) {
+  if (!B2C && key.startsWith("mediator")) continue; // no consumer mediator needed for professionals only
   if (typeof value === "string" && /À COMPLÉTER|à compléter|\[/.test(value)) {
     warn(`site.config.json → "${key}" ещё не заполнен: ${value}`);
   }
