@@ -76,7 +76,8 @@
         "title": "Vous êtes un particulier",
         "text": "Un portfolio, un CV en ligne, un site pour un événement, un blog WordPress à réparer ou une app pour un projet personnel : devis écrit, et vos droits de consommateur s'appliquent.",
         "link": "Voir les offres",
-        "page": "services"
+        "page": "services",
+        "b2c": true
       }
     ],
     "breaksTitle": "Ce qui casse le plus souvent dans les apps créées avec l'IA",
@@ -103,10 +104,26 @@
       }
     ],
     "stats": [
-      { "value": 24, "unit": " h", "label": "pour une réponse écrite, du lundi au samedi" },
-      { "value": 2, "unit": " jours", "label": "pour un audit complet de votre app" },
-      { "value": 14, "unit": " jours", "label": "de corrections offertes après un lancement" },
-      { "value": 100, "unit": " %", "label": "du code et des accès à vous, après paiement" }
+      {
+        "value": 24,
+        "unit": " h",
+        "label": "pour une réponse écrite, du lundi au samedi"
+      },
+      {
+        "value": 2,
+        "unit": " jours",
+        "label": "pour un audit complet de votre app"
+      },
+      {
+        "value": 14,
+        "unit": " jours",
+        "label": "de corrections offertes après un lancement"
+      },
+      {
+        "value": 100,
+        "unit": " %",
+        "label": "du code et des accès à vous, après paiement"
+      }
     ],
     "pricesTitle": "Tarifs",
     "prices": [
@@ -142,7 +159,8 @@
     "faq": [
       {
         "q": "Travaillez-vous pour les particuliers ?",
-        "a": "Oui : site personnel, portfolio, blog WordPress, app créée avec l'IA pour un projet personnel. Vous recevez un devis écrit et vous gardez vos droits de consommateur : 14 jours de rétractation et médiation gratuite en cas de litige."
+        "a": "Oui : site personnel, portfolio, blog WordPress, app créée avec l'IA pour un projet personnel. Vous recevez un devis écrit et vous gardez vos droits de consommateur : 14 jours de rétractation et médiation gratuite en cas de litige.",
+        "b2c": true
       },
       {
         "q": "Je ne suis pas développeur, est-ce un problème ?",
@@ -224,22 +242,52 @@
               "type": "features",
               "title": "Ce que je vérifie",
               "items": [
-                { "t": "Clés et secrets", "d": "Aucune clé d'API ni aucun mot de passe ne doit être visible dans le code envoyé au navigateur ou dans le dépôt Git." },
-                { "t": "Accès à la base de données", "d": "Les règles d'accès (par exemple Row Level Security sur Supabase) : chaque utilisateur ne lit et ne modifie que ses propres données." },
-                { "t": "Connexion et comptes", "d": "Inscription, mot de passe oublié, sessions, pages privées et rôles administrateur." },
-                { "t": "Paiement", "d": "Stripe en mode réel : montants vérifiés côté serveur, webhooks, reçus, échecs de paiement et remboursements." },
-                { "t": "Données personnelles et RGPD", "d": "Quelles données sont collectées et où elles sont stockées ; mentions légales, politique de confidentialité, cookies." },
-                { "t": "Performances et Google", "d": "Temps de chargement, version mobile, titres et descriptions des pages." }
+                {
+                  "t": "Clés et secrets",
+                  "d": "Aucune clé d'API ni aucun mot de passe ne doit être visible dans le code envoyé au navigateur ou dans le dépôt Git."
+                },
+                {
+                  "t": "Accès à la base de données",
+                  "d": "Les règles d'accès (par exemple Row Level Security sur Supabase) : chaque utilisateur ne lit et ne modifie que ses propres données."
+                },
+                {
+                  "t": "Connexion et comptes",
+                  "d": "Inscription, mot de passe oublié, sessions, pages privées et rôles administrateur."
+                },
+                {
+                  "t": "Paiement",
+                  "d": "Stripe en mode réel : montants vérifiés côté serveur, webhooks, reçus, échecs de paiement et remboursements."
+                },
+                {
+                  "t": "Données personnelles et RGPD",
+                  "d": "Quelles données sont collectées et où elles sont stockées ; mentions légales, politique de confidentialité, cookies."
+                },
+                {
+                  "t": "Performances et Google",
+                  "d": "Temps de chargement, version mobile, titres et descriptions des pages."
+                }
               ]
             },
             {
               "type": "steps",
               "title": "Comment ça se passe",
               "items": [
-                { "t": "Vous m'écrivez", "d": "Le lien de l'app, l'outil utilisé et ce qu'elle doit faire. Je confirme le prix (150 € ou 250 €) par écrit." },
-                { "t": "Vous payez et donnez les accès", "d": "Un accès en lecture au code (GitHub) et un compte de test. Je n'ai jamais besoin de vos mots de passe personnels." },
-                { "t": "J'analyse pendant 2 jours ouvrés", "d": "Lecture du code, tests dans le navigateur, vérification de la base de données et du paiement en mode test." },
-                { "t": "Vous recevez le rapport", "d": "Les problèmes classés par gravité (critique, important, mineur), expliqués en langage simple, avec un plan de correction et un prix fixe." }
+                {
+                  "t": "Vous m'écrivez",
+                  "d": "Le lien de l'app, l'outil utilisé et ce qu'elle doit faire. Je confirme le prix (150 € ou 250 €) par écrit."
+                },
+                {
+                  "t": "Vous payez et donnez les accès",
+                  "d": "Un accès en lecture au code (GitHub) et un compte de test. Je n'ai jamais besoin de vos mots de passe personnels."
+                },
+                {
+                  "t": "J'analyse pendant 2 jours ouvrés",
+                  "d": "Lecture du code, tests dans le navigateur, vérification de la base de données et du paiement en mode test."
+                },
+                {
+                  "t": "Vous recevez le rapport",
+                  "d": "Les problèmes classés par gravité (critique, important, mineur), expliqués en langage simple, avec un plan de correction et un prix fixe."
+                }
               ]
             },
             {
@@ -335,25 +383,64 @@
               "type": "features",
               "title": "Ce qui est inclus",
               "items": [
-                { "t": "Corrections critiques", "d": "Tous les problèmes classés « critique » dans l'audit sont corrigés et testés." },
-                { "t": "Connexion sécurisée", "d": "Inscription, connexion, mot de passe oublié et protection des pages privées." },
-                { "t": "Paiement Stripe réel", "d": "Passage du mode test au mode réel : paiement, webhooks, reçus par e-mail, échecs de paiement." },
-                { "t": "RGPD", "d": "Politique de confidentialité, mentions légales, suppression des comptes et des données, consentement aux cookies si nécessaire." },
-                { "t": "Mise en ligne", "d": "Votre nom de domaine en HTTPS, variables d'environnement, hébergement à votre nom." },
-                { "t": "Sauvegardes", "d": "Sauvegarde automatique de la base de données et restauration testée une fois avec vous." },
-                { "t": "Notice de prise en main", "d": "Un document écrit : comment l'app est organisée, comment la mettre à jour, que faire en cas de problème." },
-                { "t": "14 jours de corrections offertes", "d": "Après la livraison, je corrige gratuitement les défauts liés à mon travail." }
+                {
+                  "t": "Corrections critiques",
+                  "d": "Tous les problèmes classés « critique » dans l'audit sont corrigés et testés."
+                },
+                {
+                  "t": "Connexion sécurisée",
+                  "d": "Inscription, connexion, mot de passe oublié et protection des pages privées."
+                },
+                {
+                  "t": "Paiement Stripe réel",
+                  "d": "Passage du mode test au mode réel : paiement, webhooks, reçus par e-mail, échecs de paiement."
+                },
+                {
+                  "t": "RGPD",
+                  "d": "Politique de confidentialité, mentions légales, suppression des comptes et des données, consentement aux cookies si nécessaire."
+                },
+                {
+                  "t": "Mise en ligne",
+                  "d": "Votre nom de domaine en HTTPS, variables d'environnement, hébergement à votre nom."
+                },
+                {
+                  "t": "Sauvegardes",
+                  "d": "Sauvegarde automatique de la base de données et restauration testée une fois avec vous."
+                },
+                {
+                  "t": "Notice de prise en main",
+                  "d": "Un document écrit : comment l'app est organisée, comment la mettre à jour, que faire en cas de problème."
+                },
+                {
+                  "t": "14 jours de corrections offertes",
+                  "d": "Après la livraison, je corrige gratuitement les défauts liés à mon travail."
+                }
               ]
             },
             {
               "type": "steps",
               "title": "Comment ça se passe",
               "items": [
-                { "t": "L'audit", "d": "Si vous n'en avez pas encore, on commence par là. Son prix est déduit du Lancement." },
-                { "t": "Le devis écrit", "d": "La liste des travaux, le prix fixe et la date de livraison. Il est valable 30 jours." },
-                { "t": "Les travaux", "d": "5 à 10 jours ouvrés après l'acompte et la réception des accès. Vous suivez l'avancement par écrit." },
-                { "t": "La livraison", "d": "L'app en ligne, le code à jour sur votre dépôt, la notice et la liste des accès. Vous avez 7 jours pour vérifier." },
-                { "t": "Le suivi", "d": "14 jours de corrections offertes, puis maintenance mensuelle sur devis si vous le souhaitez." }
+                {
+                  "t": "L'audit",
+                  "d": "Si vous n'en avez pas encore, on commence par là. Son prix est déduit du Lancement."
+                },
+                {
+                  "t": "Le devis écrit",
+                  "d": "La liste des travaux, le prix fixe et la date de livraison. Il est valable 30 jours."
+                },
+                {
+                  "t": "Les travaux",
+                  "d": "5 à 10 jours ouvrés après l'acompte et la réception des accès. Vous suivez l'avancement par écrit."
+                },
+                {
+                  "t": "La livraison",
+                  "d": "L'app en ligne, le code à jour sur votre dépôt, la notice et la liste des accès. Vous avez 7 jours pour vérifier."
+                },
+                {
+                  "t": "Le suivi",
+                  "d": "14 jours de corrections offertes, puis maintenance mensuelle sur devis si vous le souhaitez."
+                }
               ]
             },
             {
@@ -438,25 +525,64 @@
               "type": "features",
               "title": "Ce qui est inclus",
               "items": [
-                { "t": "Jusqu'à 5 pages — 390 €", "d": "Par exemple : accueil, services, à propos, galerie, contact." },
-                { "t": "Jusqu'à 10 pages — 690 €", "d": "Avec une galerie photo ou une réservation en ligne (par un outil de réservation existant)." },
-                { "t": "Version mobile", "d": "Le site s'adapte au téléphone, à la tablette et à l'ordinateur." },
-                { "t": "Formulaire de contact", "d": "Les demandes arrivent dans votre boîte e-mail, avec une protection contre le spam." },
-                { "t": "Référencement de base", "d": "Titres, descriptions, plan du site pour Google ; fiche Google Business Profile pour les entreprises." },
-                { "t": "Mentions légales et confidentialité", "d": "Les pages obligatoires, adaptées à votre site, sans bandeau cookies inutile." },
-                { "t": "Mise en ligne", "d": "Sur votre nom de domaine, en HTTPS, avec un hébergement à votre nom." },
-                { "t": "Deux séries de retours", "d": "Vous relisez le site en préproduction et je fais vos modifications deux fois avant la mise en ligne." }
+                {
+                  "t": "Jusqu'à 5 pages — 390 €",
+                  "d": "Par exemple : accueil, services, à propos, galerie, contact."
+                },
+                {
+                  "t": "Jusqu'à 10 pages — 690 €",
+                  "d": "Avec une galerie photo ou une réservation en ligne (par un outil de réservation existant)."
+                },
+                {
+                  "t": "Version mobile",
+                  "d": "Le site s'adapte au téléphone, à la tablette et à l'ordinateur."
+                },
+                {
+                  "t": "Formulaire de contact",
+                  "d": "Les demandes arrivent dans votre boîte e-mail, avec une protection contre le spam."
+                },
+                {
+                  "t": "Référencement de base",
+                  "d": "Titres, descriptions, plan du site pour Google ; fiche Google Business Profile pour les entreprises."
+                },
+                {
+                  "t": "Mentions légales et confidentialité",
+                  "d": "Les pages obligatoires, adaptées à votre site, sans bandeau cookies inutile."
+                },
+                {
+                  "t": "Mise en ligne",
+                  "d": "Sur votre nom de domaine, en HTTPS, avec un hébergement à votre nom."
+                },
+                {
+                  "t": "Deux séries de retours",
+                  "d": "Vous relisez le site en préproduction et je fais vos modifications deux fois avant la mise en ligne."
+                }
               ]
             },
             {
               "type": "steps",
               "title": "Comment ça se passe",
               "items": [
-                { "t": "Vous m'écrivez", "d": "Votre activité ou votre projet, les pages souhaitées et 2 ou 3 sites que vous aimez." },
-                { "t": "Le devis écrit", "d": "Les pages, le prix fixe et la date de mise en ligne." },
-                { "t": "Vos contenus", "d": "Textes, photos, logo, horaires. Je peux reformuler vos textes pour le web." },
-                { "t": "La création", "d": "5 jours ouvrés après l'acompte et la réception des contenus. Vous recevez un lien de prévisualisation." },
-                { "t": "La mise en ligne", "d": "Après vos retours, le site part sur votre domaine, avec une notice écrite et la liste des accès." }
+                {
+                  "t": "Vous m'écrivez",
+                  "d": "Votre activité ou votre projet, les pages souhaitées et 2 ou 3 sites que vous aimez."
+                },
+                {
+                  "t": "Le devis écrit",
+                  "d": "Les pages, le prix fixe et la date de mise en ligne."
+                },
+                {
+                  "t": "Vos contenus",
+                  "d": "Textes, photos, logo, horaires. Je peux reformuler vos textes pour le web."
+                },
+                {
+                  "t": "La création",
+                  "d": "5 jours ouvrés après l'acompte et la réception des contenus. Vous recevez un lien de prévisualisation."
+                },
+                {
+                  "t": "La mise en ligne",
+                  "d": "Après vos retours, le site part sur votre domaine, avec une notice écrite et la liste des accès."
+                }
               ]
             },
             {
@@ -495,7 +621,8 @@
             },
             {
               "q": "Je suis un particulier. Puis-je commander ?",
-              "a": "Oui. Vous recevez un devis écrit et vous gardez vos droits de consommateur : 14 jours de rétractation et médiation gratuite en cas de litige."
+              "a": "Oui. Vous recevez un devis écrit et vous gardez vos droits de consommateur : 14 jours de rétractation et médiation gratuite en cas de litige.",
+              "b2c": true
             }
           ]
         }
@@ -539,22 +666,52 @@
               "type": "features",
               "title": "Exemples de tâches",
               "items": [
-                { "t": "Un bug à corriger", "d": "Page blanche, erreur 500, fonctionnalité cassée après une mise à jour." },
-                { "t": "Une mise à jour", "d": "PHP, Symfony, WordPress, thème ou extensions, avec une sauvegarde avant d'intervenir." },
-                { "t": "Un conflit d'extensions", "d": "Je trouve l'extension en cause, puis je la règle ou la remplace." },
-                { "t": "Une page lente", "d": "Images trop lourdes, cache, requêtes à la base de données." },
-                { "t": "Un formulaire qui n'envoie plus", "d": "Envoi des e-mails, protection contre le spam, messages d'erreur." }
+                {
+                  "t": "Un bug à corriger",
+                  "d": "Page blanche, erreur 500, fonctionnalité cassée après une mise à jour."
+                },
+                {
+                  "t": "Une mise à jour",
+                  "d": "PHP, Symfony, WordPress, thème ou extensions, avec une sauvegarde avant d'intervenir."
+                },
+                {
+                  "t": "Un conflit d'extensions",
+                  "d": "Je trouve l'extension en cause, puis je la règle ou la remplace."
+                },
+                {
+                  "t": "Une page lente",
+                  "d": "Images trop lourdes, cache, requêtes à la base de données."
+                },
+                {
+                  "t": "Un formulaire qui n'envoie plus",
+                  "d": "Envoi des e-mails, protection contre le spam, messages d'erreur."
+                }
               ]
             },
             {
               "type": "steps",
               "title": "Comment ça se passe",
               "items": [
-                { "t": "Vous décrivez le problème", "d": "L'adresse du site, ce qui se passe, depuis quand, avec une capture d'écran si possible." },
-                { "t": "Diagnostic et devis", "d": "Je réponds par écrit avec la cause probable, le temps estimé et le prix : forfait ou taux horaire." },
-                { "t": "Sauvegarde", "d": "Avant toute intervention, je fais une sauvegarde complète du site." },
-                { "t": "Correction et test", "d": "Sur une copie du site quand c'est possible, puis en ligne." },
-                { "t": "Compte rendu", "d": "Ce qui a été fait, ce qui reste à surveiller et le temps passé." }
+                {
+                  "t": "Vous décrivez le problème",
+                  "d": "L'adresse du site, ce qui se passe, depuis quand, avec une capture d'écran si possible."
+                },
+                {
+                  "t": "Diagnostic et devis",
+                  "d": "Je réponds par écrit avec la cause probable, le temps estimé et le prix : forfait ou taux horaire."
+                },
+                {
+                  "t": "Sauvegarde",
+                  "d": "Avant toute intervention, je fais une sauvegarde complète du site."
+                },
+                {
+                  "t": "Correction et test",
+                  "d": "Sur une copie du site quand c'est possible, puis en ligne."
+                },
+                {
+                  "t": "Compte rendu",
+                  "d": "Ce qui a été fait, ce qui reste à surveiller et le temps passé."
+                }
               ]
             },
             {
@@ -602,7 +759,7 @@
   },
   "work": {
     "title": "Réalisations — Albert Grabar",
-    "description": "TECH NOIR, boutique en ligne en Symfony et React, et des sites vitrines de démonstration pour artisans et cafés.",
+    "description": "TECH NOIR, boutique en ligne en Symfony et React, et des sites vitrines de démonstration pour un artisan, un café et un salon de coiffure.",
     "h1": "Réalisations",
     "lead": "Un projet personnel et des sites de démonstration. Les projets de clients seront ajoutés avec leur accord.",
     "projects": [
@@ -648,6 +805,19 @@
           {
             "label": "Voir la démo",
             "href": "demos/cafe-brindille/index.html"
+          }
+        ]
+      },
+      {
+        "id": "salon",
+        "tag": "Démo · entreprise fictive",
+        "name": "Studio Éclat",
+        "subtitle": "Site vitrine pour un salon de coiffure",
+        "text": "Prestations et tarifs, équipe, galerie avant/après et réservation en ligne. Exemple de ce que vous obtenez pour 690 €.",
+        "links": [
+          {
+            "label": "Voir la démo",
+            "href": "demos/studio-eclat/index.html"
           }
         ]
       }
@@ -725,7 +895,8 @@
       "link": "Lien vers l'app ou le site",
       "message": "Le projet en trois lignes",
       "budget": "Budget",
-      "deadline": "Délai souhaité"
+      "deadline": "Délai souhaité",
+      "pro": "Je fais cette demande pour mon activité professionnelle"
     },
     "clients": {
       "particulier": "Un particulier",
@@ -753,7 +924,9 @@
     "asideEmail": "E-mail",
     "asideReply": "Réponse",
     "asideReplyText": "Par écrit sous 24 h, du lundi au samedi.",
-    "asidePlatforms": "Plateformes"
+    "asidePlatforms": "Plateformes",
+    "asidePhone": "Téléphone",
+    "asidePhoneText": "SMS ou message de préférence : je réponds par écrit."
   },
   "thanks": {
     "title": "Merci — demande envoyée",
@@ -785,5 +958,41 @@
     "home": "Accueil",
     "other": "English version"
   },
-  "updated": "Mise à jour : {{date}}"
+  "updated": "Mise à jour : {{date}}",
+  "b2b": {
+    "footer.audience": "Services réservés aux professionnels : entreprises, indépendants, associations. Devis écrit avant chaque mission.",
+    "home.description": "Audit, sécurité, paiement Stripe et RGPD pour les applications créées avec Lovable, Bolt ou Cursor, sites vitrines, corrections PHP et WordPress. Pour les entreprises, indépendants et associations.",
+    "home.prices.2.name": "Site vitrine",
+    "services.description": "Audit d'application IA dès 150 €, lancement dès 490 €, site vitrine dès 390 €, corrections PHP, Symfony et WordPress. Pour les professionnels, devis écrit avant chaque mission.",
+    "services.lead": "Quatre offres pour les entreprises, les indépendants et les associations, des prix publics et un devis écrit avant chaque mission.",
+    "services.labels.audience": "Entreprises, indépendants, associations",
+    "services.offers.0.for": "Créateurs, start-up et petites entreprises qui ont créé une application avec Lovable, Bolt, Cursor, v0 ou Replit.",
+    "services.offers.0.detail.description": "Audit de sécurité, de paiement et de RGPD pour les applications créées avec Lovable, Bolt, Cursor, v0 ou Replit. Rapport écrit en 2 jours ouvrés, prix fixe.",
+    "services.offers.0.detail.sections.0.items": [
+      "Créateurs et indépendants : vous lancez une activité autour de votre app et vous voulez savoir si elle est sûre.",
+      "Petites entreprises : vous allez ouvrir l'app à de vrais clients, encaisser des paiements ou collecter des données personnelles.",
+      "Agences et indépendants non techniques : vous voulez un second avis avant de livrer à votre client."
+    ],
+    "services.offers.1.for": "Créateurs et entreprises qui veulent passer du prototype à une app utilisable par de vrais clients.",
+    "services.offers.2.name": "Site vitrine",
+    "services.offers.2.for": "Artisans, cafés, salons, indépendants, associations.",
+    "services.offers.2.detail.title": "Site vitrine pour votre activité — 390 € ou 690 € | Albert Grabar",
+    "services.offers.2.detail.description": "Un site clair, rapide et adapté au mobile pour votre activité : jusqu'à 5 pages pour 390 €, jusqu'à 10 pages avec réservation ou galerie pour 690 €. En ligne en 5 jours ouvrés.",
+    "services.offers.2.detail.h1": "Un site vitrine pour votre activité",
+    "services.offers.2.detail.lead": "Artisan, café, salon, indépendant, association : un site clair et rapide, en ligne en 5 jours ouvrés, à prix fixe.",
+    "services.offers.2.detail.sections.0.items": [
+      "Artisans, commerçants, cafés, salons : vos services, vos horaires, votre zone et un formulaire de contact.",
+      "Indépendants et associations : présenter votre offre ou vos actions et recevoir des demandes.",
+      "Consultants et professions libérales : un portfolio ou une page de présentation pour trouver des clients."
+    ],
+    "services.offers.3.for": "Entreprises, indépendants et associations : sites et applications existants.",
+    "services.offers.3.detail.sections.0.items.0": "Le site WordPress d'une entreprise, d'un indépendant ou d'une association.",
+    "contact.description": "Décrivez votre projet en trois lignes : réponse écrite sous 24 h, du lundi au samedi.",
+    "contact.fields.email": "E-mail professionnel",
+    "contact.needs.site": "Site vitrine",
+    "about.description": "De la Légion étrangère (2016–2024) au titre professionnel Développeur web et web mobile. J'aide les entreprises et les indépendants à lancer des applications créées avec l'IA et des sites qui marchent.",
+    "about.paragraphs.2": "Aujourd'hui, j'aide les créateurs d'applications faites avec l'IA à passer du prototype au vrai produit, et les petites entreprises à avoir un site qui marche. Je travaille seul, en micro-entreprise, avec des outils d'IA que je contrôle.",
+    "legal.description": "Éditeur, hébergeur et informations légales du site albert-grabar.com.",
+    "terms.description": "Conditions générales de vente des prestations d'Albert Grabar EI, réservées aux professionnels."
+  }
 }

@@ -76,7 +76,8 @@
         "title": "You're a private individual",
         "text": "A portfolio, an online CV, an event website, a WordPress blog to repair or an app for a personal project: you get a written quote, and your consumer rights apply.",
         "link": "See the offers",
-        "page": "services"
+        "page": "services",
+        "b2c": true
       }
     ],
     "breaksTitle": "What usually breaks in AI-built apps",
@@ -103,10 +104,26 @@
       }
     ],
     "stats": [
-      { "value": 24, "unit": "h", "label": "for a written reply, Monday to Saturday" },
-      { "value": 2, "unit": " days", "label": "for a full audit of your app" },
-      { "value": 14, "unit": " days", "label": "of free fixes after a launch" },
-      { "value": 100, "unit": "%", "label": "of the code and access is yours once paid" }
+      {
+        "value": 24,
+        "unit": "h",
+        "label": "for a written reply, Monday to Saturday"
+      },
+      {
+        "value": 2,
+        "unit": " days",
+        "label": "for a full audit of your app"
+      },
+      {
+        "value": 14,
+        "unit": " days",
+        "label": "of free fixes after a launch"
+      },
+      {
+        "value": 100,
+        "unit": "%",
+        "label": "of the code and access is yours once paid"
+      }
     ],
     "pricesTitle": "Pricing",
     "prices": [
@@ -142,7 +159,8 @@
     "faq": [
       {
         "q": "Do you work with private individuals?",
-        "a": "Yes: personal websites, portfolios, WordPress blogs, AI-built apps for personal projects. You get a written quote and keep your consumer rights: a 14-day withdrawal period and free mediation if there is a dispute."
+        "a": "Yes: personal websites, portfolios, WordPress blogs, AI-built apps for personal projects. You get a written quote and keep your consumer rights: a 14-day withdrawal period and free mediation if there is a dispute.",
+        "b2c": true
       },
       {
         "q": "I'm not a developer — is that a problem?",
@@ -224,22 +242,52 @@
               "type": "features",
               "title": "What I check",
               "items": [
-                { "t": "Keys and secrets", "d": "No API key or password should be visible in the code sent to the browser or in the Git repository." },
-                { "t": "Database access", "d": "Access rules (for example Row Level Security on Supabase): each user reads and changes only their own data." },
-                { "t": "Login and accounts", "d": "Sign-up, password reset, sessions, private pages and admin roles." },
-                { "t": "Payments", "d": "Stripe in live mode: amounts checked on the server, webhooks, receipts, failed payments and refunds." },
-                { "t": "Personal data and GDPR", "d": "What data is collected and where it's stored; legal notice, privacy policy, cookies." },
-                { "t": "Performance and Google", "d": "Loading time, mobile version, page titles and descriptions." }
+                {
+                  "t": "Keys and secrets",
+                  "d": "No API key or password should be visible in the code sent to the browser or in the Git repository."
+                },
+                {
+                  "t": "Database access",
+                  "d": "Access rules (for example Row Level Security on Supabase): each user reads and changes only their own data."
+                },
+                {
+                  "t": "Login and accounts",
+                  "d": "Sign-up, password reset, sessions, private pages and admin roles."
+                },
+                {
+                  "t": "Payments",
+                  "d": "Stripe in live mode: amounts checked on the server, webhooks, receipts, failed payments and refunds."
+                },
+                {
+                  "t": "Personal data and GDPR",
+                  "d": "What data is collected and where it's stored; legal notice, privacy policy, cookies."
+                },
+                {
+                  "t": "Performance and Google",
+                  "d": "Loading time, mobile version, page titles and descriptions."
+                }
               ]
             },
             {
               "type": "steps",
               "title": "How it works",
               "items": [
-                { "t": "You write to me", "d": "The app link, the tool you used and what it should do. I confirm the price (€150 or €250) in writing." },
-                { "t": "You pay and share access", "d": "Read access to the code (GitHub) and a test account. I never need your personal passwords." },
-                { "t": "I review it for 2 working days", "d": "Reading the code, testing in the browser, checking the database and payments in test mode." },
-                { "t": "You get the report", "d": "Issues ranked by severity (critical, important, minor), explained in plain language, with a fix plan and a fixed price." }
+                {
+                  "t": "You write to me",
+                  "d": "The app link, the tool you used and what it should do. I confirm the price (€150 or €250) in writing."
+                },
+                {
+                  "t": "You pay and share access",
+                  "d": "Read access to the code (GitHub) and a test account. I never need your personal passwords."
+                },
+                {
+                  "t": "I review it for 2 working days",
+                  "d": "Reading the code, testing in the browser, checking the database and payments in test mode."
+                },
+                {
+                  "t": "You get the report",
+                  "d": "Issues ranked by severity (critical, important, minor), explained in plain language, with a fix plan and a fixed price."
+                }
               ]
             },
             {
@@ -335,25 +383,64 @@
               "type": "features",
               "title": "What's included",
               "items": [
-                { "t": "Critical fixes", "d": "Every issue rated \"critical\" in the audit is fixed and tested." },
-                { "t": "Secure login", "d": "Sign-up, login, password reset and protection of private pages." },
-                { "t": "Live Stripe payments", "d": "Moving from test mode to live mode: checkout, webhooks, email receipts, failed payments." },
-                { "t": "GDPR", "d": "Privacy policy, legal notice, account and data deletion, cookie consent where needed." },
-                { "t": "Going live", "d": "Your domain over HTTPS, environment variables, hosting in your name." },
-                { "t": "Backups", "d": "Automatic database backups and a restore tested once with you." },
-                { "t": "Handover guide", "d": "A written document: how the app is organised, how to update it, what to do if something goes wrong." },
-                { "t": "14 days of free fixes", "d": "After delivery, I fix defects caused by my work for free." }
+                {
+                  "t": "Critical fixes",
+                  "d": "Every issue rated \"critical\" in the audit is fixed and tested."
+                },
+                {
+                  "t": "Secure login",
+                  "d": "Sign-up, login, password reset and protection of private pages."
+                },
+                {
+                  "t": "Live Stripe payments",
+                  "d": "Moving from test mode to live mode: checkout, webhooks, email receipts, failed payments."
+                },
+                {
+                  "t": "GDPR",
+                  "d": "Privacy policy, legal notice, account and data deletion, cookie consent where needed."
+                },
+                {
+                  "t": "Going live",
+                  "d": "Your domain over HTTPS, environment variables, hosting in your name."
+                },
+                {
+                  "t": "Backups",
+                  "d": "Automatic database backups and a restore tested once with you."
+                },
+                {
+                  "t": "Handover guide",
+                  "d": "A written document: how the app is organised, how to update it, what to do if something goes wrong."
+                },
+                {
+                  "t": "14 days of free fixes",
+                  "d": "After delivery, I fix defects caused by my work for free."
+                }
               ]
             },
             {
               "type": "steps",
               "title": "How it works",
               "items": [
-                { "t": "The audit", "d": "If you don't have one yet, we start there. Its price is deducted from Launch." },
-                { "t": "The written quote", "d": "The list of work, the fixed price and the delivery date. Valid for 30 days." },
-                { "t": "The work", "d": "5 to 10 working days after the deposit and access. You follow progress in writing." },
-                { "t": "Delivery", "d": "The live app, up-to-date code in your repository, the guide and the list of access. You have 7 days to check." },
-                { "t": "Aftercare", "d": "14 days of free fixes, then monthly maintenance on quote if you want it." }
+                {
+                  "t": "The audit",
+                  "d": "If you don't have one yet, we start there. Its price is deducted from Launch."
+                },
+                {
+                  "t": "The written quote",
+                  "d": "The list of work, the fixed price and the delivery date. Valid for 30 days."
+                },
+                {
+                  "t": "The work",
+                  "d": "5 to 10 working days after the deposit and access. You follow progress in writing."
+                },
+                {
+                  "t": "Delivery",
+                  "d": "The live app, up-to-date code in your repository, the guide and the list of access. You have 7 days to check."
+                },
+                {
+                  "t": "Aftercare",
+                  "d": "14 days of free fixes, then monthly maintenance on quote if you want it."
+                }
               ]
             },
             {
@@ -438,25 +525,64 @@
               "type": "features",
               "title": "What's included",
               "items": [
-                { "t": "Up to 5 pages — €390", "d": "For example: home, services, about, gallery, contact." },
-                { "t": "Up to 10 pages — €690", "d": "With a photo gallery or online booking (through an existing booking tool)." },
-                { "t": "Mobile version", "d": "The site adapts to phones, tablets and computers." },
-                { "t": "Contact form", "d": "Requests arrive in your inbox, with spam protection." },
-                { "t": "Basic SEO", "d": "Titles, descriptions, a sitemap for Google; Google Business Profile for businesses." },
-                { "t": "Legal notice and privacy", "d": "The required pages, adapted to your site, with no needless cookie banner." },
-                { "t": "Going live", "d": "On your domain, over HTTPS, with hosting in your name." },
-                { "t": "Two rounds of feedback", "d": "You review the site on a preview link and I make your changes twice before it goes live." }
+                {
+                  "t": "Up to 5 pages — €390",
+                  "d": "For example: home, services, about, gallery, contact."
+                },
+                {
+                  "t": "Up to 10 pages — €690",
+                  "d": "With a photo gallery or online booking (through an existing booking tool)."
+                },
+                {
+                  "t": "Mobile version",
+                  "d": "The site adapts to phones, tablets and computers."
+                },
+                {
+                  "t": "Contact form",
+                  "d": "Requests arrive in your inbox, with spam protection."
+                },
+                {
+                  "t": "Basic SEO",
+                  "d": "Titles, descriptions, a sitemap for Google; Google Business Profile for businesses."
+                },
+                {
+                  "t": "Legal notice and privacy",
+                  "d": "The required pages, adapted to your site, with no needless cookie banner."
+                },
+                {
+                  "t": "Going live",
+                  "d": "On your domain, over HTTPS, with hosting in your name."
+                },
+                {
+                  "t": "Two rounds of feedback",
+                  "d": "You review the site on a preview link and I make your changes twice before it goes live."
+                }
               ]
             },
             {
               "type": "steps",
               "title": "How it works",
               "items": [
-                { "t": "You write to me", "d": "Your business or project, the pages you want and 2 or 3 websites you like." },
-                { "t": "The written quote", "d": "The pages, the fixed price and the go-live date." },
-                { "t": "Your content", "d": "Texts, photos, logo, opening hours. I can rewrite your texts for the web." },
-                { "t": "Building", "d": "5 working days after the deposit and your content. You get a preview link." },
-                { "t": "Going live", "d": "After your feedback, the site goes live on your domain, with a written guide and the list of access." }
+                {
+                  "t": "You write to me",
+                  "d": "Your business or project, the pages you want and 2 or 3 websites you like."
+                },
+                {
+                  "t": "The written quote",
+                  "d": "The pages, the fixed price and the go-live date."
+                },
+                {
+                  "t": "Your content",
+                  "d": "Texts, photos, logo, opening hours. I can rewrite your texts for the web."
+                },
+                {
+                  "t": "Building",
+                  "d": "5 working days after the deposit and your content. You get a preview link."
+                },
+                {
+                  "t": "Going live",
+                  "d": "After your feedback, the site goes live on your domain, with a written guide and the list of access."
+                }
               ]
             },
             {
@@ -495,7 +621,8 @@
             },
             {
               "q": "I'm a private individual. Can I order?",
-              "a": "Yes. You get a written quote and keep your consumer rights: a 14-day withdrawal period and free mediation if there is a dispute."
+              "a": "Yes. You get a written quote and keep your consumer rights: a 14-day withdrawal period and free mediation if there is a dispute.",
+              "b2c": true
             }
           ]
         }
@@ -539,22 +666,52 @@
               "type": "features",
               "title": "Typical tasks",
               "items": [
-                { "t": "A bug to fix", "d": "Blank page, error 500, a feature broken after an update." },
-                { "t": "An upgrade", "d": "PHP, Symfony, WordPress, theme or plugins, with a backup before I start." },
-                { "t": "A plugin conflict", "d": "I find the plugin at fault, then configure or replace it." },
-                { "t": "A slow page", "d": "Heavy images, caching, database queries." },
-                { "t": "A form that no longer sends", "d": "Email sending, spam protection, error messages." }
+                {
+                  "t": "A bug to fix",
+                  "d": "Blank page, error 500, a feature broken after an update."
+                },
+                {
+                  "t": "An upgrade",
+                  "d": "PHP, Symfony, WordPress, theme or plugins, with a backup before I start."
+                },
+                {
+                  "t": "A plugin conflict",
+                  "d": "I find the plugin at fault, then configure or replace it."
+                },
+                {
+                  "t": "A slow page",
+                  "d": "Heavy images, caching, database queries."
+                },
+                {
+                  "t": "A form that no longer sends",
+                  "d": "Email sending, spam protection, error messages."
+                }
               ]
             },
             {
               "type": "steps",
               "title": "How it works",
               "items": [
-                { "t": "You describe the problem", "d": "The site address, what happens, since when, with a screenshot if possible." },
-                { "t": "Diagnosis and quote", "d": "I reply in writing with the likely cause, the estimated time and the price: fixed or hourly." },
-                { "t": "Backup", "d": "Before any change, I make a full backup of the site." },
-                { "t": "Fix and test", "d": "On a copy of the site when possible, then live." },
-                { "t": "Report", "d": "What was done, what to keep an eye on and the time spent." }
+                {
+                  "t": "You describe the problem",
+                  "d": "The site address, what happens, since when, with a screenshot if possible."
+                },
+                {
+                  "t": "Diagnosis and quote",
+                  "d": "I reply in writing with the likely cause, the estimated time and the price: fixed or hourly."
+                },
+                {
+                  "t": "Backup",
+                  "d": "Before any change, I make a full backup of the site."
+                },
+                {
+                  "t": "Fix and test",
+                  "d": "On a copy of the site when possible, then live."
+                },
+                {
+                  "t": "Report",
+                  "d": "What was done, what to keep an eye on and the time spent."
+                }
               ]
             },
             {
@@ -602,7 +759,7 @@
   },
   "work": {
     "title": "Work — Albert Grabar",
-    "description": "TECH NOIR, an online store built with Symfony and React, and demo websites for tradespeople and cafés.",
+    "description": "TECH NOIR, an online store built with Symfony and React, and demo websites for a tradesperson, a café and a hair salon.",
     "h1": "Work",
     "lead": "A personal project and demo websites. Client projects will be added with their permission.",
     "projects": [
@@ -648,6 +805,19 @@
           {
             "label": "See the demo",
             "href": "demos/cafe-brindille/index.html"
+          }
+        ]
+      },
+      {
+        "id": "salon",
+        "tag": "Demo · fictional business",
+        "name": "Studio Éclat",
+        "subtitle": "Website for a hair salon (in French)",
+        "text": "Services and prices, team, before/after gallery and online booking. An example of what you get for €690.",
+        "links": [
+          {
+            "label": "See the demo",
+            "href": "demos/studio-eclat/index.html"
           }
         ]
       }
@@ -725,7 +895,8 @@
       "link": "Link to the app or site",
       "message": "The project in three lines",
       "budget": "Budget",
-      "deadline": "Desired deadline"
+      "deadline": "Desired deadline",
+      "pro": "I'm making this request for my business"
     },
     "clients": {
       "particulier": "A private individual",
@@ -753,7 +924,9 @@
     "asideEmail": "Email",
     "asideReply": "Reply time",
     "asideReplyText": "In writing within 24 hours, Monday to Saturday.",
-    "asidePlatforms": "Platforms"
+    "asidePlatforms": "Platforms",
+    "asidePhone": "Phone",
+    "asidePhoneText": "Text messages preferred: I reply in writing."
   },
   "thanks": {
     "title": "Thank you — request sent",
@@ -785,5 +958,41 @@
     "home": "Home",
     "other": "Version française"
   },
-  "updated": "Last updated: {{date}}"
+  "updated": "Last updated: {{date}}",
+  "b2b": {
+    "footer.audience": "Services for businesses only: companies, freelancers, non-profits. A written quote before every job.",
+    "home.description": "Audit, security, Stripe payments and GDPR for apps built with Lovable, Bolt or Cursor, business websites, PHP and WordPress fixes. For companies, freelancers and non-profits.",
+    "home.prices.2.name": "Business website",
+    "services.description": "AI app audit from €150, launch from €490, business website from €390, PHP, Symfony and WordPress fixes. For businesses, written quote before every job.",
+    "services.lead": "Four offers for companies, freelancers and non-profits, public prices and a written quote before every job.",
+    "services.labels.audience": "Companies, freelancers, non-profits",
+    "services.offers.0.for": "Founders, start-ups and small businesses who built an app with Lovable, Bolt, Cursor, v0 or Replit.",
+    "services.offers.0.detail.description": "Security, payment and GDPR audit for apps built with Lovable, Bolt, Cursor, v0 or Replit. Written report in 2 working days, fixed price.",
+    "services.offers.0.detail.sections.0.items": [
+      "Founders and freelancers: you're building a business around your app and want to know if it's safe.",
+      "Small businesses: you're about to open the app to real customers, take payments or collect personal data.",
+      "Non-technical agencies and freelancers: you want a second opinion before delivering to your client."
+    ],
+    "services.offers.1.for": "Founders and businesses turning a prototype into an app real customers can use.",
+    "services.offers.2.name": "Business website",
+    "services.offers.2.for": "Tradespeople, cafés, salons, freelancers, non-profits.",
+    "services.offers.2.detail.title": "Business website — €390 or €690 | Albert Grabar",
+    "services.offers.2.detail.description": "A clear, fast, mobile-friendly website for your business: up to 5 pages for €390, up to 10 pages with booking or gallery for €690. Live in 5 working days.",
+    "services.offers.2.detail.h1": "A website for your business",
+    "services.offers.2.detail.lead": "Tradesperson, café, salon, freelancer, non-profit: a clear, fast website, live in 5 working days, at a fixed price.",
+    "services.offers.2.detail.sections.0.items": [
+      "Tradespeople, shops, cafés, salons: your services, opening hours, area and a contact form.",
+      "Freelancers and non-profits: present your offer or your work and receive requests.",
+      "Consultants and professionals: a portfolio or a presentation page to find clients."
+    ],
+    "services.offers.3.for": "Companies, freelancers and non-profits: existing websites and apps.",
+    "services.offers.3.detail.sections.0.items.0": "The WordPress site of a business, a freelancer or a non-profit.",
+    "contact.description": "Describe your project in three lines: written reply within 24 hours, Monday to Saturday.",
+    "contact.fields.email": "Work email",
+    "contact.needs.site": "Business website",
+    "about.description": "From the French Foreign Legion (2016–2024) to a professional diploma in web and mobile development. I help businesses and freelancers launch AI-built apps and websites that work.",
+    "about.paragraphs.2": "Today I help founders of AI-built apps go from prototype to real product, and small businesses get a website that works. I work solo as a registered French micro-business, using AI tools under my control.",
+    "legal.description": "Publisher, host and legal information for albert-grabar.com.",
+    "terms.description": "Terms of sale for the services of Albert Grabar EI, for business clients only."
+  }
 }

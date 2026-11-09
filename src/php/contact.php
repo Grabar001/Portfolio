@@ -8,6 +8,7 @@
 declare(strict_types=1);
 
 const TO_EMAIL = '__TO_EMAIL__';
+const CONSUMERS = __CONSUMERS__; // false = professionals only (company and "pro" box required)
 const FROM_EMAIL = '__FROM_EMAIL__';
 const SITE_NAME = 'albert-grabar.com';
 const MAX_PER_HOUR = 5;
@@ -17,9 +18,9 @@ const CLIENTS = ['particulier' => 'Particulier', 'professionnel' => 'Professionn
 const BUDGETS = ['0', '1', '2', '3'];
 const BUDGET_LABELS = ['< 300 €', '300–700 €', '700–1 000 €', '> 1 000 €'];
 
-$lang = (($_POST['lang'] ?? '') === 'en') ? 'en' : 'fr';
-$okUrl = $lang === 'en' ? 'en/thanks.html' : 'merci.html';
-$errorUrl = $lang === 'en' ? 'en/contact.html?error=1#form' : 'contact.html?error=1#form';
+$lang = in_array($_POST['lang'] ?? '', ['en', 'ru'], true) ? $_POST['lang'] : 'fr';
+$okUrl = $lang === 'fr' ? 'merci.html' : $lang . '/thanks.html';
+$errorUrl = $lang === 'fr' ? 'contact.html?error=1#form' : $lang . '/contact.html?error=1#form';
 
 function go(string $path): never
 {
@@ -55,6 +56,10 @@ $name = line('name', 120);
 $email = line('email', 160);
 $client = line('client', 20);
 $company = line('company', 200);
+$pro = ($_POST['pro'] ?? '') === 'yes';
+if (!CONSUMERS) {
+    $client = 'professionnel';
+}
 $need = line('need', 20);
 $link = line('link', 300);
 $budget = line('budget', 2);
@@ -65,6 +70,7 @@ $message = mb_substr(str_replace("\r\n", "\n", $message), 0, 4000);
 $valid = $name !== ''
     && filter_var($email, FILTER_VALIDATE_EMAIL) !== false
     && array_key_exists($client, CLIENTS)
+    && (CONSUMERS || ($pro && $company !== ''))
     && in_array($need, NEEDS, true)
     && mb_strlen($message) >= 10
     && ($budget === '' || in_array($budget, BUDGETS, true))

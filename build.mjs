@@ -21,8 +21,41 @@ const YEAR = TODAY.slice(0, 4);
 const readJson = (file) => JSON.parse(fs.readFileSync(path.join(ROOT, file), "utf8"));
 const config = readJson("site.config.json");
 
-const LANGS = ["fr", "en"];
-const T = Object.fromEntries(LANGS.map((lang) => [lang, readJson(`src/i18n/${lang}.json`)]));
+const LANGS = ["fr", "en", "ru"];
+// "consumers": false in site.config.json = services for professionals only (no consumer mediator needed).
+// Then the texts in i18n "b2b" replace the ones that speak to private individuals,
+// items marked "b2c": true are dropped and the *-b2b.html legal pages are used.
+const B2C = config.consumers !== false;
+
+function setPath(obj, dotted, value) {
+  const keys = dotted.split(".");
+  let node = obj;
+  for (const k of keys.slice(0, -1)) {
+    if (!(k in node)) throw new Error(`b2b override: unknown path ${dotted}`);
+    node = node[k];
+  }
+  if (!(keys.at(-1) in node)) throw new Error(`b2b override: unknown path ${dotted}`);
+  node[keys.at(-1)] = value;
+}
+
+function dropB2C(node) {
+  if (Array.isArray(node)) return node.filter((x) => !(x && typeof x === "object" && x.b2c)).map(dropB2C);
+  if (node && typeof node === "object") {
+    for (const k of Object.keys(node)) node[k] = dropB2C(node[k]);
+  }
+  return node;
+}
+
+function loadTexts(lang) {
+  const t = readJson(`src/i18n/${lang}.json`);
+  const overrides = t.b2b || {};
+  delete t.b2b;
+  if (B2C) return t;
+  for (const [dotted, value] of Object.entries(overrides)) setPath(t, dotted, value);
+  return dropB2C(t);
+}
+
+const T = Object.fromEntries(LANGS.map((lang) => [lang, loadTexts(lang)]));
 
 // Page id → file name in each language
 const PAGES = {
@@ -43,8 +76,12 @@ const PAGES = {
 };
 const NAV = ["services", "work", "about", "contact"];
 const SERVICE_PAGES = ["svcAudit", "svcLaunch", "svcSite", "svcFixes"];
+// Russian pages use the English file names (/ru/services.html, /ru/work.html…)
+for (const files of Object.values(PAGES)) if (!("ru" in files)) files.ru = files.en;
 const NOINDEX = new Set(["thanks", "notfound"]);
 const FONTS = [
+  ["playfair-display", "playfair-display-cyrillic-700-normal.woff2"],
+  ...["400", "500", "600"].map((w) => ["montserrat", `montserrat-cyrillic-${w}-normal.woff2`]),
   ["playfair-display", "playfair-display-latin-700-normal.woff2"],
   ["playfair-display", "playfair-display-latin-ext-700-normal.woff2"],
   ...["300", "400", "600"].flatMap((w) => [
@@ -162,6 +199,7 @@ function footer(ctx) {
     <div>
       <ul>
         <li><a href="mailto:${esc(config.email)}">${esc(config.email)}</a></li>
+        <li><a href="tel:${esc(config.phone.replace(/\s+/g, ""))}">${esc(config.phone)}</a></li>
         <li><a href="${esc(config.linkedin)}"${ext}>LinkedIn</a> · <a href="${esc(config.github)}"${ext}>GitHub</a></li>
         <li><a href="${ctx.link("legal")}">${esc(f.legal)}</a> · <a href="${ctx.link("terms")}">${esc(f.terms)}</a> · <a href="${ctx.link("privacy")}">${esc(f.privacy)}</a></li>
         <li class="muted">${ctx.txt(f.cookies)}</li>
@@ -194,7 +232,7 @@ ${seo}
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${absUrl(id, lang)}">
-<meta property="og:image" content="${config.baseUrl}/assets/img/og-${lang}.png">
+<meta property="og:image" content="${config.baseUrl}/assets/img/og-${hasImage(`og-${lang}.png`) ? lang : "en"}.png">
 <meta property="og:locale" content="${t.locale}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#ffffff">
@@ -245,6 +283,7 @@ function faqBlock(ctx, items) {
 }
 
 function consumerNote(ctx) {
+  if (!B2C) return "";
   const s = ctx.t.services;
   const link = `<a href="${ctx.link("terms")}">${esc(s.termsLinkText)}</a>`;
   return `<div class="notice consumer-note" data-reveal>
@@ -269,6 +308,7 @@ function workCards(ctx, level) {
         }
       }
       const links = p.links
+        .filter((l) => l.href.replace(/\{\{(\w+)\}\}/g, (m, key) => config[key] ?? m) !== "")
         .map((l) => {
           let href = l.href.replace(/\{\{(\w+)\}\}/g, (m, key) => config[key] ?? m);
           if (href.startsWith("demos/")) href = ctx.asset(href);
@@ -316,7 +356,7 @@ const render = {
 
 <div class="marquee" aria-hidden="true"><div class="marquee-track">${marqueeList}${marqueeList}</div></div>
 
-<section class="section"><div class="container grid grid-3 doors" data-stagger>
+<section class="section"><div class="container grid grid-${h.doors.length} doors" data-stagger>
 ${h.doors
   .map(
     (d) => `<a class="card door" href="${ctx.link(d.page)}">
@@ -361,7 +401,7 @@ ${h.doors
 
 <section class="section"><div class="container">
   <div class="section-head" data-reveal><h2>${ctx.txt(h.workTitle)}</h2><a class="more-link" href="${ctx.link("work")}">${ctx.txt(h.workMore)}</a></div>
-  <div class="grid grid-3" data-stagger>${workCards(ctx, 3)}</div>
+  <div class="grid grid-${ctx.t.work.projects.length % 2 ? 3 : 2} work-grid" data-stagger>${workCards(ctx, 3)}</div>
 </div></section>
 
 <section class="section section-soft"><div class="container split">
@@ -448,7 +488,7 @@ ${ctaBand(ctx)}`;
   work(ctx) {
     const w = ctx.t.work;
     const body = `${pageHead(ctx, w.h1, w.lead)}
-<section class="section"><div class="container grid grid-3" data-stagger>
+<section class="section"><div class="container grid grid-${ctx.t.work.projects.length % 2 ? 3 : 2} work-grid" data-stagger>
 ${workCards(ctx, 2)}
 </div></section>
 ${ctaBand(ctx)}`;
@@ -457,8 +497,9 @@ ${ctaBand(ctx)}`;
 
   about(ctx) {
     const a = ctx.t.about;
-    const cvLinks = LANGS.filter((l) => config.cv?.[l] && fs.existsSync(path.join(SRC, "static", config.cv[l])));
-    if (cvLinks.length < LANGS.length) warn("Нет PDF с CV в src/static/files/ — блок «Recruteur ?» показан без недостающих файлов");
+    const cvLangs = Object.keys(config.cv || {});
+    const cvLinks = cvLangs.filter((l) => fs.existsSync(path.join(SRC, "static", config.cv[l])));
+    if (cvLinks.length < cvLangs.length) warn("Нет PDF с CV в src/static/files/ — блок «Recruteur ?» показан без недостающих файлов");
     const cvBlock = cvLinks.length
       ? `<div class="side-block"><h2>${ctx.txt(a.cvTitle)}</h2><p>${ctx.txt(a.cvText)}</p><ul class="dash-list">${cvLinks
           .map((l) => `<li><a href="${ctx.asset(config.cv[l])}" download>${esc(l === "fr" ? a.cvFr : a.cvEn)}</a></li>`)
@@ -499,7 +540,7 @@ ${ctaBand(ctx)}`;
         <div class="field"><label for="f-name">${ctx.txt(F.name)} *</label><input type="text" id="f-name" name="name" required autocomplete="name" maxlength="120"></div>
         <div class="field"><label for="f-email">${ctx.txt(F.email)} *</label><input type="email" id="f-email" name="email" required autocomplete="email" maxlength="160"></div>
       </div>
-      <fieldset class="field choice">
+      ${B2C ? `<fieldset class="field choice">
         <legend>${ctx.txt(F.client)} *</legend>
         <div class="choice-options">${Object.entries(c.clients)
           .map(
@@ -508,7 +549,7 @@ ${ctaBand(ctx)}`;
           )
           .join("")}</div>
       </fieldset>
-      <div class="field" data-company><label for="f-company">${ctx.txt(F.company)} ${opt}</label><input type="text" id="f-company" name="company" autocomplete="organization" maxlength="200"></div>
+      <div class="field" data-company><label for="f-company">${ctx.txt(F.company)} ${opt}</label><input type="text" id="f-company" name="company" autocomplete="organization" maxlength="200"></div>` : `<div class="field"><label for="f-company">${ctx.txt(F.company)} *</label><input type="text" id="f-company" name="company" required autocomplete="organization" maxlength="200"></div>`}
       <div class="form-row">
         <div class="field"><label for="f-need">${ctx.txt(F.need)} *</label><select id="f-need" name="need" required><option value="">${esc(c.choose)}</option>${Object.entries(c.needs)
           .map(([value, label]) => `<option value="${value}">${ctx.txt(label)}</option>`)
@@ -520,6 +561,7 @@ ${ctaBand(ctx)}`;
       <div class="field"><label for="f-link">${ctx.txt(F.link)} ${opt}</label><input type="url" id="f-link" name="link" placeholder="https://" maxlength="300"></div>
       <div class="field"><label for="f-message">${ctx.txt(F.message)} *</label><textarea id="f-message" name="message" required minlength="10" maxlength="4000"></textarea></div>
       <div class="field"><label for="f-deadline">${ctx.txt(F.deadline)} ${opt}</label><input type="text" id="f-deadline" name="deadline" maxlength="120"></div>
+      ${B2C ? "" : `<label class="check"><input type="checkbox" name="pro" value="yes" required><span>${ctx.txt(F.pro)} *</span></label>`}
       <p class="small muted">${ctx.txt(c.privacy, { email: mail, privacyLink: `<a href="${ctx.link("privacy")}">${esc(c.privacyLink)}</a>` })}</p>
       <div><button class="btn" type="submit">${esc(c.submit)}</button></div>
     </form>
@@ -527,6 +569,7 @@ ${ctaBand(ctx)}`;
   <aside class="contact-aside">
     <div class="side-block"><h2>${esc(c.asideEmail)}</h2><p>${mail}</p></div>
     <div class="side-block"><h2>${esc(c.asideReply)}</h2><p>${ctx.txt(c.asideReplyText)}</p></div>
+    <div class="side-block"><h2>${esc(c.asidePhone)}</h2><p><a href="tel:${esc(config.phone.replace(/\s+/g, ""))}">${esc(config.phone)}</a><br><span class="small muted">${ctx.txt(c.asidePhoneText)}</span></p></div>
     <div class="side-block"><h2>${esc(c.asidePlatforms)}</h2><p>${ctx.txt(c.platforms)}</p></div>
   </aside>
 </div></section>`;
@@ -660,7 +703,9 @@ ${ctaBand(ctx)}`;
 
 function legalPage(ctx, id) {
   const meta = ctx.t[id];
-  const raw = fs.readFileSync(path.join(SRC, "content", ctx.lang, `${id}.html`), "utf8");
+  const b2bFile = path.join(SRC, "content", ctx.lang, `${id}-b2b.html`);
+  const file = !B2C && fs.existsSync(b2bFile) ? b2bFile : path.join(SRC, "content", ctx.lang, `${id}.html`);
+  const raw = fs.readFileSync(file, "utf8");
   const content = raw.replace(/\{\{(\w+)\}\}/g, (match, key) => {
     if (key === "privacyHref") return ctx.link("privacy");
     if (key === "termsHref") return ctx.link("terms");
@@ -715,6 +760,7 @@ write(
     .readFileSync(path.join(SRC, "php/contact.php"), "utf8")
     .replace("__TO_EMAIL__", config.formRecipient)
     .replace("__FROM_EMAIL__", config.formSender)
+    .replace("__CONSUMERS__", B2C ? "true" : "false")
 );
 
 // Pages
@@ -750,6 +796,7 @@ write("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${config.baseUrl}/sitem
 
 // Checks: details that must be filled before going live
 for (const [key, value] of Object.entries(config)) {
+  if (!B2C && key.startsWith("mediator")) continue; // no consumer mediator needed for professionals only
   if (typeof value === "string" && /À COMPLÉTER|à compléter|\[/.test(value)) {
     warn(`site.config.json → "${key}" ещё не заполнен: ${value}`);
   }

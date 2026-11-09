@@ -10,6 +10,7 @@
     "serve": "node build.mjs && cd dist && python3 -m http.server 8080"
   },
   "devDependencies": {
+    "@fontsource/montserrat": "^5.3.0",
     "@fontsource/playfair-display": "^5.3.0",
     "@fontsource/poppins": "^5.3.0",
     "sass": "^1.80.6"
