@@ -109,10 +109,68 @@
   .guar .ico { margin: 0 auto 12px; } .guar { text-align: center; }
   .contact-cards .card h3 { margin-bottom: 4px; }
 
+  /* page transitions (Chrome, Edge, Safari 18.2+; other browsers simply load the page) */
+  @view-transition { navigation: auto; }
+  header.top { view-transition-name: topbar; }
+  .demo-bar { view-transition-name: demobar; }
+  ::view-transition-old(root) { animation: vt-out .22s ease both; }
+  ::view-transition-new(root) { animation: vt-in .38s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes vt-out { to { opacity: 0; transform: translateY(-10px); } }
+  @keyframes vt-in { from { opacity: 0; transform: translateY(14px); } }
+  /* reveal on scroll (only when demo.js runs) */
+  .js .rv { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .js .rv.in { opacity: 1; transform: none; }
+  img.photo { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .js-only { display: none !important; }
+  .js .js-only { display: revert !important; }
+  .js .js-flex { display: flex !important; }
+  .carousel { position: relative; }
+  .car-nav { gap: 10px; justify-content: flex-end; margin-top: 16px; }
+  .car-nav button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid currentColor; background: transparent; color: inherit; font: inherit; font-size: 20px; cursor: pointer; }
+  .car-nav button:disabled { opacity: .3; cursor: default; }
+  .car-track { display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding-bottom: 4px; }
+  .car-track::-webkit-scrollbar { display: none; }
+  .car-track > * { flex: 0 0 calc((100% - 36px) / 3); scroll-snap-align: start; }
+  @media (max-width: 860px) { .car-track > * { flex-basis: 82%; } }
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+    .js .rv { opacity: 1; transform: none; }
+  }
+
+  .drop-card .hero-img { position: absolute; inset: 0; border-radius: inherit; }
+  .drop-card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(200deg, transparent 40%, rgba(11,31,58,.55)); }
+  .drop-card .badge { z-index: 1; animation: float 5s ease-in-out infinite; }
+  .drop-card .b2 { animation-delay: -1.6s; } .drop-card .b3 { animation-delay: -3.2s; }
+  .page-hero { background: linear-gradient(90deg, rgba(11,31,58,.95) 35%, rgba(11,31,58,.6)), url(img/tuyaux.webp) center/cover !important; }
+  .works { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .works figure { margin: 0; border-radius: 22px; overflow: hidden; background: #fff; border: 1px solid var(--line); }
+  .works img { aspect-ratio: 4/3; height: auto; transition: transform .6s ease; }
+  .works figure:hover img { transform: scale(1.05); }
+  .works figcaption { padding: 14px 18px; font-weight: 600; color: var(--navy); }
+  .works figcaption small { display: block; font-weight: 400; color: var(--muted); }
+  .calc { display: grid; gap: 14px; }
+  .calc label { display: grid; gap: 6px; font-weight: 600; font-size: 14px; color: var(--navy); }
+  .calc label.check { display: flex; align-items: center; gap: 10px; font-weight: 400; }
+  .calc select { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); font: inherit; background: #fff; }
+  .calc-out { display: block; padding: 18px; border-radius: 16px; background: var(--soft); font-size: 30px; font-weight: 600; color: var(--blue); text-align: center; transition: transform .25s; }
+  .calc-out.bump { transform: scale(1.06); }
+  .calc-out small { display: block; font-size: 13px; font-weight: 400; color: var(--muted); }
+  .calc-img { border-radius: 22px; aspect-ratio: 4/3; height: auto; margin-top: 18px; }
+  .fab { display: none; position: fixed; right: 16px; bottom: 16px; z-index: 20; padding: 14px 20px; border-radius: 999px; background: var(--orange); color: #fff; font-weight: 600; text-decoration: none; box-shadow: 0 16px 30px -10px rgba(255,122,26,.7); animation: fab-in .5s .6s both; }
+  @keyframes fab-in { from { opacity: 0; transform: translateY(30px); } }
+  .zone-map svg { display: block; width: 100%; height: auto; border-radius: 22px; background: #eaf2ff; }
+  .zone-map .area { fill: #fff; stroke: #b9cdee; stroke-width: 2; transition: fill .25s, transform .25s; transform-box: fill-box; transform-origin: center; }
+  .zone-map .area.free { fill: #cfe0ff; stroke: var(--blue); }
+  .zone-map .area.hl { fill: var(--orange); stroke: var(--orange); transform: scale(1.06); }
+  .zone-map text { font-size: 13px; font-weight: 600; fill: var(--navy); pointer-events: none; }
+  .chips span[data-z] { cursor: default; transition: background .2s, color .2s; }
+  .chips span.hl { background: var(--orange) !important; color: #fff; border-color: var(--orange); }
+  @media (max-width: 860px) { .fab { display: inline-flex; } body { padding-bottom: 80px; } .works { grid-template-columns: 1fr; } }
+
 </style>
 </head>
 <body>
-<div class="demo-bar"><div class="wrap"><span>Site de démonstration réalisé par Albert Grabar — entreprise fictive.</span><span><a href="../../site-vitrine.html">Un site comme celui-ci : 890 €</a> · <a href="../../realisations.html">Retour aux réalisations</a></span></div></div>
+<div class="demo-bar"><div class="wrap"><span>Site de démonstration réalisé par Albert Grabar — entreprise fictive · page légère, moins de 250 Ko.</span><span><a href="../../site-vitrine.html">Un site comme celui-ci : 890 €</a> · <a href="../../realisations.html">Retour aux réalisations</a></span></div></div>
 
 <header class="top"><div class="wrap">
   <a class="logo" href="index.html"><span class="logo-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 2c4 5.5 7 9 7 13a7 7 0 0 1-14 0c0-4 3-7.5 7-13z"/></svg></span>Lumen Plomberie</a>
@@ -129,7 +187,7 @@
     <div class="actions"><a class="btn" href="contact.html">Demander un devis</a><a class="btn ghost" href="tarifs.html">Voir les tarifs</a></div>
   </div>
   <div class="drop-card" aria-hidden="true">
-    <svg class="drop" viewBox="0 0 100 120"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7dd3fc"/><stop offset="1" stop-color="#1f6fff"/></linearGradient></defs><path d="M50 4c22 30 38 52 38 72a38 38 0 0 1-76 0C12 56 28 34 50 4z" fill="url(#g)"/><path d="M34 78a16 16 0 0 0 16 16" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" opacity=".7"/></svg>
+    <img class="photo hero-img" src="img/hero.webp" fetchpriority="high" alt="" width="900" height="900">
     <div class="badge b1">⏱ Sous 24 h<small>du lundi au samedi</small></div>
     <div class="badge b2">✓ Devis écrit<small>gratuit, avant travaux</small></div>
     <div class="badge b3">★ Artisan assuré<small>garantie décennale</small></div>
@@ -149,23 +207,36 @@
     <article class="card"><div class="ico c6"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2" stroke-linecap="round"><path d="M5 12l4 4 10-10"/></svg></div><h3>Mise aux normes</h3><p>Avant une vente ou une location : diagnostic écrit et travaux nécessaires.</p><span class="price">sur devis</span></article>
   </div>
 </div></section>
+<section><div class="wrap">
+  <span class="eyebrow">Chantiers</span><h2>Salles de bains rénovées</h2><p class="sub">Photos d'illustration : sur votre site, vos propres chantiers.</p>
+  <div class="works">
+    <figure><img class="photo" src="img/sdb1.webp" alt="Salle de bains avec baignoire îlot" loading="lazy" width="900" height="675"><figcaption>Baignoire îlot et vasque<small>Paris 15e · 4 jours</small></figcaption></figure>
+    <figure><img class="photo" src="img/sdb2.webp" alt="Douche à l'italienne vitrée" loading="lazy" width="900" height="675"><figcaption>Douche à l'italienne<small>Issy-les-Moulineaux · 3 jours</small></figcaption></figure>
+    <figure><img class="photo" src="img/sdb3.webp" alt="Salle de bains moderne avec meuble suspendu" loading="lazy" width="900" height="675"><figcaption>Rénovation complète<small>Paris 14e · 6 jours</small></figcaption></figure>
+  </div>
+</div></section>
 <section class="band" id="avis"><div class="wrap">
   <span class="eyebrow">Ils nous ont fait confiance</span>
   <h2>Avis clients</h2>
   <p class="note">Exemples de mise en page : sur un vrai site, seuls de vrais avis sont publiés.</p>
-  <div class="grid3">
+  <div class="carousel"><div class="grid3 car-track" tabindex="0" aria-label="Avis (exemples)">
     <article class="card review"><div class="stars">★★★★★</div><p>« Arrivé le lendemain matin, devis respecté au centime près. »</p><strong>Exemple d'avis · Paris 15e</strong></article>
     <article class="card review"><div class="stars">★★★★★</div><p>« Chauffe-eau remplacé en une matinée, tout a été expliqué. »</p><strong>Exemple d'avis · Vanves</strong></article>
     <article class="card review"><div class="stars">★★★★☆</div><p>« Débouchage efficace, chantier propre, je recommande. »</p><strong>Exemple d'avis · Issy</strong></article>
-  </div>
+    <article class="card review"><div class="stars">★★★★★</div><p>« Fuite trouvée derrière la baignoire sans tout casser. »</p><strong>Exemple d'avis · Malakoff</strong></article>
+    <article class="card review"><div class="stars">★★★★★</div><p>« Entretien annuel rapide, conseils utiles pour le chauffe-eau. »</p><strong>Exemple d'avis · Paris 14e</strong></article>
+    <article class="card review"><div class="stars">★★★★★</div><p>« Venu un samedi, prix annoncé à l'avance. Rassurant. »</p><strong>Exemple d'avis · Boulogne</strong></article>
+  </div><div class="car-nav js-flex js-only"><button type="button" data-car="prev" aria-label="Avis précédents">←</button><button type="button" data-car="next" aria-label="Avis suivants">→</button></div></div>
 </div></section>
 <section class="cta-band"><div class="wrap"><h2>Un problème de plomberie ?</h2><p>Devis gratuit et écrit, intervention sous 24 h.</p><a class="btn" href="contact.html" style="background:#fff;color:#1f6fff">Demander un devis</a></div></section>
+<a class="fab" href="contact.html">📞 Devis gratuit</a>
 </main>
 
 <footer><div class="wrap">
   <div><strong>Lumen Plomberie</strong><br>12 rue de l'Exemple, 75015 Paris · 01 23 45 67 89</div>
   <div style="max-width:520px"><a href="index.html" style="color:inherit">Accueil</a> · <a href="services.html" style="color:inherit">Services</a> · <a href="tarifs.html" style="color:inherit">Tarifs</a> · <a href="zone.html" style="color:inherit">Zone et horaires</a> · <a href="contact.html" style="color:inherit">Devis et contact</a></div>
-  <div>Entreprise fictive — site de démonstration.<br>Réalisé par <a href="../../index.html" style="color:#7dd3fc">Albert Grabar</a></div>
+  <div>Entreprise fictive — site de démonstration.<br>Photos d'illustration : Unsplash.<br>Réalisé par <a href="../../index.html" style="color:#7dd3fc">Albert Grabar</a></div>
 </div></footer>
+<script src="../demo.js" defer></script>
 </body>
 </html>

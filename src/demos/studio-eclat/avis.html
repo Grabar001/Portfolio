@@ -138,10 +138,65 @@
   .salon-grid .svc h3 { font-size: 22px; }
   @media (max-width: 860px) { .feature-row, .steps4, .salon-grid { grid-template-columns: 1fr; } }
 
+  /* page transitions (Chrome, Edge, Safari 18.2+; other browsers simply load the page) */
+  @view-transition { navigation: auto; }
+  header.top { view-transition-name: topbar; }
+  .demo-bar { view-transition-name: demobar; }
+  ::view-transition-old(root) { animation: vt-out .22s ease both; }
+  ::view-transition-new(root) { animation: vt-in .38s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes vt-out { to { opacity: 0; transform: translateY(-10px); } }
+  @keyframes vt-in { from { opacity: 0; transform: translateY(14px); } }
+  /* reveal on scroll (only when demo.js runs) */
+  .js .rv { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .js .rv.in { opacity: 1; transform: none; }
+  img.photo { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .js-only { display: none !important; }
+  .js .js-only { display: revert !important; }
+  .js .js-flex { display: flex !important; }
+  .carousel { position: relative; }
+  .car-nav { gap: 10px; justify-content: flex-end; margin-top: 16px; }
+  .car-nav button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid currentColor; background: transparent; color: inherit; font: inherit; font-size: 20px; cursor: pointer; }
+  .car-nav button:disabled { opacity: .3; cursor: default; }
+  .car-track { display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding-bottom: 4px; }
+  .car-track::-webkit-scrollbar { display: none; }
+  .car-track > * { flex: 0 0 calc((100% - 36px) / 3); scroll-snap-align: start; }
+  @media (max-width: 860px) { .car-track > * { flex-basis: 82%; } }
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+    .js .rv { opacity: 1; transform: none; }
+  }
+
+  .btn.line { display: inline-block; padding: 13px 26px; border: 1px solid rgba(255,255,255,.5); }
+  .portrait.has-photo::before, .portrait.has-photo::after { display: none; }
+  .portrait.has-photo img { position: absolute; inset: 0; }
+  .ba { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .ba-slider { position: relative; margin: 0; aspect-ratio: 4/3; border-radius: 24px; overflow: hidden; --pos: 50%; user-select: none; }
+  .ba-slider img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+  .ba-slider .after { clip-path: inset(0 0 0 var(--pos)); }
+  .ba-slider .handle { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 3px; background: #fff; transform: translateX(-50%); pointer-events: none; }
+  .ba-slider .handle::after { content: "⟷"; position: absolute; top: 50%; left: 50%; width: 42px; height: 42px; transform: translate(-50%, -50%); border-radius: 50%; background: #fff; color: var(--magenta); display: grid; place-items: center; font-weight: 700; box-shadow: 0 10px 24px -8px rgba(0,0,0,.5); }
+  .ba-slider input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; touch-action: pan-y; }
+  .ba-slider:focus-within { outline: 3px solid var(--magenta); outline-offset: 3px; }
+  .ba-slider .lbl { position: absolute; bottom: 12px; padding: 6px 12px; border-radius: 999px; background: rgba(42,15,61,.75); color: #fff; font-size: 13px; font-weight: 600; pointer-events: none; }
+  .ba-slider .l-b { left: 12px; } .ba-slider .l-a { right: 12px; background: var(--magenta); }
+  .slots button { padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: inherit; font: inherit; font-size: 14px; cursor: pointer; transition: background .2s, transform .2s; }
+  .slots button:hover:not(:disabled) { transform: translateY(-2px); }
+  .slots button.on { background: var(--magenta); color: #fff; border-color: var(--magenta); }
+  .slots button:disabled { opacity: .35; text-decoration: line-through; cursor: not-allowed; }
+  .slot-msg { font-size: 14px; margin: 8px 0 0; min-height: 1.4em; color: var(--gold); }
+  .swatch.photo-swatch { overflow: hidden; position: relative; }
+  .swatch.photo-swatch img { position: absolute; inset: 0; transition: transform .8s ease; }
+  .swatch.photo-swatch:hover img { transform: scale(1.05); }
+  .photo-row { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 14px; margin-top: 26px; }
+  .photo-row img { border-radius: 22px; aspect-ratio: 4/3; height: auto; }
+  .photo-row img:first-child { aspect-ratio: auto; height: 100%; }
+  .page-hero { background: linear-gradient(90deg, rgba(42,15,61,.96) 30%, rgba(42,15,61,.55)), url(img/salon.webp) center/cover !important; }
+  @media (max-width: 860px) { .ba { grid-template-columns: 1fr; } .photo-row { grid-template-columns: 1fr 1fr; } .photo-row img:first-child { grid-column: span 2; } }
+
 </style>
 </head>
 <body>
-<div class="demo-bar"><div class="wrap"><span>Site de démonstration réalisé par Albert Grabar — entreprise fictive.</span><span><a href="../../site-vitrine.html">Un site comme celui-ci : 1 490 €</a> · <a href="../../realisations.html">Retour aux réalisations</a></span></div></div>
+<div class="demo-bar"><div class="wrap"><span>Site de démonstration réalisé par Albert Grabar — entreprise fictive · page légère, moins de 250 Ko.</span><span><a href="../../site-vitrine.html">Un site comme celui-ci : 1 490 €</a> · <a href="../../realisations.html">Retour aux réalisations</a></span></div></div>
 
 <header class="top"><div class="wrap">
   <a class="logo" href="index.html">Studio <span>Éclat</span></a>
@@ -153,11 +208,14 @@
 <section class="page-hero"><div class="wrap"><h1>Avis</h1><p>Ce que disent les clientes.</p></div></section>
 <section><div class="wrap">
   <div class="center"><p class="note">Exemples de mise en page : sur un vrai site, seuls de vrais avis sont publiés.</p></div>
-  <div class="reviews">
+  <div class="carousel"><div class="reviews car-track" tabindex="0" aria-label="Avis (exemples)">
     <div class="rev"><div class="stars">★★★★★</div><p>« Léa a enfin trouvé le blond que je cherchais depuis des années. »</p><strong>Exemple d'avis</strong></div>
     <div class="rev"><div class="stars">★★★★★</div><p>« Réservation en ligne en une minute, accueil adorable. »</p><strong>Exemple d'avis</strong></div>
     <div class="rev"><div class="stars">★★★★★</div><p>« Coupe courte parfaite, conseils pour l'entretien à la maison. »</p><strong>Exemple d'avis</strong></div>
-  </div>
+    <div class="rev"><div class="stars">★★★★★</div><p>« Mes boucles n'ont jamais été aussi bien définies. »</p><strong>Exemple d'avis</strong></div>
+    <div class="rev"><div class="stars">★★★★★</div><p>« Chignon de mariage tenu toute la soirée, merci Nina ! »</p><strong>Exemple d'avis</strong></div>
+    <div class="rev"><div class="stars">★★★★★</div><p>« Diagnostic honnête : on m'a déconseillé une décoloration inutile. »</p><strong>Exemple d'avis</strong></div>
+  </div><div class="car-nav js-flex js-only"><button type="button" data-car="prev" aria-label="Avis précédents">←</button><button type="button" data-car="next" aria-label="Avis suivants">→</button></div></div>
 </div></section>
 <section class="cta-band"><div class="wrap"><h2>Envie de changement ?</h2><p>Diagnostic offert, rendez-vous en ligne en deux minutes.</p><a class="btn" href="rendez-vous.html">Prendre rendez-vous</a></div></section>
 </main>
@@ -165,7 +223,8 @@
 <footer><div class="wrap">
   <div><strong>Studio Éclat</strong><br>14 rue de l'Exemple, 75009 Paris · 01 23 45 67 89</div>
   <div style="max-width:520px"><a href="index.html" style="color:inherit">Accueil</a> · <a href="prestations.html" style="color:inherit">Prestations</a> · <a href="couleur.html" style="color:inherit">Couleur</a> · <a href="soins.html" style="color:inherit">Soins</a> · <a href="equipe.html" style="color:inherit">Équipe</a> · <a href="galerie.html" style="color:inherit">Galerie</a> · <a href="avis.html" style="color:inherit">Avis</a> · <a href="le-salon.html" style="color:inherit">Le salon</a> · <a href="faq.html" style="color:inherit">FAQ</a> · <a href="rendez-vous.html" style="color:inherit">Rendez-vous</a></div>
-  <div>Entreprise fictive — site de démonstration.<br>Réalisé par <a href="../../index.html" style="color:var(--gold)">Albert Grabar</a></div>
+  <div>Entreprise fictive — site de démonstration.<br>Photos d'illustration : Unsplash.<br>Réalisé par <a href="../../index.html" style="color:var(--gold)">Albert Grabar</a></div>
 </div></footer>
+<script src="../demo.js" defer></script>
 </body>
 </html>

@@ -120,10 +120,67 @@
   .big-ico { font-size: 34px; }
   @media (max-width: 860px) { .values { grid-template-columns: 1fr; } }
 
+  /* page transitions (Chrome, Edge, Safari 18.2+; other browsers simply load the page) */
+  @view-transition { navigation: auto; }
+  header.top { view-transition-name: topbar; }
+  .demo-bar { view-transition-name: demobar; }
+  ::view-transition-old(root) { animation: vt-out .22s ease both; }
+  ::view-transition-new(root) { animation: vt-in .38s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes vt-out { to { opacity: 0; transform: translateY(-10px); } }
+  @keyframes vt-in { from { opacity: 0; transform: translateY(14px); } }
+  /* reveal on scroll (only when demo.js runs) */
+  .js .rv { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .js .rv.in { opacity: 1; transform: none; }
+  img.photo { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .js-only { display: none !important; }
+  .js .js-only { display: revert !important; }
+  .js .js-flex { display: flex !important; }
+  .carousel { position: relative; }
+  .car-nav { gap: 10px; justify-content: flex-end; margin-top: 16px; }
+  .car-nav button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid currentColor; background: transparent; color: inherit; font: inherit; font-size: 20px; cursor: pointer; }
+  .car-nav button:disabled { opacity: .3; cursor: default; }
+  .car-track { display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding-bottom: 4px; }
+  .car-track::-webkit-scrollbar { display: none; }
+  .car-track > * { flex: 0 0 calc((100% - 36px) / 3); scroll-snap-align: start; }
+  @media (max-width: 860px) { .car-track > * { flex-basis: 82%; } }
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+    .js .rv { opacity: 1; transform: none; }
+  }
+
+  .hero-photo { position: relative; aspect-ratio: 1; border-radius: 48% 48% 32px 32px; overflow: hidden; box-shadow: 0 40px 70px -40px rgba(59,36,24,.65); }
+  .hero-photo img { transition: transform 8s ease; } .hero-photo:hover img { transform: scale(1.06); }
+  .open-badge { position: absolute; left: 18px; bottom: 18px; display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: #fff; color: var(--coffee); font-weight: 600; font-size: 14px; box-shadow: 0 14px 30px -14px rgba(0,0,0,.5); }
+  .open-badge::before, .open-line::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--mustard); flex: none; }
+  .is-open::before { background: #2f9e44; box-shadow: 0 0 0 4px rgba(47,158,68,.18); }
+  .is-closed::before { background: var(--terra); }
+  .open-line { display: flex; align-items: center; gap: 8px; font-weight: 600; margin: -4px 0 14px; }
+  .open-line:empty { display: none; }
+  .menu-img { display: block; width: calc(100% + 52px); max-width: none; margin: -26px -26px 18px; aspect-ratio: 16/9; height: auto; object-fit: cover; }
+  .menu-filter { flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+  .menu-filter button { padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--coffee); font: inherit; font-weight: 600; cursor: pointer; transition: background .2s, color .2s; }
+  .menu-filter button.on { background: var(--coffee); color: var(--cream); border-color: var(--coffee); }
+  .menu-card.hide { display: none; }
+  figure.ph { margin: 0; padding: 0; background: var(--coffee); }
+  figure.ph img { position: absolute; inset: 0; transition: transform .6s ease; }
+  figure.ph:hover img { transform: scale(1.07); }
+  figure.ph::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 55%, rgba(30,16,8,.6)); }
+  figure.ph figcaption { position: absolute; left: 14px; bottom: 12px; z-index: 1; }
+  .street-map { margin-top: 14px; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); }
+  .street-map svg { display: block; width: 100%; height: auto; }
+  .photo-band { position: relative; min-height: 420px; display: grid; align-items: end; color: #fff; overflow: hidden; }
+  .photo-band img { position: absolute; inset: 0; }
+  .photo-band::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(30,16,8,.78), rgba(30,16,8,.15)); }
+  .photo-band .wrap { position: relative; z-index: 2; padding-block: 60px; }
+  .photo-band h2 { color: #fff; max-width: 14em; } .photo-band p { max-width: 32em; color: #fbe9d4; }
+  .value { overflow: hidden; padding-top: 0 !important; }
+  .value img { display: block; width: calc(100% + 52px); max-width: none; margin: 0 -26px 14px; aspect-ratio: 3/2; height: auto; object-fit: cover; }
+  @media (max-width: 860px) { .hero-photo { max-width: 420px; } }
+
 </style>
 </head>
 <body>
-<div class="demo-bar"><div class="wrap"><span>Site de démonstration réalisé par Albert Grabar — entreprise fictive.</span><span><a href="../../site-vitrine.html">Un site comme celui-ci : 890 €</a> · <a href="../../realisations.html">Retour aux réalisations</a></span></div></div>
+<div class="demo-bar"><div class="wrap"><span>Site de démonstration réalisé par Albert Grabar — entreprise fictive · page légère, moins de 250 Ko.</span><span><a href="../../site-vitrine.html">Un site comme celui-ci : 890 €</a> · <a href="../../realisations.html">Retour aux réalisations</a></span></div></div>
 
 <header class="top"><div class="wrap">
   <a class="logo" href="index.html">Café <span>Brindille</span></a>
@@ -135,13 +192,23 @@
 <section class="page-hero"><div class="wrap"><h1>Horaires et accès</h1><p>8 rue de l'Exemple, 75011 Paris · Métro Parmentier</p></div></section>
 <section id="infos"><div class="wrap">
   <div class="box">
-        <div class="hours">
+        <p class="open-line" data-open-status></p>
+    <div class="hours">
       <div><span>Mardi – vendredi</span><b>8 h – 18 h</b></div>
       <div><span>Samedi – dimanche</span><b>9 h – 19 h</b></div>
       <div><span>Lundi</span><b>fermé</b></div>
     </div>
     <p>8 rue de l'Exemple, 75011 Paris · Métro Parmentier</p>
-    <div class="map" aria-label="Plan (illustration)"></div>
+    <div class="street-map"><svg viewBox="0 0 480 220" role="img" aria-label="Plan du quartier : 8 rue de l'Exemple, près du métro Parmentier">
+  <rect width="480" height="220" fill="#f6ecdd"/>
+  <rect x="24" y="24" width="120" height="70" rx="10" fill="#dfeadd"/><text x="84" y="64" font-size="12" text-anchor="middle" fill="#5f7d63">Square</text>
+  <g stroke="#fff" stroke-linecap="round"><path d="M0 120 L480 104" stroke-width="18"/><path d="M190 0 L230 220" stroke-width="14"/><path d="M330 0 L300 220" stroke-width="10"/><path d="M0 190 L480 172" stroke-width="10"/></g>
+  <g font-size="12" fill="#7a6150" font-weight="600"><text x="20" y="114">Avenue Parmentier</text><text x="236" y="40" transform="rotate(79 236 40)">Rue Oberkampf</text><text x="360" y="186">Rue de l'Exemple</text></g>
+  <g transform="translate(206 104)"><circle r="14" fill="#1b4a8a"/><text y="5" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">M</text></g>
+  <text x="226" y="146" font-size="12" fill="#1b4a8a" font-weight="600">Parmentier</text>
+  <g transform="translate(316 160)"><path d="M0 0c-10-14-16-22-16-30a16 16 0 0 1 32 0c0 8-6 16-16 30z" fill="#c8553d"/><circle cy="-30" r="6" fill="#fff"/></g>
+  <text x="338" y="134" font-size="13" font-weight="700" fill="#3b2418">Café Brindille</text>
+</svg></div>
   </div>
   
 </div></section>
@@ -151,7 +218,8 @@
 <footer><div class="wrap">
   <div><strong>Café Brindille</strong><br>8 rue de l'Exemple, 75011 Paris · 01 23 45 67 89</div>
   <div style="max-width:520px"><a href="index.html" style="color:inherit">Accueil</a> · <a href="carte.html" style="color:inherit">La carte</a> · <a href="galerie.html" style="color:inherit">Galerie</a> · <a href="infos.html" style="color:inherit">Horaires et accès</a> · <a href="reserver.html" style="color:inherit">Réserver</a></div>
-  <div>Entreprise fictive — site de démonstration.<br>Réalisé par <a href="../../index.html" style="color:var(--mustard)">Albert Grabar</a></div>
+  <div>Entreprise fictive — site de démonstration.<br>Photos d'illustration : Unsplash.<br>Réalisé par <a href="../../index.html" style="color:var(--mustard)">Albert Grabar</a></div>
 </div></footer>
+<script src="../demo.js" defer></script>
 </body>
 </html>

@@ -109,10 +109,68 @@
   .guar .ico { margin: 0 auto 12px; } .guar { text-align: center; }
   .contact-cards .card h3 { margin-bottom: 4px; }
 
+  /* page transitions (Chrome, Edge, Safari 18.2+; other browsers simply load the page) */
+  @view-transition { navigation: auto; }
+  header.top { view-transition-name: topbar; }
+  .demo-bar { view-transition-name: demobar; }
+  ::view-transition-old(root) { animation: vt-out .22s ease both; }
+  ::view-transition-new(root) { animation: vt-in .38s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes vt-out { to { opacity: 0; transform: translateY(-10px); } }
+  @keyframes vt-in { from { opacity: 0; transform: translateY(14px); } }
+  /* reveal on scroll (only when demo.js runs) */
+  .js .rv { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .js .rv.in { opacity: 1; transform: none; }
+  img.photo { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .js-only { display: none !important; }
+  .js .js-only { display: revert !important; }
+  .js .js-flex { display: flex !important; }
+  .carousel { position: relative; }
+  .car-nav { gap: 10px; justify-content: flex-end; margin-top: 16px; }
+  .car-nav button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid currentColor; background: transparent; color: inherit; font: inherit; font-size: 20px; cursor: pointer; }
+  .car-nav button:disabled { opacity: .3; cursor: default; }
+  .car-track { display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding-bottom: 4px; }
+  .car-track::-webkit-scrollbar { display: none; }
+  .car-track > * { flex: 0 0 calc((100% - 36px) / 3); scroll-snap-align: start; }
+  @media (max-width: 860px) { .car-track > * { flex-basis: 82%; } }
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+    .js .rv { opacity: 1; transform: none; }
+  }
+
+  .drop-card .hero-img { position: absolute; inset: 0; border-radius: inherit; }
+  .drop-card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(200deg, transparent 40%, rgba(11,31,58,.55)); }
+  .drop-card .badge { z-index: 1; animation: float 5s ease-in-out infinite; }
+  .drop-card .b2 { animation-delay: -1.6s; } .drop-card .b3 { animation-delay: -3.2s; }
+  .page-hero { background: linear-gradient(90deg, rgba(11,31,58,.95) 35%, rgba(11,31,58,.6)), url(img/tuyaux.webp) center/cover !important; }
+  .works { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .works figure { margin: 0; border-radius: 22px; overflow: hidden; background: #fff; border: 1px solid var(--line); }
+  .works img { aspect-ratio: 4/3; height: auto; transition: transform .6s ease; }
+  .works figure:hover img { transform: scale(1.05); }
+  .works figcaption { padding: 14px 18px; font-weight: 600; color: var(--navy); }
+  .works figcaption small { display: block; font-weight: 400; color: var(--muted); }
+  .calc { display: grid; gap: 14px; }
+  .calc label { display: grid; gap: 6px; font-weight: 600; font-size: 14px; color: var(--navy); }
+  .calc label.check { display: flex; align-items: center; gap: 10px; font-weight: 400; }
+  .calc select { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); font: inherit; background: #fff; }
+  .calc-out { display: block; padding: 18px; border-radius: 16px; background: var(--soft); font-size: 30px; font-weight: 600; color: var(--blue); text-align: center; transition: transform .25s; }
+  .calc-out.bump { transform: scale(1.06); }
+  .calc-out small { display: block; font-size: 13px; font-weight: 400; color: var(--muted); }
+  .calc-img { border-radius: 22px; aspect-ratio: 4/3; height: auto; margin-top: 18px; }
+  .fab { display: none; position: fixed; right: 16px; bottom: 16px; z-index: 20; padding: 14px 20px; border-radius: 999px; background: var(--orange); color: #fff; font-weight: 600; text-decoration: none; box-shadow: 0 16px 30px -10px rgba(255,122,26,.7); animation: fab-in .5s .6s both; }
+  @keyframes fab-in { from { opacity: 0; transform: translateY(30px); } }
+  .zone-map svg { display: block; width: 100%; height: auto; border-radius: 22px; background: #eaf2ff; }
+  .zone-map .area { fill: #fff; stroke: #b9cdee; stroke-width: 2; transition: fill .25s, transform .25s; transform-box: fill-box; transform-origin: center; }
+  .zone-map .area.free { fill: #cfe0ff; stroke: var(--blue); }
+  .zone-map .area.hl { fill: var(--orange); stroke: var(--orange); transform: scale(1.06); }
+  .zone-map text { font-size: 13px; font-weight: 600; fill: var(--navy); pointer-events: none; }
+  .chips span[data-z] { cursor: default; transition: background .2s, color .2s; }
+  .chips span.hl { background: var(--orange) !important; color: #fff; border-color: var(--orange); }
+  @media (max-width: 860px) { .fab { display: inline-flex; } body { padding-bottom: 80px; } .works { grid-template-columns: 1fr; } }
+
 </style>
 </head>
 <body>
-<div class="demo-bar"><div class="wrap"><span>Site de démonstration réalisé par Albert Grabar — entreprise fictive.</span><span><a href="../../site-vitrine.html">Un site comme celui-ci : 890 €</a> · <a href="../../realisations.html">Retour aux réalisations</a></span></div></div>
+<div class="demo-bar"><div class="wrap"><span>Site de démonstration réalisé par Albert Grabar — entreprise fictive · page légère, moins de 250 Ko.</span><span><a href="../../site-vitrine.html">Un site comme celui-ci : 890 €</a> · <a href="../../realisations.html">Retour aux réalisations</a></span></div></div>
 
 <header class="top"><div class="wrap">
   <a class="logo" href="index.html"><span class="logo-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 2c4 5.5 7 9 7 13a7 7 0 0 1-14 0c0-4 3-7.5 7-13z"/></svg></span>Lumen Plomberie</a>
@@ -143,13 +201,29 @@
     <tr><td>Intervention le samedi</td><td>+ 20 %</td></tr>
   </table>
 </div></section>
+<section><div class="wrap two">
+  <div>
+    <span class="eyebrow">Estimation en ligne</span><h2>Combien ça coûte ?</h2>
+    <p class="sub">Une fourchette indicative en dix secondes. Le prix final est celui du devis écrit.</p>
+    <img class="photo calc-img" src="img/outils.webp" alt="" loading="lazy" width="900" height="675">
+  </div>
+  <form class="calc card" action="contact.html">
+    <label>Intervention<select name="type"><option value="89-140">Fuite ou chasse d'eau</option><option value="119-190">Remplacement de mitigeur</option><option value="95-180">Débouchage</option><option value="120-260">Dépannage de chauffe-eau</option><option value="890-1290">Nouveau chauffe-eau 200 L</option></select></label>
+    <label>Quand<select name="when"><option value="1">En semaine</option><option value="1.2">Le samedi (+ 20 %)</option></select></label>
+    <label class="check"><input type="checkbox" name="far"> Hors Paris 15e (déplacement + 15 €)</label>
+    <output class="calc-out" name="out" aria-live="polite">89 – 140 €<small>estimation, pièces standard comprises</small></output>
+    <a class="btn" href="contact.html">Demander le devis exact</a>
+  </form>
+</div></section>
 <section class="cta-band"><div class="wrap"><h2>Un problème de plomberie ?</h2><p>Devis gratuit et écrit, intervention sous 24 h.</p><a class="btn" href="contact.html" style="background:#fff;color:#1f6fff">Demander un devis</a></div></section>
+<a class="fab" href="contact.html">📞 Devis gratuit</a>
 </main>
 
 <footer><div class="wrap">
   <div><strong>Lumen Plomberie</strong><br>12 rue de l'Exemple, 75015 Paris · 01 23 45 67 89</div>
   <div style="max-width:520px"><a href="index.html" style="color:inherit">Accueil</a> · <a href="services.html" style="color:inherit">Services</a> · <a href="tarifs.html" style="color:inherit">Tarifs</a> · <a href="zone.html" style="color:inherit">Zone et horaires</a> · <a href="contact.html" style="color:inherit">Devis et contact</a></div>
-  <div>Entreprise fictive — site de démonstration.<br>Réalisé par <a href="../../index.html" style="color:#7dd3fc">Albert Grabar</a></div>
+  <div>Entreprise fictive — site de démonstration.<br>Photos d'illustration : Unsplash.<br>Réalisé par <a href="../../index.html" style="color:#7dd3fc">Albert Grabar</a></div>
 </div></footer>
+<script src="../demo.js" defer></script>
 </body>
 </html>
