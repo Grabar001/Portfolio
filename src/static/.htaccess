@@ -18,7 +18,11 @@ ErrorDocument 404 /404.html
   # RewriteCond %{HTTPS} !=on
   # RewriteRule ^ https://www.albert-grabar.com%{REQUEST_URI} [R=301,L]
 
-  # 2) Short addresses: /services opens /services.html
+  # 2) Old TECH NOIR pages (still in Google) now live on technoir.albert-grabar.com
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(catalog|catalogue|register|login|logout|cart|panier|product|produit|profile|profil|account|compte|order|commande|checkout|admin|search|recherche|reset-password)(/.*)?$ https://technoir.albert-grabar.com/$1$2 [R=301,L,NC]
+
+  # 3) Short addresses: /services opens /services.html
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.+?)/?$ $1.html [L]
