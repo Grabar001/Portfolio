@@ -16,7 +16,7 @@ const MIN_SECONDS = 3;
 const NEEDS = ['audit', 'launch', 'site', 'fixes', 'other'];
 const CLIENTS = ['particulier' => 'Particulier', 'professionnel' => 'Professionnel'];
 const BUDGETS = ['0', '1', '2', '3'];
-const BUDGET_LABELS = ['< 500 €', '500–1 000 €', '1 000–2 500 €', '> 2 500 €'];
+const BUDGET_LABELS = ['< 300 €', '300–600 €', '600–1 500 €', '> 1 500 €'];
 
 $lang = in_array($_POST['lang'] ?? '', ['en', 'ru'], true) ? $_POST['lang'] : 'fr';
 $okUrl = $lang === 'fr' ? 'merci.html' : $lang . '/thanks.html';

@@ -37,7 +37,7 @@
     "kicker": "Développeur full-stack à Paris · PHP/Symfony · React",
     "h1": "Votre application créée avec l'IA, prête pour de vrais clients.",
     "lead": "Lovable, Bolt, Cursor ou v0 vous ont donné un prototype. Je le sécurise, j'ajoute le paiement Stripe, je le mets en conformité RGPD et je le mets en ligne. Prix fixe, délai annoncé, tout par écrit.",
-    "ctaPrimary": "Demander un audit (dès 290 €)",
+    "ctaPrimary": "Demander un audit (dès 149 €)",
     "ctaSecondary": "Voir les services",
     "promises": [
       "Prix annoncé par écrit avant de commencer",
@@ -68,8 +68,8 @@
       },
       {
         "title": "Vous avez besoin d'un site pour votre activité",
-        "text": "Artisan, café, salon, indépendant, association : un site clair et rapide en 5 jours, avec vos services, vos horaires et un formulaire de contact.",
-        "link": "Site vitrine dès 890 €",
+        "text": "Artisan, café, salon, indépendant, association : un site clair et rapide en 4 à 10 jours ouvrés, avec vos services, vos horaires et un formulaire de contact.",
+        "link": "Site vitrine dès 290 €",
         "page": "svcSite"
       },
       {
@@ -95,12 +95,12 @@
         "text": "Je lis le code et je teste l'app. Vous recevez un rapport écrit : problèmes classés par gravité, plan de correction, prix fixe."
       },
       {
-        "title": "Corrections et mise en ligne — 5 à 10 jours",
+        "title": "Corrections et mise en ligne — 4 à 12 jours",
         "text": "Sécurité, paiement Stripe, RGPD, nom de domaine, sauvegardes. Vous suivez l'avancement par écrit."
       },
       {
         "title": "Suivi — en option",
-        "text": "14 jours de corrections offertes, puis maintenance mensuelle sur devis."
+        "text": "14 jours de corrections offertes, puis maintenance à 49 €/mois si vous le souhaitez."
       }
     ],
     "stats": [
@@ -129,23 +129,23 @@
     "prices": [
       {
         "name": "Audit d'application IA",
-        "price": "dès 290 €",
+        "price": "dès 149 €",
         "page": "svcAudit"
       },
       {
         "name": "Lancement",
-        "price": "dès 1 190 €",
+        "price": "dès 490 €",
         "page": "svcLaunch"
       },
       {
         "name": "Site vitrine ou personnel",
-        "price": "dès 890 €",
+        "price": "dès 290 €",
         "note": "suivi 49 €/mois en option",
         "page": "svcSite"
       },
       {
         "name": "Corrections PHP, Symfony, WordPress",
-        "price": "45–55 €/h",
+        "price": "45 €/h",
         "page": "svcFixes"
       }
     ],
@@ -185,7 +185,7 @@
   },
   "services": {
     "title": "Services et tarifs — Albert Grabar",
-    "description": "Audit d'application IA dès 290 €, lancement dès 1 190 €, site vitrine ou personnel dès 890 €, corrections PHP, Symfony et WordPress. Pour les particuliers et les professionnels, devis écrit avant chaque mission.",
+    "description": "Audit d'application IA dès 149 €, lancement dès 490 €, site vitrine ou personnel dès 290 €, corrections PHP, Symfony et WordPress à 45 €/h. Pour les particuliers et les professionnels, devis écrit avant chaque mission.",
     "h1": "Services et tarifs",
     "lead": "Quatre offres pour les particuliers et les professionnels, des prix publics et un devis écrit avant chaque mission.",
     "labels": {
@@ -205,9 +205,9 @@
         "id": "audit",
         "page": "svcAudit",
         "name": "Audit d'application IA",
-        "price": "290 € ou 490 €",
-        "schemaPrice": "290",
-        "delay": "2 jours ouvrés",
+        "price": "149 €, 249 € ou 390 €",
+        "schemaPrice": "149",
+        "delay": "2 à 5 jours ouvrés",
         "for": "Particuliers et professionnels qui ont créé une application avec Lovable, Bolt, Cursor, v0 ou Replit.",
         "listTitle": "Je vérifie",
         "list": [
@@ -219,13 +219,13 @@
           "Performances"
         ],
         "result": "Un rapport écrit en français ou en anglais, les problèmes classés par gravité, un plan de correction et un prix fixe.",
-        "priceNote": "290 € jusqu'à 10 écrans, 490 € au-delà. Déduit du Lancement s'il est commandé sous 30 jours.",
+        "priceNote": "149 € jusqu'à 10 écrans, 249 € jusqu'à 25, 390 € jusqu'à 50. Déduit du Lancement s'il est commandé sous 30 jours.",
         "payment": "À la commande.",
         "cta": "Commander un audit",
         "need": "audit",
         "detail": {
-          "title": "Audit d'application créée avec l'IA — 290 € ou 490 € | Albert Grabar",
-          "description": "Audit de sécurité, de paiement et de RGPD pour les applications créées avec Lovable, Bolt, Cursor, v0 ou Replit. Rapport écrit en 2 jours ouvrés, prix fixe. Particuliers et professionnels.",
+          "title": "Audit d'application créée avec l'IA — dès 149 € | Albert Grabar",
+          "description": "Audit de sécurité, de paiement et de RGPD pour les applications créées avec Lovable, Bolt, Cursor, v0 ou Replit. Rapport écrit en 2 à 5 jours ouvrés, dès 149 €. Particuliers et professionnels.",
           "h1": "Audit de votre application créée avec l'IA",
           "lead": "Vous avez construit une application avec Lovable, Bolt, Cursor, v0 ou Replit. Avant de la montrer à des clients ou d'encaisser des paiements, je vérifie ce qui peut casser ou fuiter, et je vous dis quoi corriger, dans quel ordre et pour quel prix.",
           "sections": [
@@ -269,19 +269,37 @@
               ]
             },
             {
+              "type": "features",
+              "title": "Les formules",
+              "items": [
+                {
+                  "t": "Essentiel — 149 €",
+                  "d": "Jusqu'à 10 écrans. Rapport en 2 jours ouvrés."
+                },
+                {
+                  "t": "Standard — 249 €",
+                  "d": "Jusqu'à 25 écrans. Rapport en 3 jours ouvrés."
+                },
+                {
+                  "t": "Étendu — 390 €",
+                  "d": "Jusqu'à 50 écrans. Rapport en 5 jours ouvrés."
+                }
+              ]
+            },
+            {
               "type": "steps",
               "title": "Comment ça se passe",
               "items": [
                 {
                   "t": "Vous m'écrivez",
-                  "d": "Le lien de l'app, l'outil utilisé et ce qu'elle doit faire. Je confirme le prix (290 € ou 490 €) par écrit."
+                  "d": "Le lien de l'app, l'outil utilisé et ce qu'elle doit faire. Je confirme la formule et le prix (149 €, 249 € ou 390 €) par écrit."
                 },
                 {
                   "t": "Vous payez et donnez les accès",
                   "d": "Un accès en lecture au code (GitHub) et un compte de test. Je n'ai jamais besoin de vos mots de passe personnels."
                 },
                 {
-                  "t": "J'analyse pendant 2 jours ouvrés",
+                  "t": "J'analyse pendant 2 à 5 jours ouvrés",
                   "d": "Lecture du code, tests dans le navigateur, vérification de la base de données et du paiement en mode test."
                 },
                 {
@@ -314,7 +332,7 @@
               "type": "list",
               "title": "Prix et paiement",
               "items": [
-                "290 € jusqu'à 10 écrans, 490 € au-delà. Prix fixe, confirmé par écrit avant de commencer.",
+                "Essentiel 149 € (jusqu'à 10 écrans), Standard 249 € (jusqu'à 25 écrans), Étendu 390 € (jusqu'à 50 écrans). Un écran = une page ou une vue de l'application. Prix fixe, confirmé par écrit avant de commencer.",
                 "Paiement à la commande, par carte (Stripe) ou par virement.",
                 "Déduit du prix du Lancement si vous le commandez dans les 30 jours.",
                 "TVA non applicable, art. 293 B du CGI : le prix affiché est le prix final."
@@ -345,11 +363,11 @@
         "id": "launch",
         "page": "svcLaunch",
         "name": "Lancement",
-        "price": "1 190 – 2 490 €",
-        "schemaPrice": "1190",
-        "delay": "5 à 10 jours ouvrés",
+        "price": "490 €, 890 € ou 1 490 €",
+        "schemaPrice": "490",
+        "delay": "4 à 12 jours ouvrés",
         "for": "Particuliers et professionnels qui veulent passer du prototype à une app utilisable par de vrais clients.",
-        "listTitle": "Inclus",
+        "listTitle": "Dans la formule Lancement",
         "list": [
           "Correction des problèmes critiques de l'audit",
           "Connexion sécurisée et réinitialisation du mot de passe",
@@ -360,15 +378,15 @@
           "Notice écrite de prise en main",
           "14 jours de corrections offertes"
         ],
-        "priceNote": "Prix exact dans le devis, après l'audit.",
-        "payment": "50 % à la commande, 50 % à la livraison.",
+        "priceNote": "Sécurisation : 490 €, Lancement : 890 €, Lancement + : 1 490 €. La formule est confirmée par écrit après l'audit.",
+        "payment": "À la commande jusqu'à 500 € ; au-delà, 50 % à la commande et 50 % à la livraison.",
         "cta": "Demander un devis",
         "need": "launch",
         "detail": {
-          "title": "Lancement d'application créée avec l'IA — de 1 190 à 2 490 € | Albert Grabar",
-          "description": "Je corrige les failles, j'ajoute le paiement Stripe réel, je mets l'app en conformité RGPD et je la mets en ligne sur votre nom de domaine. 5 à 10 jours ouvrés, prix fixe après l'audit.",
+          "title": "Lancement d'application créée avec l'IA — de 490 à 1 490 € | Albert Grabar",
+          "description": "Je corrige les failles, j'ajoute le paiement Stripe réel, je mets l'app en conformité RGPD et je la mets en ligne sur votre nom de domaine. Trois formules à prix fixe : 490 €, 890 € ou 1 490 €, en 4 à 12 jours ouvrés.",
           "h1": "Lancement : du prototype à l'application en ligne",
-          "lead": "Votre app marche en démo. Je la rends sûre et utilisable par de vrais clients : failles corrigées, paiement réel, RGPD, nom de domaine en HTTPS et sauvegardes. Le prix est fixé par écrit après l'audit.",
+          "lead": "Votre app marche en démo. Je la rends sûre et utilisable par de vrais clients : failles corrigées, paiement réel, RGPD, nom de domaine en HTTPS et sauvegardes. Trois formules à prix fixe, confirmées par écrit après l'audit.",
           "sections": [
             {
               "type": "list",
@@ -381,7 +399,25 @@
             },
             {
               "type": "features",
-              "title": "Ce qui est inclus",
+              "title": "Les formules",
+              "items": [
+                {
+                  "t": "Sécurisation — 490 €",
+                  "d": "Audit Essentiel inclus, correction des failles critiques et importantes (jusqu'à 2 jours de travail), nouveau test. 4 jours ouvrés."
+                },
+                {
+                  "t": "Lancement — 890 €",
+                  "d": "Sécurisation, plus connexion sécurisée, Stripe en mode réel, RGPD, mise en ligne en HTTPS, sauvegardes et notice. 7 jours ouvrés."
+                },
+                {
+                  "t": "Lancement + — 1 490 €",
+                  "d": "Lancement, plus jusqu'à 3 fonctionnalités ou intégrations simples (e-mails automatiques, espace administrateur, export). 12 jours ouvrés."
+                }
+              ]
+            },
+            {
+              "type": "features",
+              "title": "Ce qui est inclus dans la formule Lancement",
               "items": [
                 {
                   "t": "Corrections critiques",
@@ -423,15 +459,15 @@
               "items": [
                 {
                   "t": "L'audit",
-                  "d": "Si vous n'en avez pas encore, on commence par là. Son prix est déduit du Lancement."
+                  "d": "Si vous n'en avez pas encore, on commence par là. Son prix est déduit de la formule choisie."
                 },
                 {
                   "t": "Le devis écrit",
-                  "d": "La liste des travaux, le prix fixe et la date de livraison. Il est valable 30 jours."
+                  "d": "La formule, la liste des travaux, le prix fixe et la date de livraison. Il est valable 30 jours."
                 },
                 {
                   "t": "Les travaux",
-                  "d": "5 à 10 jours ouvrés après l'acompte et la réception des accès. Vous suivez l'avancement par écrit."
+                  "d": "4 à 12 jours ouvrés selon la formule, après l'acompte et la réception des accès. Vous suivez l'avancement par écrit."
                 },
                 {
                   "t": "La livraison",
@@ -448,7 +484,7 @@
               "title": "Ce qui n'est pas inclus",
               "muted": true,
               "items": [
-                "Les nouvelles fonctionnalités : devis séparé, pour garder le prix du Lancement fixe.",
+                "Les fonctionnalités au-delà de la formule (Lancement + en inclut 3 simples) : devis séparé, pour garder le prix fixe.",
                 "Les abonnements des services tiers (hébergement, nom de domaine, Stripe, base de données) : vous les payez directement, à votre nom.",
                 "Les documents juridiques sur mesure : j'installe des modèles adaptés à votre app ; pour un cas particulier, un avocat reste conseillé."
               ]
@@ -457,8 +493,8 @@
               "type": "list",
               "title": "Prix et paiement",
               "items": [
-                "De 1 190 à 2 490 € selon le rapport d'audit ; le prix exact et fixe est dans le devis.",
-                "50 % à la commande, 50 % à la livraison, par carte (Stripe) ou par virement.",
+                "Sécurisation : 490 €, Lancement : 890 €, Lancement + : 1 490 € ; la formule est confirmée par écrit après l'audit, avec un devis séparé si l'app demande plus.",
+                "À la commande jusqu'à 500 € ; au-delà, 50 % à la commande et 50 % à la livraison, par carte (Stripe) ou par virement.",
                 "Le prix de l'audit est déduit si vous commandez dans les 30 jours.",
                 "TVA non applicable, art. 293 B du CGI : le prix affiché est le prix final."
               ]
@@ -479,7 +515,7 @@
             },
             {
               "q": "Pouvez-vous ajouter une fonctionnalité ?",
-              "a": "Oui, sur devis séparé. Ainsi, le prix du Lancement reste celui annoncé."
+              "a": "Oui : jusqu'à 3 fonctionnalités simples dans la formule Lancement +, ou sur devis séparé. Ainsi, le prix reste celui annoncé."
             }
           ]
         }
@@ -488,29 +524,29 @@
         "id": "site",
         "page": "svcSite",
         "name": "Site vitrine ou personnel",
-        "price": "890 € ou 1 490 €",
-        "schemaPrice": "890",
-        "delay": "5 jours ouvrés",
+        "price": "290 €, 590 € ou 990 €",
+        "schemaPrice": "290",
+        "delay": "4 à 10 jours ouvrés",
         "for": "Artisans, cafés, salons, indépendants, associations — et particuliers : portfolio, CV en ligne, site d'événement.",
         "listTitle": "Inclus",
         "list": [
-          "Jusqu'à 5 pages (890 €) ou jusqu'à 10 pages avec réservation ou galerie (1 490 €)",
+          "Une page (290 €), jusqu'à 5 pages (590 €) ou jusqu'à 10 pages avec galerie et réservation (990 €)",
           "Version mobile",
           "Formulaire de contact",
           "Référencement de base et fiche Google",
           "Mentions légales et politique de confidentialité",
           "Mise en ligne"
         ],
-        "priceNote": "Hébergement et nom de domaine à votre nom, environ 5–10 €/mois chez l'hébergeur. Suivi 49 €/mois, sans engagement : mises à jour de sécurité, sauvegardes, petites modifications jusqu'à 1 h par mois.",
-        "payment": "50 % à la commande, 50 % à la livraison.",
+        "priceNote": "Options : page supplémentaire 59 €, rédaction des textes 29 € par page. Hébergement et nom de domaine à votre nom, environ 5–10 €/mois chez l'hébergeur. Suivi 49 €/mois, sans engagement : mises à jour de sécurité, sauvegardes, petites modifications jusqu'à 1 h par mois.",
+        "payment": "À la commande jusqu'à 500 € ; au-delà, 50 % à la commande et 50 % à la livraison.",
         "cta": "Demander un site",
         "need": "site",
         "extraLink": "Voir les sites de démonstration",
         "detail": {
-          "title": "Site vitrine ou site personnel — 890 € ou 1 490 € | Albert Grabar",
-          "description": "Un site clair, rapide et adapté au mobile pour votre activité ou votre projet personnel : jusqu'à 5 pages pour 890 €, jusqu'à 10 pages avec réservation ou galerie pour 1 490 €. En ligne en 5 jours ouvrés.",
+          "title": "Site vitrine ou site personnel — dès 290 € | Albert Grabar",
+          "description": "Un site clair, rapide et adapté au mobile pour votre activité ou votre projet personnel : une page pour 290 €, jusqu'à 5 pages pour 590 €, jusqu'à 10 pages avec galerie et réservation pour 990 €. En ligne en 4 à 10 jours ouvrés.",
           "h1": "Un site pour votre activité ou votre projet personnel",
-          "lead": "Artisan, café, salon, indépendant, association — ou particulier qui veut un portfolio, un CV en ligne ou un site pour un événement : un site clair et rapide, en ligne en 5 jours ouvrés, à prix fixe.",
+          "lead": "Artisan, café, salon, indépendant, association — ou particulier qui veut un portfolio, un CV en ligne ou un site pour un événement : un site clair et rapide, en ligne en 4 à 10 jours ouvrés, à prix fixe.",
           "sections": [
             {
               "type": "list",
@@ -526,12 +562,16 @@
               "title": "Ce qui est inclus",
               "items": [
                 {
-                  "t": "Jusqu'à 5 pages — 890 €",
-                  "d": "Par exemple : accueil, services, à propos, galerie, contact."
+                  "t": "Une page — 290 €",
+                  "d": "Présentation, services, prix, horaires et contact sur une seule page."
                 },
                 {
-                  "t": "Jusqu'à 10 pages — 1 490 €",
-                  "d": "Avec une galerie photo ou une réservation en ligne (par un outil de réservation existant)."
+                  "t": "Jusqu'à 5 pages — 590 €",
+                  "d": "Par exemple : accueil, services, tarifs, à propos, contact."
+                },
+                {
+                  "t": "Jusqu'à 10 pages — 990 €",
+                  "d": "Avec une galerie photo et une demande de réservation ou de rendez-vous envoyée par e-mail (ou un lien vers votre outil de réservation)."
                 },
                 {
                   "t": "Version mobile",
@@ -554,8 +594,8 @@
                   "d": "Sur votre nom de domaine, en HTTPS, avec un hébergement à votre nom."
                 },
                 {
-                  "t": "Deux séries de retours",
-                  "d": "Vous relisez le site en préproduction et je fais vos modifications deux fois avant la mise en ligne."
+                  "t": "Une ou deux séries de retours",
+                  "d": "Vous relisez le site en préproduction : je fais vos modifications une fois (une page) ou deux fois (5 et 10 pages) avant la mise en ligne."
                 }
               ]
             },
@@ -577,7 +617,7 @@
                 },
                 {
                   "t": "La création",
-                  "d": "5 jours ouvrés après l'acompte et la réception des contenus. Vous recevez un lien de prévisualisation."
+                  "d": "4 à 10 jours ouvrés selon la formule, après l'acompte et la réception des contenus. Vous recevez un lien de prévisualisation."
                 },
                 {
                   "t": "La mise en ligne",
@@ -591,7 +631,7 @@
               "muted": true,
               "items": [
                 "L'hébergement et le nom de domaine : environ 5 à 10 € par mois chez l'hébergeur, à votre nom.",
-                "La rédaction complète des textes et les photos professionnelles.",
+                "La rédaction de vos textes (en option : 29 € par page) et les photos professionnelles.",
                 "La vente en ligne de produits (boutique) : sur devis."
               ]
             },
@@ -599,8 +639,8 @@
               "type": "list",
               "title": "Prix et paiement",
               "items": [
-                "890 € jusqu'à 5 pages, 1 490 € jusqu'à 10 pages avec réservation ou galerie.",
-                "50 % à la commande, 50 % à la livraison, par carte (Stripe) ou par virement.",
+                "290 € pour une page, 590 € jusqu'à 5 pages, 990 € jusqu'à 10 pages avec galerie et réservation. Options : page supplémentaire 59 €, rédaction des textes 29 € par page.",
+                "À la commande jusqu'à 500 € ; au-delà, 50 % à la commande et 50 % à la livraison, par carte (Stripe) ou par virement.",
                 "Suivi en option : 49 €/mois, sans engagement — mises à jour de sécurité, sauvegardes, petites modifications jusqu'à 1 h par mois.",
                 "TVA non applicable, art. 293 B du CGI : le prix affiché est le prix final."
               ]
@@ -631,9 +671,9 @@
         "id": "fixes",
         "page": "svcFixes",
         "name": "Corrections PHP, Symfony, WordPress",
-        "price": "45 – 55 €/h",
+        "price": "45 €/h",
         "schemaPrice": "45",
-        "delay": "selon la tâche",
+        "delay": "1 à 3 jours ouvrés (forfaits)",
         "for": "Particuliers et professionnels : sites et applications existants.",
         "listTitle": "Exemples",
         "list": [
@@ -643,13 +683,13 @@
           "Une page lente",
           "Un formulaire qui n'envoie plus"
         ],
-        "priceNote": "45 €/h pour WordPress, 55 €/h pour Symfony et le code sur mesure ; forfait si la tâche est claire. Devis écrit avant de commencer.",
+        "priceNote": "45 €/h pour WordPress, PHP et Symfony. Forfaits : 1 h — 45 €, 3 h — 129 €, 6 h — 249 €. Devis écrit avant de commencer.",
         "payment": "Forfait à la commande ; au-delà de 500 €, 50 % à la commande et 50 % à la livraison.",
         "cta": "Décrire la tâche",
         "need": "fixes",
         "detail": {
-          "title": "Corrections et maintenance PHP, Symfony, WordPress — 45 à 55 €/h | Albert Grabar",
-          "description": "Un bug, une mise à jour de PHP ou de Symfony, un conflit d'extensions WordPress, une page lente, un formulaire qui n'envoie plus : diagnostic et devis écrit avant de commencer. 45 à 55 €/h ou forfait.",
+          "title": "Corrections et maintenance PHP, Symfony, WordPress — 45 €/h | Albert Grabar",
+          "description": "Un bug, une mise à jour de PHP ou de Symfony, un conflit d'extensions WordPress, une page lente, un formulaire qui n'envoie plus : diagnostic et devis écrit avant de commencer. 45 €/h ou forfait de 1, 3 ou 6 heures.",
           "h1": "Corrections et maintenance PHP, Symfony, WordPress",
           "lead": "Votre site ou votre application existe déjà, mais quelque chose ne va pas. Décrivez le problème par écrit : je réponds avec un diagnostic et un prix avant de toucher à quoi que ce soit.",
           "sections": [
@@ -727,7 +767,8 @@
               "type": "list",
               "title": "Prix et paiement",
               "items": [
-                "45 €/h pour WordPress, 55 €/h pour Symfony et le code sur mesure.",
+                "45 €/h pour WordPress, PHP et Symfony. Forfaits : 1 h — 45 €, 3 h — 129 €, 6 h — 249 €.",
+                "Maintenance mensuelle : 49 €/mois, sans engagement — mises à jour de sécurité, sauvegardes, surveillance et jusqu'à 1 h de petites modifications.",
                 "Forfait si la tâche est claire ; sinon, le temps estimé est dans le devis et je vous préviens par écrit avant de le dépasser.",
                 "Forfait payé à la commande ; au-delà de 500 €, 50 % à la commande et 50 % à la livraison.",
                 "TVA non applicable, art. 293 B du CGI : le prix affiché est le prix final."
@@ -787,7 +828,7 @@
         "tag": "Démo · entreprise fictive",
         "name": "Lumen Plomberie",
         "subtitle": "Site vitrine pour un artisan",
-        "text": "Site de 5 pages : accueil, services, tarifs, zone et horaires, devis. Exemple de ce que vous obtenez pour 890 €.",
+        "text": "Site de 5 pages : accueil, services, tarifs, zone et horaires, devis. Formule 5 pages à 590 € ; le calculateur de prix et le diagnostic en ligne sont des options sur devis.",
         "links": [
           {
             "label": "Voir la démo",
@@ -800,7 +841,7 @@
         "tag": "Démo · entreprise fictive",
         "name": "Café Brindille",
         "subtitle": "Site vitrine pour un café",
-        "text": "Site de 5 pages : accueil, carte, galerie, horaires et accès, réservation. Exemple de ce que vous obtenez pour 890 €.",
+        "text": "Site de 5 pages : accueil, carte, galerie, horaires et accès, réservation. Formule 5 pages à 590 € ; la commande à emporter en ligne est une option sur devis.",
         "links": [
           {
             "label": "Voir la démo",
@@ -813,7 +854,7 @@
         "tag": "Démo · entreprise fictive",
         "name": "Studio Éclat",
         "subtitle": "Site vitrine pour un salon de coiffure",
-        "text": "Site de 10 pages : prestations, couleur, soins, équipe, avant/après, avis, FAQ et prise de rendez-vous. Exemple de ce que vous obtenez pour 1 490 €.",
+        "text": "Site de 10 pages : prestations, couleur, soins, équipe, avant/après, avis, FAQ et prise de rendez-vous. Formule 10 pages à 990 € ; la prise de rendez-vous en ligne par étapes est une option sur devis.",
         "links": [
           {
             "label": "Voir la démo",
@@ -911,10 +952,10 @@
       "other": "Autre"
     },
     "budgets": [
-      "Moins de 500 €",
-      "500–1 000 €",
-      "1 000–2 500 €",
-      "Plus de 2 500 €"
+      "Moins de 300 €",
+      "300–600 €",
+      "600–1 500 €",
+      "Plus de 1 500 €"
     ],
     "submit": "Envoyer ma demande",
     "privacy": "Vos données servent uniquement à répondre à votre demande et à préparer un devis. Elles sont conservées 3 ans après notre dernier échange. Pour les consulter ou les faire supprimer : {{email}}. Détails : {{privacyLink}}.",
@@ -963,11 +1004,11 @@
     "footer.audience": "Services réservés aux professionnels : entreprises, indépendants, associations. Devis écrit avant chaque mission.",
     "home.description": "Audit, sécurité, paiement Stripe et RGPD pour les applications créées avec Lovable, Bolt ou Cursor, sites vitrines, corrections PHP et WordPress. Pour les entreprises, indépendants et associations.",
     "home.prices.2.name": "Site vitrine",
-    "services.description": "Audit d'application IA dès 290 €, lancement dès 1 190 €, site vitrine dès 890 €, corrections PHP, Symfony et WordPress. Pour les professionnels, devis écrit avant chaque mission.",
+    "services.description": "Audit d'application IA dès 149 €, lancement dès 490 €, site vitrine dès 290 €, corrections PHP, Symfony et WordPress à 45 €/h. Pour les professionnels, devis écrit avant chaque mission.",
     "services.lead": "Quatre offres pour les entreprises, les indépendants et les associations, des prix publics et un devis écrit avant chaque mission.",
     "services.labels.audience": "Entreprises, indépendants, associations",
     "services.offers.0.for": "Créateurs, start-up et petites entreprises qui ont créé une application avec Lovable, Bolt, Cursor, v0 ou Replit.",
-    "services.offers.0.detail.description": "Audit de sécurité, de paiement et de RGPD pour les applications créées avec Lovable, Bolt, Cursor, v0 ou Replit. Rapport écrit en 2 jours ouvrés, prix fixe.",
+    "services.offers.0.detail.description": "Audit de sécurité, de paiement et de RGPD pour les applications créées avec Lovable, Bolt, Cursor, v0 ou Replit. Rapport écrit en 2 à 5 jours ouvrés, dès 149 €.",
     "services.offers.0.detail.sections.0.items": [
       "Créateurs et indépendants : vous lancez une activité autour de votre app et vous voulez savoir si elle est sûre.",
       "Petites entreprises : vous allez ouvrir l'app à de vrais clients, encaisser des paiements ou collecter des données personnelles.",
@@ -976,10 +1017,10 @@
     "services.offers.1.for": "Créateurs et entreprises qui veulent passer du prototype à une app utilisable par de vrais clients.",
     "services.offers.2.name": "Site vitrine",
     "services.offers.2.for": "Artisans, cafés, salons, indépendants, associations.",
-    "services.offers.2.detail.title": "Site vitrine pour votre activité — 890 € ou 1 490 € | Albert Grabar",
-    "services.offers.2.detail.description": "Un site clair, rapide et adapté au mobile pour votre activité : jusqu'à 5 pages pour 890 €, jusqu'à 10 pages avec réservation ou galerie pour 1 490 €. En ligne en 5 jours ouvrés.",
+    "services.offers.2.detail.title": "Site vitrine pour votre activité — dès 290 € | Albert Grabar",
+    "services.offers.2.detail.description": "Un site clair, rapide et adapté au mobile pour votre activité : une page pour 290 €, jusqu'à 5 pages pour 590 €, jusqu'à 10 pages avec galerie et réservation pour 990 €. En ligne en 4 à 10 jours ouvrés.",
     "services.offers.2.detail.h1": "Un site vitrine pour votre activité",
-    "services.offers.2.detail.lead": "Artisan, café, salon, indépendant, association : un site clair et rapide, en ligne en 5 jours ouvrés, à prix fixe.",
+    "services.offers.2.detail.lead": "Artisan, café, salon, indépendant, association : un site clair et rapide, en ligne en 4 à 10 jours ouvrés, à prix fixe.",
     "services.offers.2.detail.sections.0.items": [
       "Artisans, commerçants, cafés, salons : vos services, vos horaires, votre zone et un formulaire de contact.",
       "Indépendants et associations : présenter votre offre ou vos actions et recevoir des demandes.",
