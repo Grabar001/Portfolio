@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Devis et contact — Lumen Plomberie (démo)</title>
+<meta name="description" content="Site de démonstration réalisé par Albert Grabar pour un plombier fictif.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231f6fff'/%3E%3Cpath d='M32 12c8 11 14 18 14 26a14 14 0 0 1-28 0c0-8 6-15 14-26z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+  @font-face { font-family: "Pop"; font-weight: 400; src: url("../../assets/fonts/poppins-latin-400-normal.woff2") format("woff2"); }
+  @font-face { font-family: "Pop"; font-weight: 600; src: url("../../assets/fonts/poppins-latin-600-normal.woff2") format("woff2"); }
+  :root { --navy: #0b1f3a; --blue: #1f6fff; --cyan: #22d3ee; --orange: #ff7a1a; --ink: #13233d; --muted: #5b6b85; --soft: #f2f7ff; --line: #dbe6f7; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: "Pop", system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--ink); background: #fff; line-height: 1.6; }
+  a { color: var(--blue); }
+  .wrap { width: min(100% - 32px, 1120px); margin-inline: auto; }
+  .demo-bar { background: #111; color: #fff; font-size: 13px; padding: 8px 0; }
+  .demo-bar .wrap { display: flex; flex-wrap: wrap; gap: 4px 18px; justify-content: space-between; }
+  .demo-bar a { color: #fff; font-weight: 600; }
+  header.top { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 70px; flex-wrap: wrap; padding-block: 8px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 20px; color: var(--navy); text-decoration: none; }
+  .logo-mark { width: 38px; height: 38px; border-radius: 12px; background: linear-gradient(135deg, var(--blue), var(--cyan)); display: grid; place-items: center; box-shadow: 0 8px 20px -8px var(--blue); }
+  nav.menu { display: flex; gap: 22px; flex-wrap: wrap; }
+  nav.menu a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; }
+  nav.menu a:hover { color: var(--blue); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 999px; background: var(--orange); color: #fff; font-weight: 600; text-decoration: none; border: 0; font: inherit; font-weight: 600; box-shadow: 0 12px 24px -12px var(--orange); transition: transform .2s, box-shadow .2s; }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -12px var(--orange); }
+  .btn.ghost { background: rgba(255,255,255,.12); box-shadow: none; border: 1px solid rgba(255,255,255,.45); }
+  .btn[disabled] { opacity: .8; cursor: not-allowed; }
+  /* Hero */
+  .hero { position: relative; overflow: hidden; color: #fff; background: radial-gradient(900px 500px at 85% -10%, rgba(34,211,238,.45), transparent 60%), radial-gradient(700px 500px at -10% 110%, rgba(31,111,255,.6), transparent 60%), var(--navy); padding: 72px 0 96px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); font-size: 14px; }
+  .pulse { width: 9px; height: 9px; border-radius: 50%; background: #3ef08f; box-shadow: 0 0 0 0 rgba(62,240,143,.7); animation: pulse 1.8s infinite; }
+  @keyframes pulse { 70% { box-shadow: 0 0 0 10px rgba(62,240,143,0); } 100% { box-shadow: 0 0 0 0 rgba(62,240,143,0); } }
+  .hero h1 { font-size: clamp(34px, 5.2vw, 60px); line-height: 1.05; margin: 18px 0; letter-spacing: -.02em; }
+  .hero h1 span { background: linear-gradient(90deg, var(--cyan), #7dd3fc); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { font-size: 19px; color: #c9d6ec; max-width: 34em; margin: 0 0 28px; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .drop-card { position: relative; aspect-ratio: 1; border-radius: 32px; background: linear-gradient(160deg, rgba(255,255,255,.14), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.2); display: grid; place-items: center; }
+  .drop { width: 46%; animation: float 4s ease-in-out infinite; filter: drop-shadow(0 30px 40px rgba(34,211,238,.35)); }
+  @keyframes float { 50% { transform: translateY(-14px); } }
+  .badge { position: absolute; padding: 10px 14px; border-radius: 14px; background: #fff; color: var(--navy); font-weight: 600; font-size: 14px; box-shadow: 0 18px 30px -18px rgba(0,0,0,.6); }
+  .badge small { display: block; color: var(--muted); font-weight: 400; font-size: 12px; }
+  .b1 { top: 8%; left: -6%; } .b2 { bottom: 12%; right: -6%; } .b3 { bottom: -4%; left: 10%; }
+  /* Sections */
+  section { padding: 76px 0; }
+  .eyebrow { color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: .12em; font-size: 13px; }
+  h2 { font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; margin: 6px 0 12px; color: var(--navy); }
+  .sub { color: var(--muted); margin: 0 0 34px; max-width: 40em; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .card { padding: 26px; border-radius: 22px; background: #fff; border: 1px solid var(--line); transition: transform .25s, box-shadow .25s, border-color .25s; }
+  .card:hover { transform: translateY(-5px); border-color: transparent; box-shadow: 0 24px 40px -24px rgba(31,111,255,.5); }
+  .ico { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 14px; }
+  .card h3 { margin: 0 0 6px; font-size: 19px; color: var(--navy); }
+  .card p { margin: 0 0 10px; color: var(--muted); font-size: 15px; }
+  .price { font-weight: 600; color: var(--blue); }
+  .c1 { background: #e3eeff; } .c2 { background: #dcfaff; } .c3 { background: #fff0e3; } .c4 { background: #e9e5ff; } .c5 { background: #dcfce7; } .c6 { background: #ffe4ec; }
+  .urgent { background: linear-gradient(90deg, var(--orange), #ff4d6d); color: #fff; padding: 22px 0; }
+  .urgent .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; font-size: 18px; }
+  .urgent strong { font-size: 24px; }
+  .urgent .btn { background: #fff; color: var(--orange); }
+  .band { background: var(--soft); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 42px; align-items: start; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips span { padding: 8px 14px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-weight: 600; font-size: 14px; }
+  .chips span:nth-child(3n) { background: #e3eeff; } .chips span:nth-child(4n) { background: #dcfaff; }
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 18px; overflow: hidden; border: 1px solid var(--line); }
+  td { padding: 14px 18px; border-bottom: 1px solid var(--line); }
+  tr:last-child td { border-bottom: 0; }
+  td:last-child { text-align: right; font-weight: 600; }
+  .steps { counter-reset: s; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .step { position: relative; padding: 24px; border-radius: 20px; background: linear-gradient(160deg, #fff, var(--soft)); border: 1px solid var(--line); }
+  .step::before { counter-increment: s; content: counter(s); display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--blue); color: #fff; font-weight: 600; margin-bottom: 12px; }
+  .step h3 { margin: 0 0 4px; font-size: 17px; }
+  .step p { margin: 0; color: var(--muted); font-size: 14px; }
+  .review { position: relative; }
+  .stars { color: #ffb400; letter-spacing: 2px; }
+  .note { font-size: 13px; color: var(--muted); }
+  details { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px 20px; margin-bottom: 10px; }
+  summary { cursor: pointer; font-weight: 600; color: var(--navy); }
+  form { background: #fff; border-radius: 24px; padding: 28px; box-shadow: 0 30px 60px -36px rgba(11,31,58,.5); display: grid; gap: 14px; }
+  label { font-weight: 600; font-size: 14px; display: grid; gap: 6px; }
+  input, select, textarea { font: inherit; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--soft); }
+  textarea { min-height: 110px; }
+  footer { background: var(--navy); color: #c9d6ec; padding: 44px 0; font-size: 15px; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px; }
+  footer strong { color: #fff; }
+  @media (max-width: 860px) { .hero .wrap, .two { grid-template-columns: 1fr; } .grid3 { grid-template-columns: 1fr 1fr; } .steps { grid-template-columns: 1fr 1fr; } .drop-card { max-width: 340px; } }
+  @media (max-width: 560px) { .grid3, .steps { grid-template-columns: 1fr; } nav.menu { gap: 14px; } .badge { display: none; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before { animation: none !important; transition: none !important; } }
+
+  nav.menu a.on { position: relative; }
+  nav.menu a.on::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 3px; border-radius: 3px; background: currentColor; }
+  .page-hero { padding: 64px 0 40px; }
+  .page-hero h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.05; margin: 0 0 10px; }
+  .page-hero p { font-size: 19px; margin: 0; max-width: 40em; }
+  .cta-band { padding: 56px 0; text-align: center; }
+  .cta-band h2 { margin: 0 0 8px; }
+  .cta-band p { margin: 0 0 20px; }
+
+  .page-hero { background: radial-gradient(700px 300px at 90% 0, rgba(34,211,238,.35), transparent 60%), var(--navy); color: #fff; }
+  .page-hero p { color: #c9d6ec; }
+  .cta-band { background: linear-gradient(90deg, var(--blue), var(--cyan)); color: #fff; }
+  .cta-band h2 { color: #fff; }
+  .guar .ico { margin: 0 auto 12px; } .guar { text-align: center; }
+  .contact-cards .card h3 { margin-bottom: 4px; }
+
+  /* page transitions (Chrome, Edge, Safari 18.2+; other browsers simply load the page) */
+  @view-transition { navigation: auto; }
+  header.top { view-transition-name: topbar; }
+  .demo-bar { view-transition-name: demobar; }
+  ::view-transition-old(root) { animation: vt-out .22s ease both; }
+  ::view-transition-new(root) { animation: vt-in .38s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes vt-out { to { opacity: 0; transform: translateY(-10px); } }
+  @keyframes vt-in { from { opacity: 0; transform: translateY(14px); } }
+  /* reveal on scroll (only when demo.js runs) */
+  .js .rv { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .js .rv.in { opacity: 1; transform: none; }
+  img.photo { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .js-only { display: none !important; }
+  .js .js-only { display: revert !important; }
+  .js .js-flex { display: flex !important; }
+  .carousel { position: relative; }
+  .car-nav { gap: 10px; justify-content: flex-end; margin-top: 16px; }
+  .car-nav button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid currentColor; background: transparent; color: inherit; font: inherit; font-size: 20px; cursor: pointer; }
+  .car-nav button:disabled { opacity: .3; cursor: default; }
+  .car-track { display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding-bottom: 4px; }
+  .car-track::-webkit-scrollbar { display: none; }
+  .car-track > * { flex: 0 0 calc((100% - 36px) / 3); scroll-snap-align: start; }
+  @media (max-width: 860px) { .car-track > * { flex-basis: 82%; } }
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+    .js .rv { opacity: 1; transform: none; }
+  }
+
+  .drop-card .hero-img { position: absolute; inset: 0; border-radius: inherit; }
+  .drop-card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(200deg, transparent 40%, rgba(11,31,58,.55)); }
+  .drop-card .badge { z-index: 1; animation: float 5s ease-in-out infinite; }
+  .drop-card .b2 { animation-delay: -1.6s; } .drop-card .b3 { animation-delay: -3.2s; }
+  .page-hero { background: linear-gradient(90deg, rgba(11,31,58,.95) 35%, rgba(11,31,58,.6)), url(img/tuyaux.webp) center/cover !important; }
+  .works { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .works figure { margin: 0; border-radius: 22px; overflow: hidden; background: #fff; border: 1px solid var(--line); }
+  .works img { aspect-ratio: 4/3; height: auto; transition: transform .6s ease; }
+  .works figure:hover img { transform: scale(1.05); }
+  .works figcaption { padding: 14px 18px; font-weight: 600; color: var(--navy); }
+  .works figcaption small { display: block; font-weight: 400; color: var(--muted); }
+  .calc { display: grid; gap: 14px; }
+  .calc label { display: grid; gap: 6px; font-weight: 600; font-size: 14px; color: var(--navy); }
+  .calc label.check { display: flex; align-items: center; gap: 10px; font-weight: 400; }
+  .calc select { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); font: inherit; background: #fff; }
+  .calc-out { display: block; padding: 18px; border-radius: 16px; background: var(--soft); font-size: 30px; font-weight: 600; color: var(--blue); text-align: center; transition: transform .25s; }
+  .calc-out.bump { transform: scale(1.06); }
+  .calc-out small { display: block; font-size: 13px; font-weight: 400; color: var(--muted); }
+  .calc-img { border-radius: 22px; aspect-ratio: 4/3; height: auto; margin-top: 18px; }
+  .fab { display: none; position: fixed; right: 16px; bottom: 16px; z-index: 20; padding: 14px 20px; border-radius: 999px; background: var(--orange); color: #fff; font-weight: 600; text-decoration: none; box-shadow: 0 16px 30px -10px rgba(255,122,26,.7); opacity: 0; transform: translateY(24px); pointer-events: none; transition: opacity .35s, transform .35s; }
+  .fab.on { opacity: 1; transform: none; pointer-events: auto; }
+  @keyframes fab-in { from { opacity: 0; transform: translateY(30px); } }
+  .zone-map svg { display: block; width: 100%; height: auto; border-radius: 22px; background: #eaf2ff; }
+  .zone-map .area { fill: #fff; stroke: #b9cdee; stroke-width: 2; transition: fill .25s, transform .25s; transform-box: fill-box; transform-origin: center; }
+  .zone-map .area.free { fill: #cfe0ff; stroke: var(--blue); }
+  .zone-map .area.hl { fill: var(--orange); stroke: var(--orange); transform: scale(1.06); }
+  .zone-map text { font-size: 13px; font-weight: 600; fill: var(--navy); pointer-events: none; }
+  .chips span[data-z] { cursor: default; transition: background .2s, color .2s; }
+  .chips span.hl { background: var(--orange) !important; color: #fff; border-color: var(--orange); }
+  @media (max-width: 860px) { .fab { display: inline-flex; } body { padding-bottom: 80px; } .works { grid-template-columns: 1fr; } }
+
+  .cine { position: relative; min-height: min(86svh, 820px); display: grid; align-items: center; overflow: hidden; isolation: isolate; color: #fff; }
+  .cine-bg { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
+  .cine-bg img { width: 100%; height: 100%; object-fit: cover; transform-origin: 70% 40%; animation: kb 24s ease-in-out infinite alternate; }
+  @keyframes kb { from { transform: scale(1.02); } to { transform: scale(1.14) translate(-1.5%, -1%); } }
+  .cine::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--cine-shade); }
+  .cine .wrap { padding-block: 90px 96px; }
+  .cine > .wrap { justify-self: stretch; }
+  .cine h1 { font-size: clamp(40px, 6.6vw, 88px); line-height: 1.03; margin: 16px 0 20px; max-width: 11.5em; color: #fff; letter-spacing: -.01em; }
+  .cine .lead { font-size: clamp(17px, 1.6vw, 21px); max-width: 34em; margin: 0 0 28px; opacity: .92; }
+  .cine .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .w { display: inline-block; opacity: 0; transform: translateY(.55em) rotate(2deg); filter: blur(8px); animation: word .9s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(.15s + var(--i) * .07s); }
+  @keyframes word { to { opacity: 1; transform: none; filter: none; } }
+  .fade-up { opacity: 0; transform: translateY(22px); animation: word .9s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: var(--d, .8s); }
+  .glass-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+  .glass { padding: 14px 18px; border-radius: 18px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.28); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); font-weight: 600; font-size: 15px; min-width: 160px; }
+  .glass small { display: block; font-weight: 400; opacity: .82; font-size: 13px; margin-top: 2px; }
+  .scroll-cue { position: absolute; left: 50%; bottom: 22px; width: 26px; height: 42px; border: 2px solid rgba(255,255,255,.7); border-radius: 14px; transform: translateX(-50%); }
+  .scroll-cue::after { content: ""; position: absolute; left: 50%; top: 8px; width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: #fff; animation: cue 1.6s infinite; }
+  @keyframes cue { 0% { opacity: 0; transform: translateY(0); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(14px); } }
+  .marquee { overflow: hidden; white-space: nowrap; padding: 20px 0; font-weight: 600; font-size: clamp(18px, 2.2vw, 28px); }
+  .marquee-track { display: inline-flex; animation: marq 36s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  .marquee-set { display: inline-flex; align-items: center; }
+  .marquee span { padding: 0 26px; } .marquee i { font-style: normal; opacity: .6; }
+  @keyframes marq { to { transform: translateX(-50%); } }
+  .scroll-progress { display: none; }
+  @supports (animation-timeline: scroll()) {
+    .scroll-progress { display: block; position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; transform-origin: 0 50%; transform: scaleX(0); background: var(--progress); animation: prog linear both; animation-timeline: scroll(root); }
+    @keyframes prog { to { transform: scaleX(1); } }
+  }
+  @supports (animation-timeline: view()) {
+    .plx { animation: plx linear both; animation-timeline: view(); }
+    @keyframes plx { from { transform: translateY(-7%) scale(1.14); } to { transform: translateY(7%) scale(1.14); } }
+  }
+  header.top { transition: box-shadow .3s, background-color .3s; }
+  header.top .wrap { transition: min-height .3s; }
+  header.top.scrolled { box-shadow: 0 12px 30px -20px rgba(0,0,0,.55); }
+  header.top.scrolled .wrap { min-height: 58px; }
+  .btn { position: relative; overflow: hidden; }
+  .btn::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent); transform: skewX(-20deg); transition: left .6s ease; pointer-events: none; }
+  .btn:hover::after { left: 130%; }
+  .zoomable { cursor: zoom-in; }
+  dialog.lb { padding: 0; border: 0; background: transparent; max-width: 100vw; max-height: 100vh; width: 100vw; height: 100vh; overflow: hidden; }
+  dialog.lb::backdrop { background: rgba(8,6,12,.9); backdrop-filter: blur(6px); }
+  dialog.lb figure { margin: 0; height: 100%; display: grid; place-items: center; align-content: center; gap: 12px; padding: 60px 70px; box-sizing: border-box; }
+  dialog.lb img { max-width: 100%; max-height: 78vh; border-radius: 14px; box-shadow: 0 40px 80px -30px #000; animation: lb-in .35s cubic-bezier(.2,.7,.2,1); }
+  dialog.lb figcaption { color: #fff; font-weight: 600; text-align: center; }
+  @keyframes lb-in { from { opacity: 0; transform: scale(.94); } }
+  .lb-btn { position: absolute; width: 50px; height: 50px; border-radius: 50%; border: 1px solid rgba(255,255,255,.4); background: rgba(255,255,255,.1); color: #fff; font-size: 26px; line-height: 1; cursor: pointer; }
+  .lb-close { top: 16px; right: 16px; } .lb-prev { left: 14px; top: 50%; margin-top: -25px; } .lb-next { right: 14px; top: 50%; margin-top: -25px; }
+  .lb-count { position: absolute; top: 28px; left: 24px; color: #fff; opacity: .7; font-size: 14px; }
+  /* wizards (salon booking, plumber diagnosis) */
+  .wiz { display: grid; gap: 16px; }
+  .wiz fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+  .wiz .row > *, .wiz label { min-width: 0; }
+  .wiz input[type=text], .wiz input[type=tel] { width: 100%; box-sizing: border-box; min-width: 0; }
+  .wiz legend { font-weight: 600; font-size: 19px; margin-bottom: 12px; padding: 0; }
+  .js .wiz .wiz-step { display: none; }
+  .js .wiz .wiz-step.on { display: block; animation: step-in .45s cubic-bezier(.2,.7,.2,1); }
+  @keyframes step-in { from { opacity: 0; transform: translateX(24px); } }
+  .wiz-bar { height: 6px; border-radius: 6px; background: rgba(127,127,127,.18); overflow: hidden; }
+  .wiz-bar span { display: block; height: 100%; width: 25%; border-radius: inherit; background: var(--wiz-accent); transition: width .45s cubic-bezier(.2,.7,.2,1); }
+  .wiz-labels { display: flex; justify-content: space-between; gap: 6px; list-style: none; padding: 0; margin: 0; font-size: 13px; opacity: .6; }
+  .wiz-labels li.on { opacity: 1; font-weight: 600; color: var(--wiz-accent); }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .tile { position: relative; cursor: pointer; }
+  .tile input { position: absolute; opacity: 0; pointer-events: none; }
+  .tile > span { display: block; height: 100%; box-sizing: border-box; padding: 14px; border-radius: 16px; border: 1.5px solid var(--tile-line, rgba(127,127,127,.3)); transition: border-color .2s, background .2s, transform .2s; }
+  .tile:hover > span { transform: translateY(-2px); }
+  .tile b { display: block; } .tile small { display: block; opacity: .7; margin-top: 2px; }
+  .tile .emo { font-size: 26px; display: block; margin-bottom: 6px; }
+  .tile input:checked + span { border-color: var(--wiz-accent); background: var(--tile-on); box-shadow: 0 0 0 3px var(--tile-ring); }
+  .tile input:focus-visible + span { outline: 3px solid var(--wiz-accent); outline-offset: 2px; }
+  .wiz-nav { display: flex; justify-content: space-between; gap: 10px; }
+  .wiz-nav [data-wiz=prev][disabled] { visibility: hidden; }
+  .wiz-err { color: #e11d48; font-size: 14px; min-height: 1.2em; margin: 0; }
+  .wiz-sum { border-radius: 16px; padding: 14px 16px; background: var(--tile-on); font-size: 15px; line-height: 1.7; }
+  .wiz-done { text-align: center; padding: 20px 0; }
+  .wiz-done h3 { font-size: 26px; margin: 14px 0 6px; }
+  .check-anim { width: 84px; height: 84px; margin: 0 auto; }
+  .check-anim circle { stroke-dasharray: 240; stroke-dashoffset: 240; animation: draw .7s ease forwards; }
+  .check-anim path { stroke-dasharray: 60; stroke-dashoffset: 60; animation: draw .4s .6s ease forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  .days { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; scrollbar-width: thin; }
+  .days button { flex: none; width: 64px; padding: 10px 0; border-radius: 14px; border: 1.5px solid var(--tile-line, rgba(127,127,127,.3)); background: transparent; color: inherit; font: inherit; cursor: pointer; text-align: center; line-height: 1.2; }
+  .days button small { display: block; font-size: 12px; opacity: .7; }
+  .days button b { font-size: 20px; }
+  .days button.on { border-color: var(--wiz-accent); background: var(--wiz-accent); color: #fff; }
+  .days button:disabled { opacity: .35; cursor: not-allowed; }
+  @media (max-width: 860px) {
+    .cine { min-height: 0; }
+    .cine::before { background: var(--cine-shade-m, var(--cine-shade)); }
+    .cine .wrap { padding-block: 70px 80px; }
+    .glass { min-width: 0; flex: 1 1 140px; }
+    .scroll-cue { display: none; }
+    dialog.lb figure { padding: 70px 12px; }
+    .lb-prev, .lb-next { top: auto; bottom: 18px; margin: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .w, .fade-up { opacity: 1 !important; transform: none !important; filter: none !important; }
+    .cine-bg img, .marquee-track, .plx, .scroll-progress { animation: none !important; }
+    .js .wiz .wiz-step.on { animation: none; }
+  }
+
+  .cine { --cine-shade: linear-gradient(90deg, rgba(11,31,58,.96) 0%, rgba(11,31,58,.8) 42%, rgba(11,31,58,.25)); --cine-shade-m: linear-gradient(180deg, rgba(11,31,58,.92), rgba(11,31,58,.75)); }
+  .cine h1 .hl .w { background: linear-gradient(90deg, var(--cyan), #7dd3fc); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .cine .pill { color: #fff; }
+  .m-plomb { background: var(--soft); color: var(--navy); border-block: 1px solid var(--line); }
+  .m-plomb i { color: var(--orange); opacity: 1; }
+  :root { --progress: linear-gradient(90deg, var(--orange), var(--cyan)); --wiz-accent: var(--blue); --tile-on: #eef4ff; --tile-ring: rgba(31,111,255,.18); --tile-line: var(--line); }
+  .diag-sec { background: linear-gradient(180deg, var(--soft), #fff); }
+  .diag-res .price-big { font-size: 40px; font-weight: 600; color: var(--blue); line-height: 1.1; }
+  .diag-res .advice { display: flex; gap: 10px; padding: 14px 16px; border-radius: 14px; background: #fff7ed; color: #9a3412; font-size: 15px; }
+  .diag-res .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .diag-res label { display: grid; gap: 6px; font-weight: 600; font-size: 14px; }
+  .diag-res input { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); font: inherit; }
+  .wiz [data-wiz=prev] { background: transparent; color: var(--navy); border: 1px solid var(--line); box-shadow: none; }
+  .diag-teaser { background: var(--navy); color: #fff; }
+  .diag-teaser .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; padding-block: 40px; }
+  .diag-teaser h2 { color: #fff; margin: 0; }
+  .diag-teaser p { margin: 4px 0 0; color: #c9d6ec; }
+
+</style>
+</head>
+<body>
+<div class="scroll-progress" aria-hidden="true"></div><div class="demo-bar"><div class="wrap"><span>Site de démonstration réalisé par Albert Grabar — entreprise fictive.</span><span><a href="../../site-vitrine.html">Un site comme celui-ci : 890 €</a> · <a href="../../realisations.html">Retour aux réalisations</a></span></div></div>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="index.html"><span class="logo-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 2c4 5.5 7 9 7 13a7 7 0 0 1-14 0c0-4 3-7.5 7-13z"/></svg></span>Lumen Plomberie</a>
+  <nav class="menu" aria-label="Menu"><a href="services.html">Services</a><a href="tarifs.html">Tarifs</a><a href="zone.html">Zone et horaires</a><a href="contact.html" class="on" aria-current="page">Devis et contact</a></nav>
+  <a class="btn" href="contact.html">Devis gratuit</a>
+</div></header>
+
+<main>
+<section class="page-hero"><div class="wrap"><h1>Devis et contact</h1><p>Décrivez le problème : réponse écrite le jour même.</p></div></section>
+<section class="diag-sec" id="diag"><div class="wrap two">
+  <div><span class="eyebrow">Diagnostic express</span><h2>Trois questions, une estimation</h2><p class="sub">Gratuit et sans engagement. Vous savez tout de suite combien ça coûte et quand nous pouvons venir.</p><img class="photo calc-img" src="img/hero.webp" alt="" loading="lazy" width="900" height="900" style="aspect-ratio:4/3"></div>
+  <form class="wiz card" action="contact.html" data-wiz="diag"><div class="wiz-bar js-only" aria-hidden="true"><span></span></div><ol class="wiz-labels js-flex js-only"><li>Problème</li><li>Urgence</li><li>Adresse</li><li>Estimation</li></ol><fieldset class="wiz-step" data-need="pb"><legend>Quel est le problème ?</legend><div class="tiles"><label class="tile"><input type="radio" name="pb" value="fuite" data-range="89-140" data-advice="Coupez l'arrivée d'eau générale (souvent sous l'évier ou près du compteur) et épongez autour des prises électriques."><span><span class="emo" aria-hidden="true">💧</span><b>Fuite d'eau</b><small></small></span></label><label class="tile"><input type="radio" name="pb" value="chaude" data-range="120-260" data-advice="Vérifiez le disjoncteur du chauffe-eau au tableau électrique avant notre venue."><span><span class="emo" aria-hidden="true">🔥</span><b>Plus d'eau chaude</b><small></small></span></label><label class="tile"><input type="radio" name="pb" value="bouche" data-range="95-180" data-advice="Évitez les produits chimiques : ils abîment les canalisations et gênent l'intervention."><span><span class="emo" aria-hidden="true">🚿</span><b>Évier ou douche bouchés</b><small></small></span></label><label class="tile"><input type="radio" name="pb" value="wc" data-range="89-160" data-advice="Fermez le robinet d'arrêt derrière le WC et ne tirez plus la chasse."><span><span class="emo" aria-hidden="true">🚽</span><b>WC qui fuit ou bouché</b><small></small></span></label><label class="tile"><input type="radio" name="pb" value="robinet" data-range="79-130" data-advice="Fermez les robinets d'arrêt sous le lavabo : vous économisez déjà de l'eau."><span><span class="emo" aria-hidden="true">🔧</span><b>Robinet qui goutte</b><small></small></span></label><label class="tile"><input type="radio" name="pb" value="autre" data-range="sur devis" data-advice="Décrivez-nous le problème, avec une photo si possible : nous répondons le jour même."><span><span class="emo" aria-hidden="true">➕</span><b>Autre chose</b><small></small></span></label></div></fieldset><fieldset class="wiz-step" data-need="urg"><legend>C'est urgent ?</legend><div class="tiles"><label class="tile"><input type="radio" name="urg" value="now" data-delay="aujourd'hui, dans les 4 h" data-factor="1.25"><span><b>Ça coule maintenant</b><small>intervention prioritaire</small></span></label><label class="tile"><input type="radio" name="urg" value="soon" data-delay="sous 24 h" data-factor="1"><span><b>Aujourd'hui ou demain</b><small>dépannage</small></span></label><label class="tile"><input type="radio" name="urg" value="week" data-delay="au créneau de votre choix" data-factor="1"><span><b>Cette semaine</b><small>rendez-vous</small></span></label></div></fieldset><fieldset class="wiz-step" data-need="place"><legend>Où êtes-vous ?</legend><div class="tiles"><label class="tile"><input type="radio" name="place" value="p15" data-extra="0"><span><b>Paris 15e</b><small>déplacement offert</small></span></label><label class="tile"><input type="radio" name="place" value="zone" data-extra="15"><span><b>Zone proche</b><small>14e, 7e, 6e, Issy, Vanves…</small></span></label><label class="tile"><input type="radio" name="place" value="loin" data-extra="x"><span><b>Ailleurs</b><small>sur demande</small></span></label></div></fieldset><fieldset class="wiz-step diag-res"><legend>Votre estimation</legend><div class="js-only" data-result style="display:grid;gap:12px"></div><div class="row"><label>Nom<input type="text" name="nom" placeholder="Marie Dupont" autocomplete="off"></label><label>Téléphone<input type="tel" name="tel" placeholder="06 12 34 56 78" autocomplete="off"></label></div></fieldset><p class="wiz-err" aria-live="polite"></p><div class="wiz-nav js-flex js-only"><button type="button" class="btn line" data-wiz="prev">Retour</button><button type="button" class="btn" data-wiz="next" data-final="Être rappelé">Continuer</button></div><div class="wiz-done" hidden><svg class="check-anim" style="color:#16a34a" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="38" fill="none" stroke="currentColor" stroke-width="4"/><path d="M26 43l11 11 21-22" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Demande prête !</h3><p>Sur un vrai site, le plombier vous rappellerait dans l'heure.<br><strong>Démo : rien n'est envoyé.</strong></p><button type="button" class="btn ghost" data-wiz="restart" style="color:var(--blue);border-color:var(--line)">Recommencer</button></div></form>
+</div></section>
+<section><div class="wrap two">
+  <div>
+    <span class="eyebrow">Questions</span>
+    <h2>Questions fréquentes</h2>
+    <details><summary>Le devis est-il payant ?</summary><p>Non, le devis est gratuit et écrit, avant toute intervention.</p></details>
+    <details><summary>Quels moyens de paiement ?</summary><p>Carte bancaire, virement ou chèque, après l'intervention.</p></details>
+    <details><summary>Les travaux sont-ils garantis ?</summary><p>Oui : pièces et main-d'œuvre garanties un an, assurance décennale pour les installations.</p></details>
+  </div>
+  <form action="contact.html" id="devis">
+    <h2 style="margin:0">Demander un devis</h2>
+    <label>Votre nom<input type="text" placeholder="Marie Dupont"></label>
+    <label>Téléphone<input type="tel" placeholder="06 12 34 56 78"></label>
+    <label>Le problème<select><option>Fuite</option><option>Chauffe-eau</option><option>Débouchage</option><option>Autre</option></select></label>
+    <label>En quelques mots<textarea placeholder="Depuis quand, où, photo possible…"></textarea></label>
+    <button class="btn" type="button" disabled>Envoyer (désactivé sur la démo)</button>
+  </form>
+</div></section>
+<section class="band"><div class="wrap"><div class="grid3 contact-cards">
+  <article class="card"><h3>Téléphone</h3><p>01 23 45 67 89<br>du lundi au samedi</p></article>
+  <article class="card"><h3>E-mail</h3><p>contact@lumen-plomberie.example<br>réponse le jour même</p></article>
+  <article class="card"><h3>Adresse</h3><p>12 rue de l'Exemple<br>75015 Paris</p></article>
+</div></div></section>
+</main>
+
+<footer><div class="wrap">
+  <div><strong>Lumen Plomberie</strong><br>12 rue de l'Exemple, 75015 Paris · 01 23 45 67 89</div>
+  <div style="max-width:520px"><a href="index.html" style="color:inherit">Accueil</a> · <a href="services.html" style="color:inherit">Services</a> · <a href="tarifs.html" style="color:inherit">Tarifs</a> · <a href="zone.html" style="color:inherit">Zone et horaires</a> · <a href="contact.html" style="color:inherit">Devis et contact</a></div>
+  <div>Entreprise fictive — site de démonstration.<br>Photos d'illustration : Unsplash.<br>Réalisé par <a href="../../index.html" style="color:#7dd3fc">Albert Grabar</a></div>
+</div></footer>
+<script src="../demo.js" defer></script>
+</body>
+</html>
