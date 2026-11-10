@@ -37,7 +37,7 @@
     "kicker": "Full-stack developer in Paris · PHP/Symfony · React",
     "h1": "Your AI-built app, ready for real customers.",
     "lead": "Lovable, Bolt, Cursor or v0 got you a prototype. I secure it, add Stripe payments, make it GDPR-compliant and put it live. Fixed price, clear deadline, everything in writing.",
-    "ctaPrimary": "Request an audit (from €290)",
+    "ctaPrimary": "Request an audit (from €149)",
     "ctaSecondary": "See the services",
     "promises": [
       "Price agreed in writing before work starts",
@@ -68,8 +68,8 @@
       },
       {
         "title": "You need a website for your business",
-        "text": "Tradespeople, cafés, salons, freelancers, non-profits: a clear, fast website in 5 days, with your services, opening hours and a contact form.",
-        "link": "Website from €890",
+        "text": "Tradespeople, cafés, salons, freelancers, non-profits: a clear, fast website in 4 to 10 working days, with your services, opening hours and a contact form.",
+        "link": "Website from €290",
         "page": "svcSite"
       },
       {
@@ -95,12 +95,12 @@
         "text": "I read the code and test the app. You get a written report: issues ranked by severity, a fix plan and a fixed price."
       },
       {
-        "title": "Fixes and launch — 5 to 10 days",
+        "title": "Fixes and launch — 4 to 12 days",
         "text": "Security, Stripe payments, GDPR, custom domain, backups. You follow progress in writing."
       },
       {
         "title": "Aftercare — optional",
-        "text": "14 days of free fixes, then monthly maintenance on quote."
+        "text": "14 days of free fixes, then a €49/month care plan if you want it."
       }
     ],
     "stats": [
@@ -129,23 +129,23 @@
     "prices": [
       {
         "name": "AI app audit",
-        "price": "from €290",
+        "price": "from €149",
         "page": "svcAudit"
       },
       {
         "name": "Launch",
-        "price": "from €1,190",
+        "price": "from €490",
         "page": "svcLaunch"
       },
       {
         "name": "Business or personal website",
-        "price": "from €890",
+        "price": "from €290",
         "note": "optional care plan €49/month",
         "page": "svcSite"
       },
       {
         "name": "PHP, Symfony, WordPress fixes",
-        "price": "€45–55/h",
+        "price": "€45/h",
         "page": "svcFixes"
       }
     ],
@@ -185,7 +185,7 @@
   },
   "services": {
     "title": "Services and pricing — Albert Grabar",
-    "description": "AI app audit from €290, launch from €1,190, business or personal website from €890, PHP, Symfony and WordPress fixes. For individuals and businesses, written quote before every job.",
+    "description": "AI app audit from €149, launch from €490, business or personal website from €290, PHP, Symfony and WordPress fixes at €45/h. For individuals and businesses, written quote before every job.",
     "h1": "Services and pricing",
     "lead": "Four offers for individuals and businesses, public prices and a written quote before every job.",
     "labels": {
@@ -205,9 +205,9 @@
         "id": "audit",
         "page": "svcAudit",
         "name": "AI app audit",
-        "price": "€290 or €490",
-        "schemaPrice": "290",
-        "delay": "2 working days",
+        "price": "€149, €249 or €390",
+        "schemaPrice": "149",
+        "delay": "2 to 5 working days",
         "for": "Individuals and businesses who built an app with Lovable, Bolt, Cursor, v0 or Replit.",
         "listTitle": "I check",
         "list": [
@@ -219,13 +219,13 @@
           "Performance"
         ],
         "result": "A written report in English or French, issues ranked by severity, a fix plan and a fixed price.",
-        "priceNote": "€290 up to 10 screens, €490 above. Deducted from Launch if ordered within 30 days.",
+        "priceNote": "€149 up to 10 screens, €249 up to 25, €390 up to 50. Deducted from Launch if ordered within 30 days.",
         "payment": "Upfront.",
         "cta": "Order an audit",
         "need": "audit",
         "detail": {
-          "title": "Audit of your AI-built app — €290 or €490 | Albert Grabar",
-          "description": "Security, payment and GDPR audit for apps built with Lovable, Bolt, Cursor, v0 or Replit. Written report in 2 working days, fixed price. For individuals and businesses.",
+          "title": "Audit of your AI-built app — from €149 | Albert Grabar",
+          "description": "Security, payment and GDPR audit for apps built with Lovable, Bolt, Cursor, v0 or Replit. Written report in 2 to 5 working days, from €149. For individuals and businesses.",
           "h1": "An audit of your AI-built app",
           "lead": "You built an app with Lovable, Bolt, Cursor, v0 or Replit. Before you show it to customers or take payments, I check what could break or leak, and tell you what to fix, in what order and for what price.",
           "sections": [
@@ -269,19 +269,37 @@
               ]
             },
             {
+              "type": "features",
+              "title": "The packages",
+              "items": [
+                {
+                  "t": "Essential — €149",
+                  "d": "Up to 10 screens. Report in 2 working days."
+                },
+                {
+                  "t": "Standard — €249",
+                  "d": "Up to 25 screens. Report in 3 working days."
+                },
+                {
+                  "t": "Extended — €390",
+                  "d": "Up to 50 screens. Report in 5 working days."
+                }
+              ]
+            },
+            {
               "type": "steps",
               "title": "How it works",
               "items": [
                 {
                   "t": "You write to me",
-                  "d": "The app link, the tool you used and what it should do. I confirm the price (€290 or €490) in writing."
+                  "d": "The app link, the tool you used and what it should do. I confirm the package and price (€149, €249 or €390) in writing."
                 },
                 {
                   "t": "You pay and share access",
                   "d": "Read access to the code (GitHub) and a test account. I never need your personal passwords."
                 },
                 {
-                  "t": "I review it for 2 working days",
+                  "t": "I review it for 2 to 5 working days",
                   "d": "Reading the code, testing in the browser, checking the database and payments in test mode."
                 },
                 {
@@ -314,7 +332,7 @@
               "type": "list",
               "title": "Price and payment",
               "items": [
-                "€290 up to 10 screens, €490 above. Fixed price, confirmed in writing before I start.",
+                "Essential €149 (up to 10 screens), Standard €249 (up to 25 screens), Extended €390 (up to 50 screens). One screen = one page or view of the app. Fixed price, confirmed in writing before I start.",
                 "Paid upfront, by card (Stripe) or bank transfer.",
                 "Deducted from the Launch price if you order it within 30 days.",
                 "No VAT charged (French VAT exemption, art. 293 B CGI): the price shown is the final price."
@@ -345,11 +363,11 @@
         "id": "launch",
         "page": "svcLaunch",
         "name": "Launch",
-        "price": "€1,190 – 2,490",
-        "schemaPrice": "1190",
-        "delay": "5 to 10 working days",
+        "price": "€490, €890 or €1,490",
+        "schemaPrice": "490",
+        "delay": "4 to 12 working days",
         "for": "Individuals and businesses turning a prototype into an app real customers can use.",
-        "listTitle": "Includes",
+        "listTitle": "In the Launch package",
         "list": [
           "Fixing the critical issues from the audit",
           "Secure login and password reset",
@@ -360,15 +378,15 @@
           "A written handover guide",
           "14 days of free fixes"
         ],
-        "priceNote": "Exact figure in the quote, after the audit.",
-        "payment": "50% on order, 50% on delivery.",
+        "priceNote": "Secure: €490, Launch: €890, Launch+: €1,490. The package is confirmed in writing after the audit.",
+        "payment": "Upfront up to €500; above that, 50% on order and 50% on delivery.",
         "cta": "Request a quote",
         "need": "launch",
         "detail": {
-          "title": "Launch of your AI-built app — €1,190 to €2,490 | Albert Grabar",
-          "description": "I fix the security holes, add live Stripe payments, make the app GDPR-compliant and put it live on your domain. 5 to 10 working days, fixed price after the audit.",
+          "title": "Launch of your AI-built app — €490 to €1,490 | Albert Grabar",
+          "description": "I fix the security holes, add live Stripe payments, make the app GDPR-compliant and put it live on your domain. Three fixed-price packages: €490, €890 or €1,490, in 4 to 12 working days.",
           "h1": "Launch: from prototype to live app",
-          "lead": "Your app works in the demo. I make it safe and usable by real customers: security holes fixed, live payments, GDPR, your domain over HTTPS and backups. The price is set in writing after the audit.",
+          "lead": "Your app works in the demo. I make it safe and usable by real customers: security holes fixed, live payments, GDPR, your domain over HTTPS and backups. Three fixed-price packages, confirmed in writing after the audit.",
           "sections": [
             {
               "type": "list",
@@ -381,7 +399,25 @@
             },
             {
               "type": "features",
-              "title": "What's included",
+              "title": "The packages",
+              "items": [
+                {
+                  "t": "Secure — €490",
+                  "d": "Essential audit included, critical and important issues fixed (up to 2 days of work), retest. 4 working days."
+                },
+                {
+                  "t": "Launch — €890",
+                  "d": "Secure, plus secure login, live Stripe, GDPR, going live over HTTPS, backups and a guide. 7 working days."
+                },
+                {
+                  "t": "Launch+ — €1,490",
+                  "d": "Launch, plus up to 3 simple features or integrations (automatic emails, admin area, export). 12 working days."
+                }
+              ]
+            },
+            {
+              "type": "features",
+              "title": "What's included in the Launch package",
               "items": [
                 {
                   "t": "Critical fixes",
@@ -423,15 +459,15 @@
               "items": [
                 {
                   "t": "The audit",
-                  "d": "If you don't have one yet, we start there. Its price is deducted from Launch."
+                  "d": "If you don't have one yet, we start there. Its price is deducted from the package you choose."
                 },
                 {
                   "t": "The written quote",
-                  "d": "The list of work, the fixed price and the delivery date. Valid for 30 days."
+                  "d": "The package, the list of work, the fixed price and the delivery date. Valid for 30 days."
                 },
                 {
                   "t": "The work",
-                  "d": "5 to 10 working days after the deposit and access. You follow progress in writing."
+                  "d": "4 to 12 working days depending on the package, after the deposit and access. You follow progress in writing."
                 },
                 {
                   "t": "Delivery",
@@ -448,7 +484,7 @@
               "title": "What's not included",
               "muted": true,
               "items": [
-                "New features: a separate quote, so the Launch price stays fixed.",
+                "Features beyond the package (Launch+ includes 3 simple ones): a separate quote, so the price stays fixed.",
                 "Third-party subscriptions (hosting, domain, Stripe, database): you pay them directly, in your name.",
                 "Bespoke legal documents: I set up templates adapted to your app; for a special case, a lawyer is still advisable."
               ]
@@ -457,8 +493,8 @@
               "type": "list",
               "title": "Price and payment",
               "items": [
-                "€1,190 to €2,490 depending on the audit report; the exact fixed price is in the quote.",
-                "50% on order, 50% on delivery, by card (Stripe) or bank transfer.",
+                "Secure: €490, Launch: €890, Launch+: €1,490; the package is confirmed in writing after the audit, with a separate quote if the app needs more.",
+                "Upfront up to €500; above that, 50% on order and 50% on delivery, by card (Stripe) or bank transfer.",
                 "The audit price is deducted if you order within 30 days.",
                 "No VAT charged (French VAT exemption, art. 293 B CGI): the price shown is the final price."
               ]
@@ -479,7 +515,7 @@
             },
             {
               "q": "Can you add a feature?",
-              "a": "Yes, on a separate quote. That way the Launch price stays as announced."
+              "a": "Yes: up to 3 simple features in Launch+, or a separate quote. That way the price stays as announced."
             }
           ]
         }
@@ -488,29 +524,29 @@
         "id": "site",
         "page": "svcSite",
         "name": "Business or personal website",
-        "price": "€890 or €1,490",
-        "schemaPrice": "890",
-        "delay": "5 working days",
+        "price": "€290, €590 or €990",
+        "schemaPrice": "290",
+        "delay": "4 to 10 working days",
         "for": "Tradespeople, cafés, salons, freelancers, non-profits — and individuals: portfolio, online CV, event website.",
         "listTitle": "Includes",
         "list": [
-          "Up to 5 pages (€890) or up to 10 pages with booking or gallery (€1,490)",
+          "One page (€290), up to 5 pages (€590) or up to 10 pages with gallery and booking (€990)",
           "Mobile version",
           "Contact form",
           "Basic SEO and Google Business Profile",
           "Legal notice and privacy policy",
           "Going live"
         ],
-        "priceNote": "Hosting and domain in your name, about €5–10/month with the host. Care plan €49/month, cancel anytime: security updates, backups, small edits up to 1 hour a month.",
-        "payment": "50% on order, 50% on delivery.",
+        "priceNote": "Options: extra page €59, copywriting €29 per page. Hosting and domain in your name, about €5–10/month with the host. Care plan €49/month, cancel anytime: security updates, backups, small edits up to 1 hour a month.",
+        "payment": "Upfront up to €500; above that, 50% on order and 50% on delivery.",
         "cta": "Request a website",
         "need": "site",
         "extraLink": "See the demo websites",
         "detail": {
-          "title": "Business or personal website — €890 or €1,490 | Albert Grabar",
-          "description": "A clear, fast, mobile-friendly website for your business or personal project: up to 5 pages for €890, up to 10 pages with booking or gallery for €1,490. Live in 5 working days.",
+          "title": "Business or personal website — from €290 | Albert Grabar",
+          "description": "A clear, fast, mobile-friendly website for your business or personal project: one page for €290, up to 5 pages for €590, up to 10 pages with gallery and booking for €990. Live in 4 to 10 working days.",
           "h1": "A website for your business or personal project",
-          "lead": "Tradesperson, café, salon, freelancer, non-profit — or an individual who wants a portfolio, an online CV or an event website: a clear, fast website, live in 5 working days, at a fixed price.",
+          "lead": "Tradesperson, café, salon, freelancer, non-profit — or an individual who wants a portfolio, an online CV or an event website: a clear, fast website, live in 4 to 10 working days, at a fixed price.",
           "sections": [
             {
               "type": "list",
@@ -526,12 +562,16 @@
               "title": "What's included",
               "items": [
                 {
-                  "t": "Up to 5 pages — €890",
-                  "d": "For example: home, services, about, gallery, contact."
+                  "t": "One page — €290",
+                  "d": "Intro, services, prices, opening hours and contact on a single page."
                 },
                 {
-                  "t": "Up to 10 pages — €1,490",
-                  "d": "With a photo gallery or online booking (through an existing booking tool)."
+                  "t": "Up to 5 pages — €590",
+                  "d": "For example: home, services, prices, about, contact."
+                },
+                {
+                  "t": "Up to 10 pages — €990",
+                  "d": "With a photo gallery and a booking or appointment request sent by email (or a link to your booking tool)."
                 },
                 {
                   "t": "Mobile version",
@@ -554,8 +594,8 @@
                   "d": "On your domain, over HTTPS, with hosting in your name."
                 },
                 {
-                  "t": "Two rounds of feedback",
-                  "d": "You review the site on a preview link and I make your changes twice before it goes live."
+                  "t": "One or two rounds of feedback",
+                  "d": "You review the site on a preview link: I make your changes once (one page) or twice (5 and 10 pages) before it goes live."
                 }
               ]
             },
@@ -577,7 +617,7 @@
                 },
                 {
                   "t": "Building",
-                  "d": "5 working days after the deposit and your content. You get a preview link."
+                  "d": "4 to 10 working days depending on the package, after the deposit and your content. You get a preview link."
                 },
                 {
                   "t": "Going live",
@@ -591,7 +631,7 @@
               "muted": true,
               "items": [
                 "Hosting and domain: about €5–10 a month with the host, in your name.",
-                "Writing all the texts from scratch and professional photos.",
+                "Writing your texts (optional: €29 per page) and professional photos.",
                 "Selling products online (online shop): on quote."
               ]
             },
@@ -599,8 +639,8 @@
               "type": "list",
               "title": "Price and payment",
               "items": [
-                "€890 up to 5 pages, €1,490 up to 10 pages with booking or gallery.",
-                "50% on order, 50% on delivery, by card (Stripe) or bank transfer.",
+                "€290 for one page, €590 up to 5 pages, €990 up to 10 pages with gallery and booking. Options: extra page €59, copywriting €29 per page.",
+                "Upfront up to €500; above that, 50% on order and 50% on delivery, by card (Stripe) or bank transfer.",
                 "Optional care plan: €49/month, cancel anytime — security updates, backups, small edits up to 1 hour a month.",
                 "No VAT charged (French VAT exemption, art. 293 B CGI): the price shown is the final price."
               ]
@@ -631,9 +671,9 @@
         "id": "fixes",
         "page": "svcFixes",
         "name": "PHP, Symfony, WordPress fixes",
-        "price": "€45 – 55/h",
+        "price": "€45/h",
         "schemaPrice": "45",
-        "delay": "depends on the task",
+        "delay": "1 to 3 working days (packages)",
         "for": "Individuals and businesses: existing websites and apps.",
         "listTitle": "Examples",
         "list": [
@@ -643,13 +683,13 @@
           "A slow page",
           "A form that no longer sends"
         ],
-        "priceNote": "€45/h for WordPress, €55/h for Symfony and custom code; fixed price when the task is clear. Written quote before I start.",
+        "priceNote": "€45/h for WordPress, PHP and Symfony. Packages: 1 h — €45, 3 h — €129, 6 h — €249. Written quote before I start.",
         "payment": "Fixed price upfront; above €500, 50% on order and 50% on delivery.",
         "cta": "Describe the task",
         "need": "fixes",
         "detail": {
-          "title": "PHP, Symfony and WordPress fixes and maintenance — €45 to €55/h | Albert Grabar",
-          "description": "A bug, a PHP or Symfony upgrade, a WordPress plugin conflict, a slow page, a form that no longer sends: diagnosis and written quote before I start. €45 to €55/h or fixed price.",
+          "title": "PHP, Symfony and WordPress fixes and maintenance — €45/h | Albert Grabar",
+          "description": "A bug, a PHP or Symfony upgrade, a WordPress plugin conflict, a slow page, a form that no longer sends: diagnosis and written quote before I start. €45/h or a 1, 3 or 6-hour package.",
           "h1": "PHP, Symfony and WordPress fixes and maintenance",
           "lead": "Your website or app already exists, but something is wrong. Describe the problem in writing: I reply with a diagnosis and a price before touching anything.",
           "sections": [
@@ -727,7 +767,8 @@
               "type": "list",
               "title": "Price and payment",
               "items": [
-                "€45/h for WordPress, €55/h for Symfony and custom code.",
+                "€45/h for WordPress, PHP and Symfony. Packages: 1 h — €45, 3 h — €129, 6 h — €249.",
+                "Monthly care plan: €49/month, cancel anytime — security updates, backups, monitoring and up to 1 hour of small edits.",
                 "Fixed price when the task is clear; otherwise the estimated time is in the quote and I warn you in writing before going over it.",
                 "Fixed price paid upfront; above €500, 50% on order and 50% on delivery.",
                 "No VAT charged (French VAT exemption, art. 293 B CGI): the price shown is the final price."
@@ -787,7 +828,7 @@
         "tag": "Demo · fictional business",
         "name": "Lumen Plomberie",
         "subtitle": "Website for a plumber (in French)",
-        "text": "5-page site: home, services, prices, area and hours, quote request. An example of what you get for €890.",
+        "text": "5-page site: home, services, prices, area and hours, quote request. 5-page package at €590; the price estimator and online diagnosis are options on quote.",
         "links": [
           {
             "label": "See the demo",
@@ -800,7 +841,7 @@
         "tag": "Demo · fictional business",
         "name": "Café Brindille",
         "subtitle": "Website for a café (in French)",
-        "text": "5-page site: home, menu, gallery, hours and directions, table booking. An example of what you get for €890.",
+        "text": "5-page site: home, menu, gallery, hours and directions, table booking. 5-page package at €590; online ordering for pickup is an option on quote.",
         "links": [
           {
             "label": "See the demo",
@@ -813,7 +854,7 @@
         "tag": "Demo · fictional business",
         "name": "Studio Éclat",
         "subtitle": "Website for a hair salon (in French)",
-        "text": "10-page site: services, colour, care, team, before/after, reviews, FAQ and online booking. An example of what you get for €1,490.",
+        "text": "10-page site: services, colour, care, team, before/after, reviews, FAQ and online booking. 10-page package at €990; step-by-step online booking is an option on quote.",
         "links": [
           {
             "label": "See the demo",
@@ -911,10 +952,10 @@
       "other": "Other"
     },
     "budgets": [
-      "Under €500",
-      "€500–1,000",
-      "€1,000–2,500",
-      "Over €2,500"
+      "Under €300",
+      "€300–600",
+      "€600–1,500",
+      "Over €1,500"
     ],
     "submit": "Send my request",
     "privacy": "Your data is used only to answer your request and prepare a quote. It is kept for 3 years after our last exchange. To access or delete it: {{email}}. Details: {{privacyLink}}.",
@@ -963,11 +1004,11 @@
     "footer.audience": "Services for businesses only: companies, freelancers, non-profits. A written quote before every job.",
     "home.description": "Audit, security, Stripe payments and GDPR for apps built with Lovable, Bolt or Cursor, business websites, PHP and WordPress fixes. For companies, freelancers and non-profits.",
     "home.prices.2.name": "Business website",
-    "services.description": "AI app audit from €290, launch from €1,190, business website from €890, PHP, Symfony and WordPress fixes. For businesses, written quote before every job.",
+    "services.description": "AI app audit from €149, launch from €490, business website from €290, PHP, Symfony and WordPress fixes at €45/h. For businesses, written quote before every job.",
     "services.lead": "Four offers for companies, freelancers and non-profits, public prices and a written quote before every job.",
     "services.labels.audience": "Companies, freelancers, non-profits",
     "services.offers.0.for": "Founders, start-ups and small businesses who built an app with Lovable, Bolt, Cursor, v0 or Replit.",
-    "services.offers.0.detail.description": "Security, payment and GDPR audit for apps built with Lovable, Bolt, Cursor, v0 or Replit. Written report in 2 working days, fixed price.",
+    "services.offers.0.detail.description": "Security, payment and GDPR audit for apps built with Lovable, Bolt, Cursor, v0 or Replit. Written report in 2 to 5 working days, from €149.",
     "services.offers.0.detail.sections.0.items": [
       "Founders and freelancers: you're building a business around your app and want to know if it's safe.",
       "Small businesses: you're about to open the app to real customers, take payments or collect personal data.",
@@ -976,10 +1017,10 @@
     "services.offers.1.for": "Founders and businesses turning a prototype into an app real customers can use.",
     "services.offers.2.name": "Business website",
     "services.offers.2.for": "Tradespeople, cafés, salons, freelancers, non-profits.",
-    "services.offers.2.detail.title": "Business website — €890 or €1,490 | Albert Grabar",
-    "services.offers.2.detail.description": "A clear, fast, mobile-friendly website for your business: up to 5 pages for €890, up to 10 pages with booking or gallery for €1,490. Live in 5 working days.",
+    "services.offers.2.detail.title": "Business website — from €290 | Albert Grabar",
+    "services.offers.2.detail.description": "A clear, fast, mobile-friendly website for your business: one page for €290, up to 5 pages for €590, up to 10 pages with gallery and booking for €990. Live in 4 to 10 working days.",
     "services.offers.2.detail.h1": "A website for your business",
-    "services.offers.2.detail.lead": "Tradesperson, café, salon, freelancer, non-profit: a clear, fast website, live in 5 working days, at a fixed price.",
+    "services.offers.2.detail.lead": "Tradesperson, café, salon, freelancer, non-profit: a clear, fast website, live in 4 to 10 working days, at a fixed price.",
     "services.offers.2.detail.sections.0.items": [
       "Tradespeople, shops, cafés, salons: your services, opening hours, area and a contact form.",
       "Freelancers and non-profits: present your offer or your work and receive requests.",
